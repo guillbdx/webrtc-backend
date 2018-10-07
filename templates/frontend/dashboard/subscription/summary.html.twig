@@ -1,0 +1,30 @@
+{% extends 'frontend/dashboard_layout.html.twig' %}
+
+{% block title %}Récapitulatif de votre commande{% endblock %}
+
+{% block body %}
+
+    <h2>Récapitulatif de votre commande</h2>
+
+    <p>
+        <strong>Nombre de mois : </strong>
+        {{ subscription.quantity }}
+        <br>
+
+        <strong>Votre abonnement sera valable jusqu'au : </strong>
+        {{ subscription.endAt | date('d/m/Y') }}
+        <br>
+
+        <strong>Montant : </strong>
+        {{ subscription.amount|price }}
+    </p>
+
+    <a href="{{ path('dashboard_subscription_quantity', {quantity: subscription.quantity}) }}" class="btn btn-warning">
+        Modifier la durée
+    </a>
+
+    <a href="{{ path('dashboard_subscription_payment', {quantity: subscription.quantity}) }}" class="btn btn-info">
+        Payer
+    </a>
+
+{% endblock %}

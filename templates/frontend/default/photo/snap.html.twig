@@ -1,0 +1,16 @@
+{% extends 'frontend/default_layout.html.twig' %}
+
+{% block title %}Créer une photo{% endblock %}
+
+{% block body %}
+
+    <h2>Créer une photo</h2>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">
+        Enregistrer
+    </button>
+    {{ form_end(form) }}
+
+{% endblock %}

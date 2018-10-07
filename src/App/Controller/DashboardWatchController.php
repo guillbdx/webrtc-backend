@@ -34,7 +34,7 @@ class DashboardWatchController extends AbstractController
             return $this->redirectToRoute('dashboard_watch_not_allowed');
         }
 
-        return $this->render('front/dashboard/watch/watch.html.twig', [
+        return $this->render('frontend/dashboard/watch/watch.html.twig', [
             'allowedIceType' => $allowedIceType
         ]);
     }
@@ -48,7 +48,7 @@ class DashboardWatchController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/watch/watch_not_allowed.html.twig');
+        return $this->render('frontend/dashboard/watch/watch_not_allowed.html.twig');
     }
 
     /**
@@ -60,7 +60,7 @@ class DashboardWatchController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/watch/watch_timeout.html.twig');
+        return $this->render('frontend/dashboard/watch/watch_timeout.html.twig');
     }
 
 }

@@ -1,0 +1,13 @@
+{% extends 'frontend/dashboard_layout.html.twig' %}
+
+{% block title %}Le paiement a échoué{% endblock %}
+
+{% block body %}
+
+    <h2>Le paiement a échoué</h2>
+
+    <a class="btn btn-info" href="{{ path('dashboard_subscription_manage') }}">
+        Retour à la gestion de l'abonnement
+    </a>
+
+{% endblock %}

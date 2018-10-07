@@ -36,7 +36,7 @@ class SecurityController extends AbstractController
             'lastUsername' => $authenticationUtils->getLastUsername()
         ]);
 
-        return $this->render('front/security/login.html.twig', array(
+        return $this->render('frontend/default/security/login.html.twig', array(
             'error'         => $error,
             'form' => $form->createView()
         ));
@@ -71,7 +71,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('security_signup_confirmation');
         }
 
-        return $this->render('front/security/signup.html.twig', [
+        return $this->render('frontend/default/security/signup.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -82,7 +82,7 @@ class SecurityController extends AbstractController
      */
     public function signupConfirm()
     {
-        return $this->render('front/security/signup_confirmation.html.twig');
+        return $this->render('frontend/default/security/signup_confirmation.html.twig');
     }
 
     /**
@@ -100,7 +100,7 @@ class SecurityController extends AbstractController
     {
         $fetchedUser = $userRepository->findOneBy(['emailCheckToken' => $emailCheckToken]);
         if (false === $fetchedUser instanceof User) {
-            return $this->render('front/security/wrong_check_email_token.html.twig');
+            return $this->render('frontend/default/security/wrong_check_email_token.html.twig');
         }
         $userManager->validateEmail($fetchedUser);
 
@@ -134,7 +134,7 @@ class SecurityController extends AbstractController
             $this->addFlash('success', 'Un email avec un lien vous a été envoyé.');
             $display = false;
         }
-        return $this->render('front/security/reset_password_request.html.twig', [
+        return $this->render('frontend/default/security/reset_password_request.html.twig', [
             'form' => $form->createView(),
             'display' => $display
         ]);
@@ -157,7 +157,7 @@ class SecurityController extends AbstractController
     {
         $fetchedUser = $userRepository->findOneBy(['passwordResetToken' => $passwordResetToken]);
         if (false === $fetchedUser instanceof User) {
-            return $this->render('front/security/wrong_password_reset_token.html.twig');
+            return $this->render('frontend/default/security/wrong_password_reset_token.html.twig');
         }
 
         $form = $this->createForm(ResetPasswordType::class, $fetchedUser);
@@ -169,7 +169,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('dashboard');
         }
 
-        return $this->render('front/security/reset_password.html.twig', [
+        return $this->render('frontend/default/security/reset_password.html.twig', [
             'form' => $form->createView()
         ]);
     }

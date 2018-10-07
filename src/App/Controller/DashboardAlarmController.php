@@ -23,7 +23,7 @@ class DashboardAlarmController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/alarm/alarm.html.twig');
+        return $this->render('frontend/dashboard/alarm/alarm.html.twig');
     }
 
     /**

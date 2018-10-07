@@ -57,7 +57,7 @@ class PhotoController extends AbstractController
             return new Response('');
         }
 
-        return $this->render('front/photo/snap.html.twig', [
+        return $this->render('frontend/default/photo/snap.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -98,7 +98,7 @@ class PhotoController extends AbstractController
             return new Response('');
         }
 
-        return $this->render('front/photo/mismatch.html.twig', [
+        return $this->render('frontend/default/photo/mismatch.html.twig', [
             'form' => $form->createView()
         ]);
     }

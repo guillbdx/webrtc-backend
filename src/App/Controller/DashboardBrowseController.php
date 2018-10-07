@@ -26,7 +26,7 @@ class DashboardBrowseController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/browse/browse.html.twig');
+        return $this->render('frontend/dashboard/browse/browse.html.twig');
     }
 
     /**

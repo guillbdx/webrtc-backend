@@ -26,7 +26,7 @@ class DashboardController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/dashboard.html.twig');
+        return $this->render('frontend/dashboard/dashboard.html.twig');
     }
 
     /**
@@ -49,7 +49,7 @@ class DashboardController extends AbstractController
             $userManager->resendEmailCheckToken($user);
             $this->addFlash('success', "L'email de confirmation vient de vous être renvoyé.");
         }
-        return $this->render('front/dashboard/pending_email_check.html.twig', [
+        return $this->render('frontend/dashboard/pending_email_check.html.twig', [
             'send' => $send
         ]);
     }
@@ -74,7 +74,7 @@ class DashboardController extends AbstractController
             $this->addFlash('success', 'Votre mot de passe a été mis à jour.');
             return $this->redirectToRoute('dashboard');
         }
-        return $this->render('front/dashboard/change_password.html.twig', [
+        return $this->render('frontend/dashboard/change_password.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -92,7 +92,7 @@ class DashboardController extends AbstractController
     {
         $transactions = $transactionRepository->findByUser($user);
 
-        return $this->render('front/dashboard/transactions.html.twig', [
+        return $this->render('frontend/dashboard/transactions.html.twig', [
             'transactions' => $transactions
         ]);
     }

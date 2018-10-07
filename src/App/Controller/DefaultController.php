@@ -14,7 +14,7 @@ class DefaultController extends AbstractController
      */
     public function home()
     {
-        return $this->render('front/default/home.html.twig');
+        return $this->render('frontend/default/home.html.twig');
     }
 
     /**
@@ -32,7 +32,7 @@ class DefaultController extends AbstractController
      */
     public function guide()
     {
-        return $this->render('front/default/guide.html.twig');
+        return $this->render('frontend/default/guide.html.twig');
     }
 
 }

@@ -39,7 +39,7 @@ class DashboardSubscriptionController extends AbstractController
         SubscriptionService $subscriptionService
     )
     {
-        return $this->render('front/dashboard/subscription/manage.html.twig', [
+        return $this->render('frontend/dashboard/subscription/manage.html.twig', [
             'userStatus' => $subscriptionService->getUserStatus($user)
         ]);
     }
@@ -67,7 +67,7 @@ class DashboardSubscriptionController extends AbstractController
             ]);
         }
 
-        return $this->render('front/dashboard/subscription/quantity.html.twig', [
+        return $this->render('frontend/dashboard/subscription/quantity.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -84,7 +84,7 @@ class DashboardSubscriptionController extends AbstractController
     )
     {
         $subscription = new Subscription($quantity, $user);
-        return $this->render('front/dashboard/subscription/summary.html.twig', [
+        return $this->render('frontend/dashboard/subscription/summary.html.twig', [
             'subscription' => $subscription
         ]);
     }
@@ -103,7 +103,7 @@ class DashboardSubscriptionController extends AbstractController
     )
     {
         $subscription = new Subscription($quantity, $user);
-        return $this->render('front/dashboard/subscription/payment.html.twig', [
+        return $this->render('frontend/dashboard/subscription/payment.html.twig', [
             'stripeApiKey' => $stripeApiKey,
             'subscription' => $subscription
         ]);
@@ -158,7 +158,7 @@ class DashboardSubscriptionController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/subscription/success.html.twig');
+        return $this->render('frontend/dashboard/subscription/success.html.twig');
     }
 
     /**
@@ -170,7 +170,7 @@ class DashboardSubscriptionController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/subscription/failure.html.twig');
+        return $this->render('frontend/dashboard/subscription/failure.html.twig');
     }
 
 }

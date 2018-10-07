@@ -46,7 +46,7 @@ class DashboardShootController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/shoot/shooter_in_active_state.html.twig');
+        return $this->render('frontend/dashboard/shoot/shooter_in_active_state.html.twig');
     }
 
     /**
@@ -58,7 +58,7 @@ class DashboardShootController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/shoot/shooter_in_unknown_state.html.twig');
+        return $this->render('frontend/dashboard/shoot/shooter_in_unknown_state.html.twig');
     }
 
     /**
@@ -78,7 +78,7 @@ class DashboardShootController extends AbstractController
             return $this->redirectToRoute('dashboard_shoot_not_allowed');
         }
 
-        return $this->render('front/dashboard/shoot/shoot.html.twig', [
+        return $this->render('frontend/dashboard/shoot/shoot.html.twig', [
             'allowedIceType' => $allowedIceType
         ]);
     }
@@ -92,7 +92,7 @@ class DashboardShootController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/shoot/camera_refused.html.twig');
+        return $this->render('frontend/dashboard/shoot/camera_refused.html.twig');
     }
 
     /**
@@ -104,7 +104,7 @@ class DashboardShootController extends AbstractController
         UserInterface $user
     )
     {
-        return $this->render('front/dashboard/shoot/shoot_not_allowed.html.twig');
+        return $this->render('frontend/dashboard/shoot/shoot_not_allowed.html.twig');
     }
 
 }
