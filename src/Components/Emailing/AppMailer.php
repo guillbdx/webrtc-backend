@@ -70,7 +70,7 @@ class AppMailer
     public function sendEmailCheckToken(User $user): void
     {
         $message = (new \Swift_Message('Merci de confirmer votre email'))
-            ->setFrom(['no-reply@'.$this->host => 'Illicam'])
+            ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
                 $this->twig->render('email/email_check_token.html.twig', [
@@ -93,7 +93,7 @@ class AppMailer
     public function sendPasswordResetToken(User $user): void
     {
         $message = (new \Swift_Message('Réinitialisation de votre mot de passe'))
-            ->setFrom(['no-reply@'.$this->host => 'Illicam'])
+            ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
                 $this->twig->render('email/password_reset_token.html.twig', [
@@ -114,7 +114,7 @@ class AppMailer
     public function sendAlarm(User $user, Photo $photo): void
     {
         $message = (new \Swift_Message('Mouvement détecté'))
-            ->setFrom(['no-reply@'.$this->host => 'Illicam'])
+            ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
                 $this->twig->render('email/alarm.html.twig', [

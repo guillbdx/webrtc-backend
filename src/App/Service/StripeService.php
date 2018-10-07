@@ -54,7 +54,7 @@ class StripeService
             'amount'                => $subscription->getAmount(),
             'currency'              => 'eur',
             'description'           => $subscription->getDescription(),
-            'statement_descriptor'  => 'Illicam',
+            'statement_descriptor'  => 'Dilcam',
             'receipt_email'         => $subscription->getUser()->getEmail(),
             'source'                => $tokenId,
         ]);

@@ -20,7 +20,7 @@ class SignalingCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'illicam:signaling';
+    protected static $defaultName = 'dilcam:signaling';
 
     /**
      * @var SignalingService

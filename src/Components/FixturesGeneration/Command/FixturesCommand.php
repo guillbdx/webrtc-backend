@@ -23,7 +23,7 @@ class FixturesCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'illicam:fixtures';
+    protected static $defaultName = 'dilcam:fixtures';
 
     /**
      * @param FixturesGenerator $fixturesGenerator

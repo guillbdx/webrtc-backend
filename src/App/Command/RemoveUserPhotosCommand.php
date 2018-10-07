@@ -22,7 +22,7 @@ class RemoveUserPhotosCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'illicam:remove-user-photos';
+    protected static $defaultName = 'dilcam:remove-user-photos';
 
     /**
      * @var PhotoManager

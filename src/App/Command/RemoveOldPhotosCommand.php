@@ -23,7 +23,7 @@ class RemoveOldPhotosCommand extends Command
     /**
      * @var string
      */
-    public static $defaultName = 'illicam:remove-old-photos';
+    public static $defaultName = 'dilcam:remove-old-photos';
 
     /**
      * @var  UserRepository

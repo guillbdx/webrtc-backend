@@ -22,7 +22,7 @@ class RemoveUserCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'illicam:remove-user';
+    protected static $defaultName = 'dilcam:remove-user';
 
     /**
      * @var UserRepository

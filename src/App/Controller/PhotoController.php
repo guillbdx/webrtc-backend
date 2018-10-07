@@ -124,7 +124,7 @@ class PhotoController extends AbstractController
 
         $response = new Response();
 
-        $photoName = 'illicam-'.$photo->getCreatedAt()->format('Y-m-d-H-i-s').'.jpg';
+        $photoName = 'dilcam-'.$photo->getCreatedAt()->format('Y-m-d-H-i-s').'.jpg';
         $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $photoName);
         if ($download) {
             $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $photoName);
@@ -159,7 +159,7 @@ class PhotoController extends AbstractController
 
         $response = new Response();
 
-        $photoName = 'illicam-'.$photo->getCreatedAt()->format('Y-m-d-H-i-s').'.jpg';
+        $photoName = 'dilcam-'.$photo->getCreatedAt()->format('Y-m-d-H-i-s').'.jpg';
         $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $photoName);
         $response->headers->set('Content-Disposition', $disposition);
         $response->headers->set('Content-Type', 'image/jpeg');

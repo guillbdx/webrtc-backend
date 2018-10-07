@@ -19,7 +19,7 @@ class ClearDatabaseCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'illicam:clear-database';
+    protected static $defaultName = 'dilcam:clear-database';
 
     /**
      * @var UserRepository
