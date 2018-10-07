@@ -1,0 +1,16 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Choisissez la durée de votre abonnement{% endblock %}
+
+{% block body %}
+
+    <h2>Choisissez la durée de votre abonnement</h2>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">
+        Enregistrer
+    </button>
+    {{ form_end(form) }}
+
+{% endblock %}

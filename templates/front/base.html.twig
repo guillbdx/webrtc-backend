@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}{% endblock %} - Illicam</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        {#<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>#}
+    </head>
+    <body>
+        <div class="container">
+
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a class="navbar-brand" href="{{ path('home') }}">Illicam</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
+                        </li>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_signup') }}">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <div class="pull-right text-white">
+                            {{ app.user.email }}
+                        </div>
+                    {% endif %}
+                </div>
+            </nav>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message | raw}}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-danger">
+                    {{ message | raw }}
+                </div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
+
+    </body>
+</html>

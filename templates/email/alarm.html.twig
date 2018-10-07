@@ -1,0 +1,9 @@
+<p>
+    Bonjour,
+</p>
+
+<p>
+    Mouvement détecté le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+</p>
+
+<img src="https://{{ host }}{{ path('photo_show_secret', {photo: photo.id, secret: photo.secret}) }}">

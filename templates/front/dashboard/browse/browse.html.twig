@@ -1,0 +1,77 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Visionner les photos{% endblock %}
+
+{% block body %}
+
+    <h2>Visionner les photos</h2>
+
+    <div id="alertNoPhoto" class="alert alert-danger" style="display: none;">
+        Vous n'avez actuellement aucune photo.
+    </div>
+
+    <div class="row" id="browser">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div id="browser">
+                <img id="browserImg" class="w-100 border">
+                <div>
+                    <a id="leftButton" class="float-left display-4" href="#">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a id="rightButton" class="float-right display-4" href="#">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <div id="legend" class="text-center pt-4">
+                        <span id="loading"><img src="{{ asset('build/images/loading.gif') }}"></span>
+                        <span id="photoDate" style="display: none;">The date</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row" id="controls">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table>
+                <tr>
+                    <td class="pr-4">Mois</td>
+                    <td class="pr-4">Jour</td>
+                    <td class="pr-4">Heure</td>
+                    <td class="pr-4">Minute:Sec.</td>
+                </tr>
+                <tr>
+                    <td id="months" class="align-top pr-4"></td>
+                    <td id="days" class="align-top pr-4"></td>
+                    <td id="hours" class="align-top pr-4"></td>
+                    <td id="seconds" class="align-top"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <a class="btn btn-info" href="#" id="reset">
+                <i class="fa fa-refresh"></i>
+                Rafraîchir
+            </a>
+            <a class="btn btn-success"
+               id="download"
+               href="#">
+                <i class="fa fa-download"></i>
+                Télécharger
+            </a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <input type="hidden" id="pathBrowseAllPhotos" value="{{ path('dashboard_browse_all_photos') }}">
+
+    <script type="text/javascript" src="{{ asset('build/js/browse.js') }}"></script>
+
+{% endblock %}

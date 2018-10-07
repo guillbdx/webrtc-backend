@@ -1,0 +1,34 @@
+security:
+
+    providers:
+        database:
+          entity:
+            class: App\Entity\User
+            property: email
+
+    encoders:
+      App\Entity\User:
+        algorithm: bcrypt
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            pattern:    ^/
+            provider: database
+            form_login:
+                login_path: /security/login
+                check_path: /security/login
+                default_target_path: /dashboard
+                always_use_default_target_path: true
+            logout:
+                path:   /security/logout
+                target: /
+            remember_me:
+              secret:   '%kernel.secret%'
+
+    access_control:
+        - { path: ^/dashboard, roles: ROLE_USER }
+

@@ -1,0 +1,8 @@
+-
+    email: oui@oui.fr
+    password: oui
+    generatePhotos: true
+-
+    email: non@non.fr
+    password: non
+    generatePhotos: false

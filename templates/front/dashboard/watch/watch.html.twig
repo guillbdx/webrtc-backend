@@ -1,0 +1,37 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Regarder{% endblock %}
+
+{% block body %}
+
+    <h2>Regarder</h2>
+
+    <div class="alert alert-warning" id="alertPendingConnection">
+        Connection en cours...
+    </div>
+
+    <div class="alert alert-danger" id="alertShooterNotExists" style="display: none;">
+        Aucune caméra n'est active
+    </div>
+
+    <div class="alert alert-danger" id="alertShooterSeemsNotExists" style="display: none;">
+        Il semblerait que le côté caméra ait subi une déconnexion subite.
+    </div>
+
+    <div class="alert alert-danger" id="alertIssue" style="display: none;">
+        Connexion impossible.
+    </div>
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <video class="embed-responsive-item" id="remoteVideo" autoplay></video>
+    </div>
+
+    <br>
+
+    <input type="hidden" id="roomId" value="{{ app.user.roomId }}">
+    <input type="hidden" id="pathWatchTimeout" value="{{ path('dashboard_watch_timeout') }}">
+    <input type="hidden" id="allowedIceType" value="{{ allowedIceType }}">
+
+    <script type="text/javascript" src="{{ asset('build/js/watch.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+monolog:
+  handlers:
+    signaling:
+      type: stream
+      path: "%kernel.logs_dir%/signaling.log"
+      level: info
+      channels: ["signaling"]
+    email:
+      type: stream
+      path: "%kernel.logs_dir%/email.log"
+      level: info
+      channels: ["email"]

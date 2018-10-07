@@ -1,0 +1,16 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Une caméra est déjà en train de filmer{% endblock %}
+
+{% block body %}
+    <h2>Une caméra est déjà en train de filmer</h2>
+
+    <p>
+        Une caméra est déjà en train de filmer. Si vous poursuivez, la première caméra sera désactivée.
+    </p>
+
+    <p>
+        <a class="btn btn-info" href="{{ path('dashboard_shoot_shoot') }}">Oui, filmer</a>
+    </p>
+
+{% endblock %}

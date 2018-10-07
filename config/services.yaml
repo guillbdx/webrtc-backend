@@ -1,0 +1,36 @@
+
+parameters:
+    locale: 'fr'
+    router.request_context.host: '%env(HOST)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            $host: '%router.request_context.host%'
+            $awsKeyId: '%env(AWS_ACCESS_KEY_ID)%'
+            $awsKeySecret: '%env(AWS_SECRET_ACCESS_KEY)%'
+            $stripeApiKey: '%env(STRIPE_API_KEY)%'
+            $stripeApiKeySecret: '%env(STRIPE_API_KEY_SECRET)%'
+
+    App\:
+        resource: '../src/App/*'
+        exclude: '../src/{DependencyInjection,Entity,Kernel.php}'
+
+    Components\:
+      resource: '../src/Components/*'
+      exclude: '../src/Components/*/{DependencyInjection,Entity,Model}'
+
+    App\Controller\:
+        resource: '../src/App/Controller'
+        tags: ['controller.service_arguments']
+
+    Components\Signaling\Service\SignalingService:
+      tags:
+          - { name: monolog.logger, channel: signaling }
+
+    Components\Emailing\AppMailer:
+      tags:
+          - { name: monolog.logger, channel: email }

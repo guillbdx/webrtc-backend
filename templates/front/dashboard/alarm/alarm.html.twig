@@ -1,0 +1,23 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Activer / Désactiver l'alarme{% endblock %}
+
+{% block body %}
+
+    <h2>Activer / Désactiver</h2>
+
+    {% if (app.user.alarmEnabled) %}
+        <p>
+            L'alarme est actuellement <strong>activée</strong>.
+            <br>
+            <a class="btn btn-warning" href="{{ path('dashboard_alarm_disable') }}">Désactiver</a>
+        </p>
+    {% else %}
+        <p>
+            L'alarme est actuellement <strong>désactivée</strong>.
+            <br>
+            <a class="btn btn-info" href="{{ path('dashboard_alarm_enable') }}">Activer</a>
+        </p>
+    {% endif %}
+
+{% endblock %}

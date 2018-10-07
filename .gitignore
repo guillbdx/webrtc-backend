@@ -1,0 +1,10 @@
+/.env
+/public/bundles/
+/var/
+/vendor/
+/.idea/
+
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
