@@ -26,4 +26,13 @@ class DefaultController extends AbstractController
         return new Response('<html><head><title>Test</title></head><body>test</body></html>');
     }
 
+    /**
+     * @Route("/guide", name="guide")
+     * @return Response
+     */
+    public function guide()
+    {
+        return $this->render('front/default/guide.html.twig');
+    }
+
 }
