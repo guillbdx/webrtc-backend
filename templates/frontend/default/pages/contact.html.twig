@@ -6,4 +6,33 @@
 
     <h2>Contact</h2>
 
+    {% if displayForm %}
+        <h3>Par email</h3>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">
+            Envoyer
+        </button>
+        {{ form_end(form) }}
+    {% endif %}
+
+    <h3>Par courrier</h3>
+
+    <p>
+        Dilcam
+        <br>
+        Guillaume Pédelagrabe
+        <br>
+        6 impasse Mauriac
+        <br>
+        33000 Bordeaux
+    </p>
+
+    <h3>Par téléphone</h3>
+
+    <p>
+        05 57 95 59 93
+    </p>
+
+
 {% endblock %}

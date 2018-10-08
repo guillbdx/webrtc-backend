@@ -129,4 +129,26 @@ class AppMailer
         $this->swiftMailer->send($message);
     }
 
+    public function sendContactMessage(string $from, string $message)
+    {
+        $message = (new \Swift_Message('Message'))
+            ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
+            ->setTo('gpedelagrabe@gmail.com')
+            ->setBody(
+                $this->twig->render('email/contact_message.html.twig', [
+                    'from' => $from,
+                    'message' => $message
+                ]),
+                'text/html'
+            )
+        ;
+
+        $this->logger->info('Contact message', [
+            'from' => $from,
+            'to' => 'gpedelagrabe@gmail.com'
+        ]);
+
+        $this->swiftMailer->send($message);
+    }
+
 }

@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\Type\Pages\ContactType;
+use Components\Emailing\AppMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -41,11 +44,29 @@ class PagesController extends AbstractController
 
     /**
      * @Route("/contact", name="pages_contact")
+     * @param Request $request
+     * @param AppMailer $appMailer
      * @return Response
      */
-    public function contact()
+    public function contact(
+        Request $request,
+        AppMailer $appMailer
+    )
     {
-        return $this->render('frontend/default/pages/contact.html.twig');
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+        $displayForm = true;
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $appMailer->sendContactMessage($data['from'], $data['message']);
+            $this->addFlash('success', "Merci, votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.");
+            $displayForm = false;
+        }
+
+        return $this->render('frontend/default/pages/contact.html.twig', [
+            'form' => $form->createView(),
+            'displayForm' => $displayForm
+        ]);
     }
 
     /**
