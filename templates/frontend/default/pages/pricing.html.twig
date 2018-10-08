@@ -1,0 +1,30 @@
+{% extends 'frontend/default_layout.html.twig' %}
+
+{% block title %}Prix{% endblock %}
+
+{% block body %}
+
+    <h2>Prix</h2>
+
+    <p>
+        Dilcam vous propose une formule unique incluant toutes les fonctionnalités.
+        Son prix est de {{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC pour un mois.
+    </p>
+
+    <p>
+        Cette formule est sans engagement et sans abonnement : lorsque vous souvscrivez, vous
+        choisissez pour combien de temps vous souhaitez utiliser le service.
+    </p>
+
+    <h3>{{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC / mois</h3>
+
+    <ul>
+        <li>Vidéo surveillance en direct 24/24</li>
+        <li>Détection de mouvement</li>
+        <li>Evoi d'une alarme en cas de mouvement détecté</li>
+        <li>Enregistrement d'une photo par minute</li>
+        <li>Archivage des photos sur 7 jours cumulés</li>
+        <li>Sans engagement et sans abonnement</li>
+    </ul>
+
+{% endblock %}

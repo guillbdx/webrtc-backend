@@ -16,7 +16,7 @@ class SubscriptionService
 
     const MAX_TRIAL_DURATION    = 86400;    // 24 hours = 86400 seconds
 
-    const MONTHLY_PRICE         = 990;
+    const MONTHLY_PRICE         = 890;
 
     const MAX_ARCHIVED_PHOTOS   = 10080;        // 7 days = 10080 minutes
 
