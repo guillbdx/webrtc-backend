@@ -13,7 +13,7 @@ class PagesController extends AbstractController
 {
 
     /**
-     * @Route("/guide", name="guide")
+     * @Route("/guide", name="pages_guide")
      * @return Response
      */
     public function guide()
@@ -22,7 +22,7 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/tos", name="tos")
+     * @Route("/tos", name="pages_tos")
      * @return Response
      */
     public function tos()
@@ -31,7 +31,7 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/legal", name="legal")
+     * @Route("/legal", name="pages_legal")
      * @return Response
      */
     public function legal()
@@ -40,7 +40,7 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contact", name="pages_contact")
      * @return Response
      */
     public function contact()
@@ -49,12 +49,21 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/pricing", name="pricing")
+     * @Route("/pricing", name="pages_pricing")
      * @return Response
      */
     public function pricing()
     {
         return $this->render('frontend/default/pages/pricing.html.twig');
+    }
+
+    /**
+     * @Route("/confidentiality", name="pages_confidentiality")
+     * @return Response
+     */
+    public function confidentiality()
+    {
+        return $this->render('frontend/default/pages/confidentiality.html.twig');
     }
 
 }
