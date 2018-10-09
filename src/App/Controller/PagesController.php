@@ -125,8 +125,10 @@ class PagesController extends AbstractController
     )
     {
         $operatingSystem = $operatingSystemDetector->detect();
-        dump($operatingSystem);
-        return $this->render('frontend/default/pages/sleeping.html.twig');
+
+        return $this->render('frontend/default/pages/sleeping.html.twig', [
+            'operatingSystem' => $operatingSystem
+        ]);
     }
 
 }

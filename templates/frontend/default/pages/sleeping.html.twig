@@ -6,6 +6,16 @@
 
     <h2>Mise en veille de l'ordinateur</h2>
 
+    {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::WINDOWS') %}
+        Vous utilisez Windows.
+    {% endif %}
 
+    {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::MAC') %}
+        Vous utilisez Mac.
+    {% endif %}
+
+    {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::OTHER') %}
+        Vous utilisez autre chose.
+    {% endif %}
 
 {% endblock %}

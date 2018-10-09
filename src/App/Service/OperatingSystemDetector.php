@@ -46,8 +46,6 @@ class OperatingSystemDetector
         }
         $userAgent = $server->get('HTTP_USER_AGENT');
 
-        dump($userAgent);
-
         if (preg_match('/Mac/i', $userAgent)) {
             return self::MAC;
         }
