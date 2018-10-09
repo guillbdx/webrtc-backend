@@ -1,9 +1,12 @@
 {% extends 'frontend/dashboard_layout.html.twig' %}
 
-{% block title %}Gérer votre abonnement{% endblock %}
+{% block title %}Votre compte{% endblock %}
 
 {% block body %}
-    <h2>Gérer votre abonnement</h2>
+
+    <h2>Votre compte</h2>
+
+    <h3>Votre abonnement</h3>
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
         <p>
@@ -38,5 +41,17 @@
             </a>
         </p>
     {% endif %}
+
+    <h3>Mot de passe</h3>
+
+    <a href="{{ path('dashboard_account_change_password') }}">
+        Changer votre mot de passe
+    </a>
+
+    <h3>Vos paiements</h3>
+
+    <a href="{{ path('dashboard_account_transactions') }}">
+        Voir la liste de vos paiements
+    </a>
 
 {% endblock %}

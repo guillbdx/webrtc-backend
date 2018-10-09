@@ -29,22 +29,6 @@ class DashboardSubscriptionController extends AbstractController
 {
 
     /**
-     * @Route("/", name="dashboard_subscription_manage")
-     * @param UserInterface|User $user
-     * @param SubscriptionService $subscriptionService
-     * @return Response
-     */
-    public function manage(
-        UserInterface $user,
-        SubscriptionService $subscriptionService
-    )
-    {
-        return $this->render('frontend/dashboard/subscription/manage.html.twig', [
-            'userStatus' => $subscriptionService->getUserStatus($user)
-        ]);
-    }
-
-    /**
      * @Route("/quantity/{quantity}", name="dashboard_subscription_quantity")
      * @param UserInterface|User $user
      * @param Request $request
