@@ -87,4 +87,13 @@ class PagesController extends AbstractController
         return $this->render('frontend/default/pages/confidentiality.html.twig');
     }
 
+    /**
+     * @Route("/cookies", name="pages_cookies")
+     * @return Response
+     */
+    public function cookies()
+    {
+        return $this->render('frontend/default/pages/cookies.html.twig');
+    }
+
 }
