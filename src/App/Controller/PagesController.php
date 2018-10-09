@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\Type\Pages\ContactType;
+use App\Service\OperatingSystemDetector;
 use Components\Emailing\AppMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -112,6 +113,20 @@ class PagesController extends AbstractController
     public function alarm()
     {
         return $this->render('frontend/default/pages/alarm.html.twig');
+    }
+
+    /**
+     * @Route("/sleeping", name="pages_sleeping")
+     * @param OperatingSystemDetector $operatingSystemDetector
+     * @return Response
+     */
+    public function sleeping(
+        OperatingSystemDetector $operatingSystemDetector
+    )
+    {
+        $operatingSystem = $operatingSystemDetector->detect();
+        dump($operatingSystem);
+        return $this->render('frontend/default/pages/sleeping.html.twig');
     }
 
 }
