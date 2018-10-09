@@ -34,7 +34,7 @@ class DashboardShootController extends AbstractController
             return $this->redirectToRoute('dashboard_shooter_unknown_state');
         }
 
-        return $this->redirectToRoute('dashboard_shoot_shoot');
+        return $this->redirectToRoute('dashboard_shoot_preparation');
     }
 
     /**
@@ -59,6 +59,15 @@ class DashboardShootController extends AbstractController
     )
     {
         return $this->render('frontend/dashboard/shoot/shooter_in_unknown_state.html.twig');
+    }
+
+    /**
+     * @Route("/preparation", name="dashboard_shoot_preparation")
+     * @return Response
+     */
+    public function shootPreparation()
+    {
+        return $this->render('frontend/dashboard/shoot/preparation.html.twig');
     }
 
     /**

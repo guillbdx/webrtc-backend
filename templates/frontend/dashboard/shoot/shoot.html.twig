@@ -1,22 +1,46 @@
-{% extends 'frontend/dashboard_layout.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'frontend/includes/_head.html.twig' %}
+    <title>Filmer - Dilcam</title>
+</head>
+<body>
 
-{% block title %}Filmer{% endblock %}
+<div class="container">
 
-{% block body %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
 
-    <h2>Filmer</h2>
+            <br>
 
-    <div class="embed-responsive embed-responsive-16by9">
-        <video class="embed-responsive-item" id="localVideo" autoplay muted></video>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video class="embed-responsive-item" id="localVideo" autoplay muted></video>
+            </div>
+
+            <p>
+                Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
+                l'ordinateur de se mettre en veille automatiquement.
+            </p>
+
+            <p>
+                <a href="#">
+                    Infos sur la mise en veille.
+                </a>
+            </p>
+
+            {% if 'dev' == app.environment %}
+                <div class="text-center mt-3">
+                    <button id="snapButton" class="btn btn-info">Snap a photo</button>
+                </div>
+            {% endif %}
+
+            <canvas id="canvas" class="d-none"></canvas>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 
-    {% if 'dev' == app.environment %}
-        <div class="text-center mt-3">
-            <button id="snapButton" class="btn btn-info">Snap a photo</button>
-        </div>
-    {% endif %}
 
-    <canvas id="canvas" class="d-none"></canvas>
 
     <input type="hidden" id="snapPath" value="{{ path('photo_snap') }}">
     <input type="hidden" id="cameraRefusedPath" value="{{ path('dashboard_camera_refused') }}">
@@ -26,4 +50,7 @@
     <script type="text/javascript" src="{{ asset('build/js-css/resemble.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js-css/shoot.js') }}"></script>
 
-{% endblock %}
+
+</div>
+</body>
+</html>

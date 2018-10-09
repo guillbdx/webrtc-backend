@@ -1,0 +1,26 @@
+{% extends 'frontend/dashboard_layout.html.twig' %}
+
+{% block title %}Filmer{% endblock %}
+
+{% block body %}
+
+    <h2>Filmer</h2>
+
+    <p>
+        La page suivante va s'ouvrir dans une nouvelle fenêtre.
+    </p>
+
+    <p>
+        Votre navigateur vous demandera l'autorisation d'utiliser votre webcam.
+        Veuillez répondre oui à la demande d'autorisation.
+    </p>
+
+    <p>
+        <a href="{{ path('dashboard_shoot_shoot') }}"
+           class="btn btn-info"
+           target="_blank">
+            Filmer
+        </a>
+    </p>
+
+{% endblock %}
