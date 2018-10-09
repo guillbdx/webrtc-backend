@@ -1,0 +1,63 @@
+{% extends 'frontend/default_layout.html.twig' %}
+
+{% block title %}Fonctionnement des alarmes{% endblock %}
+
+{% block body %}
+
+    <h2>Fonctionnement des alarmes</h2>
+
+    <p>
+        En plus d'enregistrer une photographie par minute, le service Dilcam enregistre toute photo qui paraît "suspecte".
+        Une photo dite "suspecte" est une photo pour laquelle un mouvement semble avoir été détecté.
+    </p>
+
+    <p>
+        La détermination de photos suspectes fonctionne de la façon suivante :
+    </p>
+
+    <ul>
+        <li>Dilcam prend une photo toutes les 2 secondes.</li>
+        <li>Chaque photo est comparée avec la précédente.</li>
+        <li>
+            Si la différence entre deux photos successives est supérieure à 3 %,
+            la deuxième photo est enregistrée.
+        </li>
+        <li>
+            Si la différencre entre deux photos successives est supérieure à 7,5 %,
+            en plus d'être enregistrée, la deuxième photo générera une alarme.
+        </li>
+        <li>
+            Une alarme est un email envoyé à l'utilisateur, contenant la photo suspecte.
+        </li>
+    </ul>
+
+    <p>
+        L'utilisateur peut désactiver l'alarme dans son tableau de bord.
+    </p>
+
+    <h3>Limitations</h3>
+
+    <p>
+        Malgré tout l'effort apporté à l'algorithme de détection d'images suspectes telles que décrit
+        dans le paragraphe 2.3 du présent document :
+    </p>
+
+    <ul>
+        <li>
+            Dilcam ne peut pas garantir avec 100 % de certitude que tout mouvement sera détecté,
+            ni qu'une alarme sera générée de façon certaine en cas de mouvement devant la caméra.
+        </li>
+        <li>
+            Inversement, il peut arriver que le service Dilcam détecte une image suspecte par erreur,
+            et déclencher une alarme par email alors que rien d'anormal ne s'est produit devant la caméra.
+            Cela peut notamment se produire en cas de changement brusque de luminosité : phares d'une voiture
+            passant dans la rue, nuage soudain qui assombrit la pièce filmée, etc.
+        </li>
+    </ul>
+
+    <p>
+        La période d'essai de 24 heures cumulées permettra à l'utilisateur de s'assurer que le fonctionnement
+        de l'alarme correspond bien à ses attentes.
+    </p>
+
+{% endblock %}

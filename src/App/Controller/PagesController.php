@@ -96,4 +96,22 @@ class PagesController extends AbstractController
         return $this->render('frontend/default/pages/cookies.html.twig');
     }
 
+    /**
+     * @Route("/hardware", name="pages_hardware")
+     * @return Response
+     */
+    public function hardware()
+    {
+        return $this->render('frontend/default/pages/hardware.html.twig');
+    }
+
+    /**
+     * @Route("/alarm", name="pages_alarm")
+     * @return Response
+     */
+    public function alarm()
+    {
+        return $this->render('frontend/default/pages/alarm.html.twig');
+    }
+
 }
