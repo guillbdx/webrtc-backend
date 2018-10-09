@@ -10,9 +10,25 @@ use App\Entity\User;
 use App\Service\SubscriptionService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class TrialDurationExtension extends AbstractExtension
+class UserStatusExtension extends AbstractExtension
 {
+
+    /**
+     * @var SubscriptionService
+     */
+    private $subscriptionService;
+
+    /**
+     * @param SubscriptionService $subscriptionService
+     */
+    public function __construct(
+        SubscriptionService $subscriptionService
+    )
+    {
+        $this->subscriptionService = $subscriptionService;
+    }
 
     /**
      * @return array|\Twig_Filter[]
@@ -22,6 +38,25 @@ class TrialDurationExtension extends AbstractExtension
         return [
             new TwigFilter('trialDuration', [$this, 'trialDuration'])
         ];
+    }
+
+    /**
+     * @return array|\Twig_Function[]
+     */
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction('userStatus', [$this, 'userStatus'])
+        ];
+    }
+
+    /**
+     * @param User $user
+     * @return string
+     */
+    public function userStatus(User $user): string
+    {
+        return $this->subscriptionService->getUserStatus($user);
     }
 
     /**

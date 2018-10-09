@@ -20,18 +20,14 @@ class DashboardAccountController extends AbstractController
 {
     /**
      * @Route("/", name="dashboard_account")
-     * @param SubscriptionService $subscriptionService
      * @param UserInterface|User $user
      * @return Response
      */
     public function account(
-        SubscriptionService $subscriptionService,
         UserInterface $user
     )
     {
-        return $this->render('frontend/dashboard/account/account.html.twig', [
-            'userStatus' => $subscriptionService->getUserStatus($user)
-        ]);
+        return $this->render('frontend/dashboard/account/account.html.twig');
     }
 
     /**

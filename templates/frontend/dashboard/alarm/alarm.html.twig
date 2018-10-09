@@ -6,6 +6,8 @@
 
     <h2>Activer / Désactiver</h2>
 
+    {% include 'frontend/includes/_user_status.html.twig' %}
+
     {% if (app.user.alarmEnabled) %}
         <p>
             L'alarme est actuellement <strong>activée</strong>.

@@ -1,0 +1,20 @@
+{% set userStatus = userStatus(app.user) %}
+
+{% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
+    <div class="alert alert-warning">
+        Vous êtes en période d'essai.
+        Il vous reste {{ app.user|trialDuration }}.
+        <a href="{{ path('dashboard_account') }}">
+            Gérer votre abonnement
+        </a>.
+    </div>
+{% endif %}
+
+{% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_NOTHING') %}
+    <div class="alert alert-danger">
+        Votre période d'essai est terminée et vous n'avez aucun abonnement.
+        <a href="{{ path('dashboard_subscription_quantity') }}">
+            Vous abonner
+        </a>.
+    </div>
+{% endif %}

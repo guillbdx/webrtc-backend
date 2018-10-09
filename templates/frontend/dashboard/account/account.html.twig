@@ -6,6 +6,8 @@
 
     <h2>Votre compte</h2>
 
+    {% set userStatus = userStatus(app.user) %}
+
     <h3>Votre abonnement</h3>
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
