@@ -3,5 +3,95 @@
 {% block title %}Comment ça marche ?{% endblock %}
 
 {% block body %}
+
     <h2>Comment ça marche ?</h2>
+
+    <p>
+        Avec Dilcam, votre ordinateur devient un poste de vidéosurveillance. Il suffit que votre ordinateur soit
+        équipé d'une webcam et relié à internet pour utiliser le service*.
+    </p>
+
+    <h3>Filmer</h3>
+
+    <p>
+        Une fois que vous inscrit sur Dilcam, rendez-vous dans votre tableau de bord et cliquez sur "Filmer". C'est parti,
+        votre domicile est maintenant vidéosurveillé !
+    </p>
+
+    <h3>Surveiller</h3>
+
+    <p>
+        Depuis un autre appareil, qui peut être un téléphone ou un autre ordinateur, rendez-vous à nouveau sur le site
+        Dilcam, et dans votre tableau de bord cliquez sur "Surveiller". Vous pouvez observer en direct ce qui est filmé
+        par votre webcam.
+    </p>
+
+    <h3>Historique des photos</h3>
+
+    <p>
+        En plus de surveiller en direct ce que filme votre webcam à votre domicile, vous pouvez aussi visionner un
+        historique de photographies. En effet, en plus de filmer, Dilcam enregistre au minimum une photographie par minute.
+        Ces photographies sont conservées sur 7 jours. Pour les conserver sur une durée plus longue, vous pouvez les
+        télécharger dans votre tableau de bord.
+    </p>
+
+    <h3>Détection de mouvement</h3>
+
+    <p>
+        Dilcam ne se contente pas d'une photographie par minute : Dilcam enregistre également toute photo "suspecte",
+        c'est à dire toute photo pour laquelle un mouvement semble avoir été détecté. Pour repérer les photos suspectes,
+        Dilcam réalise une prise de vue toutes les 2 secondes, et compare chaque prise avec la précédente. Si une différence
+        trop importante est calculée, la photo est considérée comme suspecte et elle est enregistrée.
+    </p>
+
+    <h3>Alarmes</h3>
+
+    <p>
+        Non seulement Dilcam enregistre toute photo suspecte, mais le service vous envoie également un email
+        pour vous alarmer. Les alarmes peuvent activées ou désactivées dans votre tableau de bord.
+    </p>
+
+    <h3>Ou sont conservées les vidés et les photos ?</h3>
+
+    <p>
+        La vidéo est consultable en direct, mais n'est pas enregistrée. En revanche les photos sont conservées
+        sur les serveurs de Dilcam. Rien n'est enregistré sur votre ordinateur. Ainsi, si votre ordinateur est volé,
+        les photos restent consultables en ligne dans votre tableau de bord.
+    </p>
+
+    <h3>Ei si votre ordinateur est volé ?</h3>
+
+    <p>
+        Supposons qu'un intrus entre dans votre domicile et s'empare de l'ordinateur, aurez-vous accès aux images ?
+    </p>
+
+    <p>
+        Oui ! Étant donné qu'une photographie est prise toutes les deux secondes, et que toute photographie suspecte
+        est enregistrée sur nos serveurs, une(ou plusieurs) photographie du voleur en flagrant délit sera enregistrée**
+        et restera consultable a posteriori sur votre tableau de bord.
+    </p>
+
+    <p>
+        * : sous réserve que votre ordinateur soit relativement récent et à jour. Veuillez consulter ici la
+        configuration minimale. Dans tous les cas, la période gratuite de 24 heures vous permet de vous assurer du
+        bon fonctionnement du service sur vos appareils.
+    </p>
+
+    <p>
+        ** : Dilcam ne peut garantir à 100 % l'enregistrement d'une photographie, en particulier dans des conditions
+        de luminosité trop faible ou trop intense, ou de mauvaise visibilité.
+    </p>
+
+    <p>
+        <a href="{{ path('pages_contact') }}">
+            D'autres questions ?
+        </a>
+    </p>
+
+    <p>
+        <a href="{{ path('security_signup') }}">
+            Essai gratuit
+        </a>
+    </p>
+
 {% endblock %}
