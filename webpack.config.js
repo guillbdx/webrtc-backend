@@ -7,15 +7,17 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning()
+    .enableLessLoader()
 
-    .addEntry('js/shoot', './assets/js/shoot.js')
-    .addEntry('js/watch', './assets/js/watch.js')
-    .addEntry('js/browse', './assets/js/browse.js')
-    .addEntry('js/subscription-form', './assets/js/subscription-form.js')
+    .addEntry('js-css/main', './assets/js/main.js')
+    .addEntry('js-css/shoot', './assets/js/shoot.js')
+    .addEntry('js-css/watch', './assets/js/watch.js')
+    .addEntry('js-css/browse', './assets/js/browse.js')
+    .addEntry('js-css/subscription-form', './assets/js/subscription-form.js')
 
     .addPlugin(new CopyWebpackPlugin([
         { from: './assets/images', to: 'images' },
-        { from: './assets/js/resemble.js', to: 'js/resemble.js' }
+        { from: './assets/js/resemble.js', to: 'js-css/resemble.js' }
     ]))
 ;
 
