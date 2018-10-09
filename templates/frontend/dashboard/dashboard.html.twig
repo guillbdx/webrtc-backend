@@ -6,4 +6,28 @@
 
     <h2>Tableau de bord</h2>
 
+    {% if currentlyShooting %}
+
+        <h3>Film en cours</h3>
+
+        <p>
+            <a href="{{ path('dashboard_watch_watch') }}" class="btn btn-info">
+                Surveiller
+            </a>
+            <a href="{{ path('dasboard_browse') }}" class="btn btn-info">
+                Visionner les photos
+            </a>
+        </p>
+
+    {% else %}
+
+        <h3>Pas de film en cours</h3>
+        <p>
+            <a href="{{ path('dashboard_shoot_junction') }}" class="btn btn-info">
+                Filmer
+            </a>
+        </p>
+
+    {% endif %}
+
 {% endblock %}
