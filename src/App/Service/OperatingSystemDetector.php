@@ -19,6 +19,10 @@ class OperatingSystemDetector
 
     public const LINUX      = 'LINUX';
 
+    public const ANDROID    = 'ANDROID';
+
+    public const IPHONE     = 'IPHONE';
+
     public const OTHER      = 'OTHER';
 
     /**
@@ -53,6 +57,12 @@ class OperatingSystemDetector
         }
         if (preg_match('/Windows/i', $userAgent)) {
             return self::WINDOWS;
+        }
+        if (preg_match('/Droid/i', $userAgent)) {
+            return self::ANDROID;
+        }
+        if (preg_match('/iPhone/i', $userAgent)) {
+            return self::IPHONE;
         }
         if (preg_match('/Linux/i', $userAgent)) {
             return self::LINUX;
