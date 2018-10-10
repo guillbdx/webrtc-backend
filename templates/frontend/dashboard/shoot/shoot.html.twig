@@ -53,6 +53,14 @@
                 </p>
             {% endif %}
 
+            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::ANDROID'
+                || operatingSystem == constant('App\\Service\\OperatingSystemDetector::IPHONE'
+                || operatingSystem == constant('App\\Service\\OperatingSystemDetector::OTHER') %}
+                <p>
+                    Merci de laisser cette fenêtre ouverte en votre absence.
+                </p>
+            {% endif %}
+
 
             {% if 'dev' == app.environment %}
                 <div class="text-center mt-3">
