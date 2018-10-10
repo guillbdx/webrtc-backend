@@ -53,9 +53,9 @@
                 </p>
             {% endif %}
 
-            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::ANDROID'
-                || operatingSystem == constant('App\\Service\\OperatingSystemDetector::IPHONE'
-                || operatingSystem == constant('App\\Service\\OperatingSystemDetector::OTHER') %}
+            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::ANDROID')
+                or operatingSystem == constant('App\\Service\\OperatingSystemDetector::IPHONE')
+                or operatingSystem == constant('App\\Service\\OperatingSystemDetector::OTHER') %}
                 <p>
                     Merci de laisser cette fenêtre ouverte en votre absence.
                 </p>
