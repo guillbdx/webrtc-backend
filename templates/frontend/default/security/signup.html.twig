@@ -6,11 +6,17 @@
 
     <h2>Inscription</h2>
 
-    {{ form_start(form, {'attr': {'class': 'withCgu'}}) }}
+    {{ form_start(form) }}
 
         {{ form_widget(form) }}
 
-        {% include 'frontend/includes/_cgu_checkbox.html.twig' %}
+        <div>
+            <input type="checkbox" id="cgu" value="1" required>
+            <label for="cgu">
+                J'ai lu et j'accepte les
+                <a href="{{ path('pages_tos') }}" target="_blank">conditions générales d'utilisation</a>.
+            </label>
+        </div>
 
         <button type="submit" class="btn btn-primary">
             Enregistrer
