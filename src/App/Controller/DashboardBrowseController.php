@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Manager\PhotoManager;
 use App\Repository\PhotoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -46,6 +47,34 @@ class DashboardBrowseController extends AbstractController
         $photos = $serializer->serialize($photos, 'json', ['groups' => ['browse']]);
 
         return JsonResponse::fromJsonString($photos);
+    }
+
+    /**
+     * @Route("/delete-all-preparation", name="dashboard_browse_delete_all_preparation")
+     * @param UserInterface $user
+     * @return Response
+     */
+    public function deleteAllPreparation(
+        UserInterface $user
+    )
+    {
+        return $this->render('frontend/dashboard/browse/delete_all_preparation.html.twig');
+    }
+
+    /**
+     * @Route("/delete-all", name="dashboard_browse_delete_all")
+     * @param PhotoManager $photoManager
+     * @param UserInterface $user
+     * @return Response
+     */
+    public function deleteAll(
+        PhotoManager $photoManager,
+        UserInterface $user
+    )
+    {
+        $photoManager->removeUserPhotos($user);
+        $this->addFlash('success', "Vos photos ont bien été supprimées.");
+        return $this->redirectToRoute('dasboard_browse');
     }
 
 }
