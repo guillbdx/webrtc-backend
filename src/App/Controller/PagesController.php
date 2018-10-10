@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\Type\Pages\ContactType;
+use App\Form\Type\Pages\WithdrawalType;
 use App\Service\OperatingSystemDetector;
 use Components\Emailing\AppMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -126,6 +128,41 @@ class PagesController extends AbstractController
     {
         return $this->render('frontend/default/pages/sleeping.html.twig', [
             'operatingSystem' => $operatingSystemDetector->detect()
+        ]);
+    }
+
+    /**
+     * @Route("/withdrawal", name="pages_withdrawal")
+     * @param Request $request
+     * @param AppMailer $appMailer
+     * @return Response
+     */
+    public function withdrawal(
+        Request $request,
+        AppMailer $appMailer
+    )
+    {
+        $email = null;
+        $user = $this->getUser();
+        if($user instanceof User) {
+            $email = $user->getEmail();
+        }
+        $form = $this->createForm(WithdrawalType::class, null, [
+            'email' => $email
+        ]);
+        $form->handleRequest($request);
+        $displayForm = true;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $appMailer->sendWithdrawal($data['email'], $data['transactionReference'], $data['reason']);
+            $this->addFlash('success', "Votre demande a bien été prise en compte. Nous la traiterons dans les plus brefs délais. Un email de confirmation vous sera envoyé dès que votre demande aura été traitée.");
+            $displayForm = false;
+        }
+
+        return $this->render('frontend/default/pages/withdrawal.html.twig', [
+            'form' => $form->createView(),
+            'displayForm' => $displayForm
         ]);
     }
 

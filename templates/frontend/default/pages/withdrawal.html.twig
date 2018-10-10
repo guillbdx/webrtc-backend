@@ -1,0 +1,32 @@
+{% extends 'frontend/default_layout.html.twig' %}
+
+{% block title %}Formulaire de rétractation{% endblock %}
+
+{% block body %}
+
+    <h2>Formulaire de rétractation</h2>
+
+    {% if displayForm %}
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">
+            Envoyer
+        </button>
+        {{ form_end(form) }}
+
+        <p>
+            Vous pouvez également imprimer ce formulaire et le retourner par voie postale à :
+        </p>
+
+        <p>
+            Dilcam<br>
+            Guillaume Pédelagrabe<br>
+            6 impasse Mauriac<br>
+            33000 Bordeaux
+        </p>
+
+    {% endif %}
+
+
+{% endblock %}

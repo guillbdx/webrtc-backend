@@ -151,4 +151,36 @@ class AppMailer
         $this->swiftMailer->send($message);
     }
 
+    /**
+     * @param string $email
+     * @param string $transactionReference
+     * @param string $reason
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendWithdrawal(string $email, string $transactionReference, ?string $reason = null): void
+    {
+        $message = (new \Swift_Message('Rétractation'))
+            ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
+            ->setTo('gpedelagrabe@gmail.com')
+            ->setBody(
+                $this->twig->render('email/withdrawal.html.twig', [
+                    'email' => $email,
+                    'transactionReference' => $transactionReference,
+                    'reason' => $reason
+                ]),
+                'text/html'
+            )
+        ;
+
+        $this->logger->info('Withdrawal', [
+            'email' => $email,
+            'transactionReference' => $transactionReference,
+            'to' => 'gpedelagrabe@gmail.com'
+        ]);
+
+        $this->swiftMailer->send($message);
+    }
+
 }
