@@ -1,0 +1,7 @@
+Bonjour,<br>
+<br>
+La commande <strong>{{ transaction.description }}</strong>,
+d'un montant de <strong>{{ transaction.amount|price }}</strong>,
+a bien été prise en compte.<br>
+<br>
+Vous êtes maintenant abonné(e) jusqu'au {{ transaction.user.subscribedTill | date('d/m/Y') }}.

@@ -14,10 +14,12 @@ use App\Manager\TransactionManager;
 use App\Model\Subscription;
 use App\Service\StripeService;
 use App\Service\SubscriptionService;
+use Components\Emailing\AppMailer;
 use Stripe\ApiResource;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -130,19 +132,31 @@ class DashboardSubscriptionController extends AbstractController
 
         $subscriptionService->applySubscription($subscription);
 
-        return $this->redirectToRoute('dashboard_subscription_success');
+        return $this->redirectToRoute('dashboard_subscription_success', [
+            'transaction' => $transaction->getId()
+        ]);
     }
 
     /**
-     * @Route("/success", name="dashboard_subscription_success")
+     * @Route("/success/{transaction}", name="dashboard_subscription_success")
      * @param UserInterface|User $user
+     * @param Transaction $transaction
+     * @param AppMailer $appMailer
      * @return Response
      */
     public function paymentSuccess(
-        UserInterface $user
+        UserInterface $user,
+        Transaction $transaction,
+        AppMailer $appMailer
     )
     {
-        return $this->render('frontend/dashboard/subscription/success.html.twig');
+        if ($transaction->getUser()->getId() !== $user->getId()) {
+            throw new AccessDeniedHttpException();
+        }
+        $appMailer->sendTransactionConfirm($transaction);
+        return $this->render('frontend/dashboard/subscription/success.html.twig', [
+            'transaction' => $transaction
+        ]);
     }
 
     /**

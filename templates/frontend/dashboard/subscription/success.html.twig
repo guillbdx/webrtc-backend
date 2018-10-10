@@ -6,6 +6,16 @@
 
     <h2>Le paiement a réussi</h2>
 
+    <p>
+        La commande <strong>{{ transaction.description }}</strong>,
+        d'un montant de <strong>{{ transaction.amount|price }}</strong>,
+        a bien été prise en compte.
+    </p>
+
+    <p>
+        Vous êtes maintenant abonné(e) jusqu'au {{ app.user.subscribedTill | date('d/m/Y') }}.
+    </p>
+
     <a class="btn btn-info" href="{{ path('dashboard_account') }}">
         Retour à votre compte
     </a>

@@ -7,12 +7,20 @@
 namespace Components\Emailing;
 
 use App\Entity\Photo;
+use App\Entity\Transaction;
 use App\Entity\User;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 class AppMailer
 {
+
+    public const SEND_EMAIL_CHECK_TOKEN         = 'SEND_EMAIL_CHECK_TOKEN';
+    public const SEND_PASSWORD_REQUEST_TOKEN    = 'SEND_PASSWORD_REQUEST_TOKEN';
+    public const ALARM                          = 'ALARM';
+    public const CONTACT_MESSAGE                = 'CONTACT_MESSAGE';
+    public const WITHDRAWAL                     = 'WITHDRAWAL';
+    public const TRANSACTION_CONFIRMATION       = 'TRANSACTION_CONFIRMATION';
 
     /**
      * @var \Swift_Mailer
@@ -80,7 +88,9 @@ class AppMailer
             )
         ;
 
-        $this->logger->info('Send Email Check Token', ['to' => $user->getEmail()]);
+        $this->logger->info(self::SEND_EMAIL_CHECK_TOKEN, [
+            'to' => $user->getEmail()
+        ]);
         $this->swiftMailer->send($message);
     }
 
@@ -103,7 +113,9 @@ class AppMailer
             )
         ;
 
-        $this->logger->info('Send Password Reset Token', ['to' => $user->getEmail()]);
+        $this->logger->info(self::SEND_PASSWORD_REQUEST_TOKEN, [
+            'to' => $user->getEmail()
+        ]);
         $this->swiftMailer->send($message);
     }
 
@@ -125,10 +137,20 @@ class AppMailer
             )
         ;
 
-        $this->logger->info('Send Password Reset Token', ['to' => $user->getEmail()]);
+        $this->logger->info(self::ALARM, [
+            'to' => $user->getEmail(),
+            'photo' => $photo->getId()
+        ]);
         $this->swiftMailer->send($message);
     }
 
+    /**
+     * @param string $from
+     * @param string $message
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function sendContactMessage(string $from, string $message)
     {
         $message = (new \Swift_Message('Message'))
@@ -143,7 +165,7 @@ class AppMailer
             )
         ;
 
-        $this->logger->info('Contact message', [
+        $this->logger->info(self::CONTACT_MESSAGE, [
             'from' => $from,
             'to' => 'contact@'.$this->host
         ]);
@@ -174,10 +196,38 @@ class AppMailer
             )
         ;
 
-        $this->logger->info('Withdrawal', [
+        $this->logger->info(self::WITHDRAWAL, [
             'email' => $email,
             'transactionReference' => $transactionReference,
             'to' => 'contact@'.$this->host
+        ]);
+
+        $this->swiftMailer->send($message);
+    }
+
+    /**
+     * @param Transaction $transaction
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendTransactionConfirm(Transaction $transaction): void
+    {
+        $user = $transaction->getUser();
+        $message = (new \Swift_Message('Votre commande a été validée'))
+            ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->twig->render('email/transaction_confirmation.html.twig', [
+                    'transaction' => $transaction
+                ]),
+                'text/html'
+            )
+        ;
+
+        $this->logger->info(self::TRANSACTION_CONFIRMATION, [
+            'transaction' => $transaction->getId(),
+            'to' => $user->getEmail()
         ]);
 
         $this->swiftMailer->send($message);
