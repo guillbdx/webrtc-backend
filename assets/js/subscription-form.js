@@ -56,6 +56,9 @@ cardCvc.addEventListener('change', function(event) {
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
+    if (!document.getElementById('cgu').checked) {
+        return false;
+    }
     stripe.createToken(cardNumber).then(function(result) {
         if (result.error == null) {
             stripeTokenHandler(result.token);

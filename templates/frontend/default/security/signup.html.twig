@@ -6,11 +6,16 @@
 
     <h2>Inscription</h2>
 
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_start(form, {'attr': {'class': 'withCgu'}}) }}
+
         {{ form_widget(form) }}
+
+        {% include 'frontend/includes/_cgu_checkbox.html.twig' %}
+
         <button type="submit" class="btn btn-primary">
             Enregistrer
         </button>
+
     {{ form_end(form) }}
 
 {% endblock %}

@@ -28,7 +28,10 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
 
-            <form action="{{ path('dashboard_subscription_checkout') }}" method="post" id="payment-form">
+            <form action="{{ path('dashboard_subscription_checkout') }}"
+                  method="post"
+                  id="payment-form"
+                  class="withCgu">
 
                 <table class="w-100">
                     <tr>
@@ -49,6 +52,11 @@
                             <label for="cardCvc-element">Cryptogramme</label>
                             <div id="cardCvc-element" class="form-control"></div>
                             <div id="cardCvc-errors" class="text-danger"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            {% include 'frontend/includes/_cgu_checkbox.html.twig' %}
                         </td>
                     </tr>
                     <tr>
