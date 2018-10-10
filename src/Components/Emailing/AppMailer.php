@@ -133,7 +133,7 @@ class AppMailer
     {
         $message = (new \Swift_Message('Message'))
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
-            ->setTo('gpedelagrabe@gmail.com')
+            ->setTo('contact@'.$this->host)
             ->setBody(
                 $this->twig->render('email/contact_message.html.twig', [
                     'from' => $from,
@@ -145,7 +145,7 @@ class AppMailer
 
         $this->logger->info('Contact message', [
             'from' => $from,
-            'to' => 'gpedelagrabe@gmail.com'
+            'to' => 'contact@'.$this->host
         ]);
 
         $this->swiftMailer->send($message);
@@ -163,7 +163,7 @@ class AppMailer
     {
         $message = (new \Swift_Message('Rétractation'))
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
-            ->setTo('gpedelagrabe@gmail.com')
+            ->setTo('contact@'.$this->host)
             ->setBody(
                 $this->twig->render('email/withdrawal.html.twig', [
                     'email' => $email,
@@ -177,7 +177,7 @@ class AppMailer
         $this->logger->info('Withdrawal', [
             'email' => $email,
             'transactionReference' => $transactionReference,
-            'to' => 'gpedelagrabe@gmail.com'
+            'to' => 'contact@'.$this->host
         ]);
 
         $this->swiftMailer->send($message);

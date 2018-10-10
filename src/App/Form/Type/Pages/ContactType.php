@@ -21,6 +21,7 @@ class ContactType extends AbstractType
         $builder
             ->add('from', EmailType::class, [
                 'label' => 'Votre adresse email',
+                'data' => $options['email'],
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Email()
@@ -40,7 +41,9 @@ class ContactType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'email' => null
+        ]);
     }
 
 }

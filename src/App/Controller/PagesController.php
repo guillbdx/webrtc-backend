@@ -56,7 +56,15 @@ class PagesController extends AbstractController
         AppMailer $appMailer
     )
     {
-        $form = $this->createForm(ContactType::class);
+        $email = null;
+        $user = $this->getUser();
+        if($user instanceof User) {
+            $email = $user->getEmail();
+        }
+
+        $form = $this->createForm(ContactType::class, null, [
+            'email' => $email
+        ]);
         $form->handleRequest($request);
         $displayForm = true;
         if ($form->isSubmitted() && $form->isValid()) {
@@ -147,6 +155,7 @@ class PagesController extends AbstractController
         if($user instanceof User) {
             $email = $user->getEmail();
         }
+
         $form = $this->createForm(WithdrawalType::class, null, [
             'email' => $email
         ]);
