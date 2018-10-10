@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Service\OperatingSystemDetector;
 use App\Service\ShootingStateService;
 use App\Service\SubscriptionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,12 +75,14 @@ class DashboardShootController extends AbstractController
      * @Route("/shoot/{allowedIceType}", name="dashboard_shoot_shoot")
      * @param UserInterface|User $user
      * @param SubscriptionService $subscriptionService
+     * @param OperatingSystemDetector $operatingSystemDetector
      * @param string $allowedIceType
      * @return Response
      */
     public function shoot(
         UserInterface $user,
         SubscriptionService $subscriptionService,
+        OperatingSystemDetector $operatingSystemDetector,
         string $allowedIceType = null
     )
     {
@@ -88,7 +91,8 @@ class DashboardShootController extends AbstractController
         }
 
         return $this->render('frontend/dashboard/shoot/shoot.html.twig', [
-            'allowedIceType' => $allowedIceType
+            'allowedIceType' => $allowedIceType,
+            'operatingSystem' => $operatingSystemDetector->detect()
         ]);
     }
 

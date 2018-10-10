@@ -17,6 +17,8 @@ class OperatingSystemDetector
 
     public const MAC        = 'MAC';
 
+    public const LINUX      = 'LINUX';
+
     public const OTHER      = 'OTHER';
 
     /**
@@ -51,6 +53,9 @@ class OperatingSystemDetector
         }
         if (preg_match('/Windows/i', $userAgent)) {
             return self::WINDOWS;
+        }
+        if (preg_match('/Linux/i', $userAgent)) {
+            return self::LINUX;
         }
 
         return self::OTHER;

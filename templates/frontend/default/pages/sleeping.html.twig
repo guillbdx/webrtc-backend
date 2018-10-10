@@ -1,21 +1,114 @@
 {% extends 'frontend/default_layout.html.twig' %}
 
-{% block title %}Mise en veille de l'ordinateur{% endblock %}
+{% block title %}Empêcher la mise en veille de l'ordinateur{% endblock %}
 
 {% block body %}
 
-    <h2>Mise en veille de l'ordinateur</h2>
+    <h2>Empêcher la mise en veille de l'ordinateur</h2>
 
     {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::WINDOWS') %}
-        Vous utilisez Windows.
+
+        <p>
+            Vous utilisez Windows. En principe, sur Windows, vous n'avez rien de particulier à effectuer pour utiliser Dilcam :
+            il suffit de laisser la fenêtre "Filmer" ouverte.
+        </p>
+
+        <p>
+            Cependant, dans certains cas exceptionnels dépendant de votre configuration, il se peut que l'ordinateur
+            se mette automatiquement en veille après un certain temps d'inactivité, et ce même si la webcam est active.
+            Si c'est votre cas, veuillez suivre la procédure suivante pour empêcher Windows de se mettre automatiquement
+            en veille.
+        </p>
+
+        <p>
+            1/ Rendez-vous dans les paramètres de l'ordinateur en cliquant sur l'icône Windows en bas à gauche du bureau
+            puis sur la roue dentelée.
+        </p>
+
+        <img src="{{ asset('build/images/contents/sleeping/windows-system.png') }}" class="w-100">
+
+        <p>
+            2/ Cliquez sur l'icône Système :
+        </p>
+
+        <p>
+            3/ Dans le menu de gauche, cliquez sur "Alimentation et mise en veille".
+            Dans les réglages qui vous sont proposez, choisissez "Jamais" pour la mise en veille de l'ordinateur :
+        </p>
+
+        <img src="{{ asset('build/images/contents/sleeping/windows-panel.jpg') }}" class="w-100">
+
+
     {% endif %}
 
     {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::MAC') %}
-        Vous utilisez Mac.
+
+        <p>
+            Vous utilisez un ordinateur Apple. Par défaut, votre ordinateur se mettra automatiquement en veille
+            après un certain temps d'inactivité, ce qui empêcherait la vidéosurveillance de fonctionner sur une longue
+            période. Merci d'effectuer la procédure suivante pour empêcher que l'ordinateur
+            se mette en veille après un certain temps d'inactivité.
+        </p>
+
+        <p>
+            Sélectionnez le menu Pomme > Préférences Système.
+        </p>
+
+        <p>
+            Cliquez sur Économiseur d’énergie.
+        </p>
+
+        <p>
+            Si votre ordinateur est un portable : branchez-le sur le secteur et cliquez sur "Adaptateur secteur".
+        </p>
+
+        <p>
+            Ici, deux cas de figure peuvent se présenter selon la version de votre Mac :
+        </p>
+
+        <ul>
+            <li>
+                Le panneau vous propose de régler séparément les réglages "Ordinateur en veille après"
+                et "Écran en veille après" : lire ici.
+            </li>
+            <li>
+                Le panneau vous propose de régler seulement "Éteindre l'écran aprés" : lire ici.
+            </li>
+        </ul>
+
+        <p>
+            <strong>Cas 1 : Réglages de la mise en veille de l'ordinateur et de l'écran</strong>
+        </p>
+
+        <p>
+            Si ces deux réglages sont disponibles, choisissez le temps que vous voulez pour la mise en veille de l'écran,
+            mais régler la mise en veille de l'ordinateur sur "Jamais" :
+        </p>
+
+        <img src="{{ asset('build/images/contents/sleeping/mac-1-option.png') }}" class="w-100">
+
+        <p>
+            <strong>Cas 2 : Réglage de la mise en veille de l'écran</strong>
+        </p>
+
+        <p>
+            Si vous disposez uniquement du réglage "Éteindre l'écran après", alors vous pouvez choisir un temps
+            quelconque pour ce réglage, mais vous devez cocher au-dessous la case "Empêcher la suspension
+            automatique d'activité de l'ordinateur lorsque l'écran est éteint". Attention, si votre ordinateur est un
+            portable, cette case n'est disponible que si vous avez choisi au-dessus le bouton "Adaptateur secteur" :
+        </p>
+
+        <img src="{{ asset('build/images/contents/sleeping/mac-2-options.png') }}" class="w-100">
+
+        <p>
+            Pour plus d'informations, consultez l'assistance Apple :
+            <a href="https://support.apple.com/fr-fr/HT202824">
+                Utiliser les réglages de l’économiseur d’énergie sur votre Mac
+            </a>.
+        </p>
+
+
     {% endif %}
 
-    {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::OTHER') %}
-        Vous utilisez autre chose.
-    {% endif %}
 
 {% endblock %}

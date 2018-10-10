@@ -18,16 +18,41 @@
                 <video class="embed-responsive-item" id="localVideo" autoplay muted></video>
             </div>
 
-            <p>
-                Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
-                l'ordinateur de se mettre en veille automatiquement.
-            </p>
+            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::WINDOWS') %}
+                <p>
+                    Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
+                    l'ordinateur de se mettre en veille automatiquement.
+                </p>
+                <p>
+                    <a href="{{ path('pages_sleeping') }}">
+                        Plus d'informations sur la mise en veille
+                    </a>.
+                </p>
+            {% endif %}
 
-            <p>
-                <a href="#">
-                    Infos sur la mise en veille.
-                </a>
-            </p>
+            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::MAC') %}
+                <p>
+                    Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
+                    l'ordinateur de se mettre en veille automatiquement.
+                </p>
+                <p>
+                    Veuillez également vous assurer que votre ordinateur n'entrera pas automatiquement
+                    en veille au bout d'un certain temps d'inactivé.
+                    <a href="{{ path('pages_sleeping') }}">
+                        Plus d'informations ici
+                    </a>.
+                </p>
+            {% endif %}
+
+            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::LINUX') %}
+                <p>
+                    Vous utilisez un système d'exploitation Linux. Merci de vous assurer dans vos
+                    paramètres systèmes que l'ordinateur n'entrera pas automatiquement en veille
+                    après un certain temps d'inactivité. Veuillez également laisser cette fenêtre
+                    ouverte en votre absence.
+                </p>
+            {% endif %}
+
 
             {% if 'dev' == app.environment %}
                 <div class="text-center mt-3">
