@@ -14,6 +14,7 @@ services:
             $awsKeySecret: '%env(AWS_SECRET_ACCESS_KEY)%'
             $stripeApiKey: '%env(STRIPE_API_KEY)%'
             $stripeApiKeySecret: '%env(STRIPE_API_KEY_SECRET)%'
+            $reCaptchaApiKeySecret: '%env(RECAPTCHA_API_KEY_SECRET)%'
 
     App\:
         resource: '../src/App/*'

@@ -10,6 +10,8 @@ use App\Form\Type\Security\ResetPasswordType;
 use App\Form\Type\Security\SignupType;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
+use Components\Captcha\Service\CaptchaService;
+use Components\Captcha\Service\ReCaptchaClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,18 +57,26 @@ class SecurityController extends AbstractController
      * @param Request $request
      * @param UserManager $userManager
      * @param UserFactory $userFactory
+     * @param CaptchaService $captchaService
      * @return Response
      */
     public function signup(
         Request $request,
         UserManager $userManager,
-        UserFactory $userFactory
+        UserFactory $userFactory,
+        CaptchaService $captchaService
     )
     {
         $user = $userFactory->init();
         $form = $this->createForm(SignupType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            if (false === $captchaService->isRequestValid($request)) {
+                $this->addFlash('danger', 'Merci de cocher la case "Je ne suis pas un robot".');
+                return $this->render('frontend/default/security/signup.html.twig', [
+                    'form' => $form->createView()
+                ]);
+            }
             $userManager->signup($user);
             return $this->redirectToRoute('security_signup_confirmation');
         }
