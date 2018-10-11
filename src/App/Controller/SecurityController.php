@@ -70,13 +70,15 @@ class SecurityController extends AbstractController
         $user = $userFactory->init();
         $form = $this->createForm(SignupType::class, $user);
         $form->handleRequest($request);
+
+        if ($form->isSubmitted() && false === $captchaService->isRequestValid($request)) {
+            $this->addFlash('danger', 'Merci de cocher la case "Je ne suis pas un robot".');
+            return $this->render('frontend/default/security/signup.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
-            if (false === $captchaService->isRequestValid($request)) {
-                $this->addFlash('danger', 'Merci de cocher la case "Je ne suis pas un robot".');
-                return $this->render('frontend/default/security/signup.html.twig', [
-                    'form' => $form->createView()
-                ]);
-            }
             $userManager->signup($user);
             return $this->redirectToRoute('security_signup_confirmation');
         }

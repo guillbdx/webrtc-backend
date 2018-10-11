@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\Type\Pages\ContactType;
 use App\Form\Type\Pages\WithdrawalType;
 use App\Service\OperatingSystemDetector;
+use Components\Captcha\Service\CaptchaService;
 use Components\Emailing\AppMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,11 +50,13 @@ class PagesController extends AbstractController
      * @Route("/contact", name="pages_contact")
      * @param Request $request
      * @param AppMailer $appMailer
+     * @param CaptchaService $captchaService
      * @return Response
      */
     public function contact(
         Request $request,
-        AppMailer $appMailer
+        AppMailer $appMailer,
+        CaptchaService $captchaService
     )
     {
         $email = null;
@@ -67,6 +70,15 @@ class PagesController extends AbstractController
         ]);
         $form->handleRequest($request);
         $displayForm = true;
+
+        if ($form->isSubmitted() && false === $user instanceof User && false === $captchaService->isRequestValid($request)) {
+            $this->addFlash('danger', 'Merci de cocher la case "Je ne suis pas un robot".');
+            return $this->render('frontend/default/pages/contact.html.twig', [
+                'displayForm' => $displayForm,
+                'form' => $form->createView()
+            ]);
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $appMailer->sendContactMessage($data['from'], $data['message']);
@@ -143,11 +155,13 @@ class PagesController extends AbstractController
      * @Route("/withdrawal", name="pages_withdrawal")
      * @param Request $request
      * @param AppMailer $appMailer
+     * @param CaptchaService $captchaService
      * @return Response
      */
     public function withdrawal(
         Request $request,
-        AppMailer $appMailer
+        AppMailer $appMailer,
+        CaptchaService $captchaService
     )
     {
         $email = null;
@@ -161,6 +175,14 @@ class PagesController extends AbstractController
         ]);
         $form->handleRequest($request);
         $displayForm = true;
+
+        if ($form->isSubmitted() && false === $user instanceof User && false === $captchaService->isRequestValid($request)) {
+            $this->addFlash('danger', 'Merci de cocher la case "Je ne suis pas un robot".');
+            return $this->render('frontend/default/pages/withdrawal.html.twig', [
+                'displayForm' => $displayForm,
+                'form' => $form->createView()
+            ]);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();

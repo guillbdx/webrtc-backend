@@ -8,12 +8,21 @@
 
     {% if displayForm %}
         <h3>Par email</h3>
+
         {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button type="submit" class="btn btn-primary">
-            Envoyer
-        </button>
+
+            {{ form_widget(form) }}
+
+            {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <div class="g-recaptcha" data-sitekey="{{ reCaptchaApiKey }}"></div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary">
+                Envoyer
+            </button>
+
         {{ form_end(form) }}
+
     {% endif %}
 
     <h3>Par courrier</h3>
