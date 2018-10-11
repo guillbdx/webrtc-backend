@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /pages/contact
+Disallow: /pages/tos
+Disallow: /pages/legal
