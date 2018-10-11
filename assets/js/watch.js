@@ -131,5 +131,5 @@ setTimeout(function() {
     if (false === somethingHappened) {
         showIssueAlert();
     }
-}, 15000);
+}, 25000);
 
