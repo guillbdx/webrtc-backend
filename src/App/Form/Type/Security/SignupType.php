@@ -18,7 +18,10 @@ class SignupType extends AbstractType
             ->add('email')
             ->add('password', RepeatedType::class, [
                 'constraints' => [
-                    new Assert\NotBlank()
+                    new Assert\NotBlank(),
+                    new Assert\Length([
+                        'min' => 6
+                    ])
                 ],
                 'type' => PasswordType::class,
                 'invalid_message' => "Vous n'avez pas saisi deux fois le même mot de passe",
