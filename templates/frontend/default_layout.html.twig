@@ -43,13 +43,7 @@
     {% include 'frontend/includes/_flash.html.twig' %}
     {% block body %}{% endblock %}
     {% include 'frontend/includes/_footer.html.twig' %}
-</div>
-
-<div id="cookieBottomBox">
-    En poursuivant votre navigation, vous acceptez <a href="{{ path('pages_cookies') }}">les cookies</a>.
-    <button type="button" class="close" aria-label="Close" onclick="document.getElementById('cookieBottomBox').style.display = 'none';">
-        <span aria-hidden="true">&times;</span>
-    </button>
+    {% include 'frontend/includes/_cookies_alert.html.twig' %}
 </div>
 
 </body>
