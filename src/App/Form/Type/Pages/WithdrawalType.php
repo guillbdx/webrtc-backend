@@ -37,7 +37,8 @@ class WithdrawalType extends AbstractType
                 ]
             ])
             ->add('reason', TextareaType::class, [
-                'label' => "Motif de votre rétractation (facultatif)"
+                'label' => "Motif de votre rétractation (facultatif)",
+                'required' => false
             ])
         ;
     }

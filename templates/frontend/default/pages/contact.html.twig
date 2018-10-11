@@ -8,7 +8,7 @@
 
     {% if displayForm %}
         <h3>Par email</h3>
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_start(form) }}
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-primary">
             Envoyer
