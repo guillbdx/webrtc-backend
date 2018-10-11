@@ -1,27 +1,25 @@
+{% if not app.request.cookies.has('cookieAlert') %}
+    <div id="cookieBottomBox">
+        En poursuivant votre navigation, vous acceptez <a href="{{ path('pages_cookies') }}">les cookies</a>.
+        <button id="closeCookieBottomBox" type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-{% if app.cookies. %}
+    <script>
+        var windowHeight = window.innerHeight;
 
+        window.onscroll = function() {myFunction()};
 
-<div id="cookieBottomBox">
-    En poursuivant votre navigation, vous acceptez <a href="{{ path('pages_cookies') }}">les cookies</a>.
-    <button id="closeCookieBottomBox" type="button" class="close" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-
-<script>
-    var windowHeight = window.innerHeight;
-
-    window.onscroll = function() {myFunction()};
-
-    function myFunction() {
-        if (document.body.scrollTop > windowHeight || document.documentElement.scrollTop > windowHeight) {
-            jQuery('#cookieBottomBox').hide();
+        function myFunction() {
+            if (document.body.scrollTop > windowHeight || document.documentElement.scrollTop > windowHeight) {
+                jQuery('#cookieBottomBox').hide();
+            }
         }
-    }
 
-    jQuery('#closeCookieBottomBox').click(function() {
-        jQuery('#cookieBottomBox').hide();
-    });
+        jQuery('#closeCookieBottomBox').click(function() {
+            jQuery('#cookieBottomBox').hide();
+        });
 
-</script>
+    </script>
+{% endif %}

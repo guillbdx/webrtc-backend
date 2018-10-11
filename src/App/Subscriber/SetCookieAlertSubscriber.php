@@ -11,7 +11,6 @@ namespace App\Subscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class SetCookieAlertSubscriber implements EventSubscriberInterface
@@ -43,10 +42,7 @@ class SetCookieAlertSubscriber implements EventSubscriberInterface
         }
 
         if (!$request->cookies->has('cookieAlert')) {
-            $cookie = new Cookie('cookieAlert', 'firstVisit', time() + 3600 * 24 * 365);
-            $response->headers->setCookie($cookie);
-        } else {
-            $cookie = new Cookie('cookieAlert', 'notFirstVisit', time() + 3600 * 24 * 365);
+            $cookie = new Cookie('cookieAlert', 'cookieAlert', time() + 3600 * 24 * 365);
             $response->headers->setCookie($cookie);
         }
     }
