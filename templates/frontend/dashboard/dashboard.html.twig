@@ -13,6 +13,10 @@
         <h3>Film en cours</h3>
 
         <p>
+            Votre webcam est en train de filmer à votre domicile.
+        </p>
+
+        <p>
             <a href="{{ path('dashboard_watch_watch') }}" class="btn btn-info">
                 Surveiller
             </a>
@@ -23,7 +27,11 @@
 
     {% else %}
 
-        <h3>Pas de film en cours</h3>
+        <p>
+            La première chose à faire est d'enclencher la webcam de votre ordinateur pour
+            démarrer la vidéo surveillance. Cliquez sur "Filmer" pour commencer.
+        </p>
+
         <p>
             <a href="{{ path('dashboard_shoot_junction') }}" class="btn btn-info">
                 Filmer
