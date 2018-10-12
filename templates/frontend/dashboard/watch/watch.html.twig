@@ -9,19 +9,23 @@
     {% include 'frontend/includes/_user_status.html.twig' %}
 
     <div class="alert alert-warning" id="alertPendingConnection">
-        Connection en cours...
+        Connexion en cours...
     </div>
 
     <div class="alert alert-danger" id="alertShooterNotExists" style="display: none;">
-        Aucune caméra n'est active
+        Aucune caméra n'est active. Vous devriez d'abord vous rendre sur la page
+        <a href="{{ path('dashboard_shoot_junction') }}">Filmer</a>.
     </div>
 
     <div class="alert alert-danger" id="alertShooterSeemsNotExists" style="display: none;">
-        Il semblerait que le côté caméra ait subi une déconnexion subite.
+        Il semblerait que le poste de surveillance ait subi une déconnexion subite.
+        Il est possible que ce soit dû à une déconnexion passagère d'internet à votre domicile,
+        ou à une mise à jour de votre box. Veuillez patienter quelques minutes et réessayer.
     </div>
 
     <div class="alert alert-danger" id="alertIssue" style="display: none;">
-        Connexion impossible.
+        Réception impossible. Il est probable que votre connexion internet est actuellement trop faible pour
+        permettre une réception vidéo.
         <a href="javascript:window.location.reload(true)">Réessayer</a>
     </div>
 

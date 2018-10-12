@@ -12,7 +12,7 @@
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
         <p>
-            Vous êtes en période d'essai.
+            Vous bénéficiez actuellement de la période d'essai.
             Il vous reste {{ app.user|trialDuration }}.
         </p>
         <p>
@@ -24,7 +24,7 @@
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_SUBSCRIBED') %}
         <p>
-            Vous êtes abonné jusqu'au {{ app.user.subscribedTill | date('d/m/Y') }}.
+            Vous êtes abonné(e) jusqu'au {{ app.user.subscribedTill | date('d/m/Y') }}.
         </p>
         <p>
             <a href="{{ path('dashboard_subscription_quantity') }}" class="btn btn-info">
@@ -35,7 +35,8 @@
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_NOTHING') %}
         <p>
-            Votre période d'essai est terminée et vous n'avez aucun abonnement.
+            Votre période d'essai est terminée et vous n'avez pas souscrit à un abonnement.
+            Vous devez vous abonner pour pouvoir continuer à utiliser le service Dilcam.
         </p>
         <p>
             <a href="{{ path('dashboard_subscription_quantity') }}" class="btn btn-info">

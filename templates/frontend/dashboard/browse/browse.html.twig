@@ -10,6 +10,8 @@
 
     <div id="alertNoPhoto" class="alert alert-danger" style="display: none;">
         Vous n'avez actuellement aucune photo.
+        Vous devriez d'abord vous rendre sur la page
+        <a href="{{ path('dashboard_shoot_junction') }}">Filmer</a>.
     </div>
 
     <div class="row" id="browser">
@@ -66,10 +68,10 @@
                id="download"
                href="#">
                 <i class="fa fa-download"></i>
-                Télécharger
+                Télécharger cette photo
             </a>
             <a href="{{ path('dashboard_browse_delete_all_preparation') }}" class="btn btn-danger">
-                Supprimer tout
+                Supprimer toutes les photos
             </a>
         </div>
         <div class="col-md-2"></div>
