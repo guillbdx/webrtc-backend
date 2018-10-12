@@ -12,18 +12,38 @@
 
         <h3>Film en cours</h3>
 
-        <p>
-            Votre webcam est en train de filmer à votre domicile.
-        </p>
+        {% if app.request.cookies.get('shootingToken') == app.user.shootingToken %}
 
-        <p>
-            <a href="{{ path('dashboard_watch_watch') }}" class="btn btn-info">
-                Surveiller
-            </a>
-            <a href="{{ path('dasboard_browse') }}" class="btn btn-info">
-                Visionner les photos
-            </a>
-        </p>
+            <p>
+                Votre webcam est en train de filmer.
+            </p>
+
+            <p>
+                Quand vous vous absenterez, merci de laisser la page "Filmer" ouverte.
+            </p>
+
+            <p>
+                Vous pouvez maintenant vous connecter sur Dilcam depuis un autre appareil, par exemple votre téléphone,
+                et cliquer sur "Surveiller" pour observer ce qui est filmé par votre webcam.
+            </p>
+
+        {% else %}
+
+
+            <p>
+                Votre webcam est en train de filmer à votre domicile.
+            </p>
+
+            <p>
+                <a href="{{ path('dashboard_watch_watch') }}" class="btn btn-info">
+                    Surveiller
+                </a>
+                <a href="{{ path('dasboard_browse') }}" class="btn btn-info">
+                    Visionner les photos
+                </a>
+            </p>
+
+        {% endif %}
 
     {% else %}
 
