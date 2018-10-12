@@ -115,6 +115,13 @@ class User implements UserInterface
     private $subscribedTill;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="shooting_token", length=255, nullable=true)
+     */
+    private $shootingToken;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -414,6 +421,25 @@ class User implements UserInterface
     public function setSubscribedTill(?DateTimeImmutable $subscribedTill): self
     {
         $this->subscribedTill = $subscribedTill;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShootingToken(): ?string
+    {
+        return $this->shootingToken;
+    }
+
+    /**
+     * @param string $shootingToken
+     * @return User
+     */
+    public function setShootingToken(?string $shootingToken): self
+    {
+        $this->shootingToken = $shootingToken;
 
         return $this;
     }

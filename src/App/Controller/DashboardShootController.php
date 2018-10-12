@@ -6,7 +6,9 @@ use App\Entity\User;
 use App\Service\OperatingSystemDetector;
 use App\Service\ShootingStateService;
 use App\Service\SubscriptionService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -76,6 +78,8 @@ class DashboardShootController extends AbstractController
      * @param UserInterface|User $user
      * @param SubscriptionService $subscriptionService
      * @param OperatingSystemDetector $operatingSystemDetector
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
      * @param string $allowedIceType
      * @return Response
      */
@@ -83,12 +87,17 @@ class DashboardShootController extends AbstractController
         UserInterface $user,
         SubscriptionService $subscriptionService,
         OperatingSystemDetector $operatingSystemDetector,
+        Request $request,
+        EntityManagerInterface $entityManager,
         string $allowedIceType = null
     )
     {
         if (false === $subscriptionService->canUseTheApplication($user)) {
             return $this->redirectToRoute('dashboard_shoot_not_allowed');
         }
+
+        $user->setShootingToken($request->cookies->get('shootingToken'));
+        $entityManager->flush();
 
         return $this->render('frontend/dashboard/shoot/shoot.html.twig', [
             'allowedIceType' => $allowedIceType,
