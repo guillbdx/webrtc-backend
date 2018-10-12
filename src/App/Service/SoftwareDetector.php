@@ -13,12 +13,19 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class SoftwareDetector
 {
 
-    public const WINDOWS    = 'WINDOWS';
-    public const MAC        = 'MAC';
-    public const LINUX      = 'LINUX';
-    public const ANDROID    = 'ANDROID';
-    public const IPHONE     = 'IPHONE';
-    public const OTHER      = 'OTHER';
+    public const WINDOWS            = 'WINDOWS';
+    public const MAC                = 'MAC';
+    public const LINUX              = 'LINUX';
+    public const ANDROID            = 'ANDROID';
+    public const IPHONE             = 'IPHONE';
+
+    public const CHROME             = 'CHROME';
+    public const FIREFOX            = 'FIREFOX';
+    public const SAFARI             = 'SAFARI';
+    public const EDGE_IE_TRIDENT    = 'EDGE_IE_TRIDENT';
+    public const OPERA              = 'OPERA';
+
+    public const OTHER              = 'OTHER';
 
     /**
      * @var RequestStack
@@ -38,7 +45,7 @@ class SoftwareDetector
     /**
      * @return string
      */
-    public function detect(): string
+    public function detectOperatingSystem(): string
     {
         $request = $this->requestStack->getCurrentRequest();
         $server = $request->server;
@@ -61,6 +68,45 @@ class SoftwareDetector
         }
         if (preg_match('/Linux/i', $userAgent)) {
             return self::LINUX;
+        }
+
+        return self::OTHER;
+    }
+
+    /**
+     * @return string
+     */
+    public function detectBrowser(): string
+    {
+        $request = $this->requestStack->getCurrentRequest();
+        $server = $request->server;
+        if (false === $server->has('HTTP_USER_AGENT')) {
+            return self::OTHER;
+        }
+        $userAgent = $server->get('HTTP_USER_AGENT');
+
+        if (
+            strpos($userAgent, "MSIE") !== false
+            || strpos($userAgent, "Trident") !== false
+            || strpos($userAgent, "Edge") !== false
+        ) {
+            return self::EDGE_IE_TRIDENT;
+        }
+
+        if (strpos($userAgent, "Firefox") !== false) {
+            return self::FIREFOX;
+        }
+
+        if (strpos($userAgent, "Opera") !== false) {
+            return self::OPERA;
+        }
+
+        if (strpos($userAgent, "Chrome") !== false) {
+            return self::CHROME;
+        }
+
+        if (strpos($userAgent, "Safari") !== false) {
+            return self::SAFARI;
         }
 
         return self::OTHER;

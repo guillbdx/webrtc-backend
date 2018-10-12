@@ -139,15 +139,15 @@ class PagesController extends AbstractController
 
     /**
      * @Route("/sleeping", name="pages_sleeping")
-     * @param SoftwareDetector $operatingSystemDetector
+     * @param SoftwareDetector $softwareDetector
      * @return Response
      */
     public function sleeping(
-        SoftwareDetector $operatingSystemDetector
+        SoftwareDetector $softwareDetector
     )
     {
         return $this->render('frontend/default/pages/sleeping.html.twig', [
-            'operatingSystem' => $operatingSystemDetector->detect()
+            'operatingSystem' => $softwareDetector->detectOperatingSystem()
         ]);
     }
 

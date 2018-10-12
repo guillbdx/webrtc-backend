@@ -77,7 +77,7 @@ class DashboardShootController extends AbstractController
      * @Route("/shoot/{allowedIceType}", name="dashboard_shoot_shoot")
      * @param UserInterface|User $user
      * @param SubscriptionService $subscriptionService
-     * @param SoftwareDetector $operatingSystemDetector
+     * @param SoftwareDetector $softwareDetector
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @param string $allowedIceType
@@ -86,7 +86,7 @@ class DashboardShootController extends AbstractController
     public function shoot(
         UserInterface $user,
         SubscriptionService $subscriptionService,
-        SoftwareDetector $operatingSystemDetector,
+        SoftwareDetector $softwareDetector,
         Request $request,
         EntityManagerInterface $entityManager,
         string $allowedIceType = null
@@ -101,7 +101,7 @@ class DashboardShootController extends AbstractController
 
         return $this->render('frontend/dashboard/shoot/shoot.html.twig', [
             'allowedIceType' => $allowedIceType,
-            'operatingSystem' => $operatingSystemDetector->detect()
+            'operatingSystem' => $softwareDetector->detectOperatingSystem()
         ]);
     }
 
