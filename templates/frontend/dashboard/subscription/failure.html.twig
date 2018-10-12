@@ -6,8 +6,12 @@
 
     <h2>Le paiement a échoué</h2>
 
-    <a class="btn btn-info" href="{{ path('dashboard_account') }}">
-        Retour à votre compte
+    <p>
+        Le paiement n'a pas été validé. Merci de vérifier la validité des informations de votre carte bancaire.
+    </p>
+
+    <a class="btn btn-info" href="{{ path('dashboard_subscription_quantity') }}">
+        Réessayer
     </a>
 
 {% endblock %}

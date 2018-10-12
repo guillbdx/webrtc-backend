@@ -19,6 +19,12 @@
         {{ subscription.amount|price }}
     </p>
 
+    <p>
+        Vous allez procéder au paiement par carte bancaire sur la page suivante. Ce paiement est unique :
+        vous payez une seule et unique fois et vous bénéficiez du service pour toute la durée que vous avez choisie.
+        Il n'y a pas d'autre frais ni de paiements réguliers.
+    </p>
+
     <a href="{{ path('dashboard_subscription_quantity', {quantity: subscription.quantity}) }}" class="btn btn-warning">
         Modifier la durée
     </a>
