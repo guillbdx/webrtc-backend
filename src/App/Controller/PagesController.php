@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\Pages\ContactType;
 use App\Form\Type\Pages\WithdrawalType;
-use App\Service\OperatingSystemDetector;
+use App\Service\SoftwareDetector;
 use Components\Captcha\Service\CaptchaService;
 use Components\Emailing\AppMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -139,11 +139,11 @@ class PagesController extends AbstractController
 
     /**
      * @Route("/sleeping", name="pages_sleeping")
-     * @param OperatingSystemDetector $operatingSystemDetector
+     * @param SoftwareDetector $operatingSystemDetector
      * @return Response
      */
     public function sleeping(
-        OperatingSystemDetector $operatingSystemDetector
+        SoftwareDetector $operatingSystemDetector
     )
     {
         return $this->render('frontend/default/pages/sleeping.html.twig', [

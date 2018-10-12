@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Service\OperatingSystemDetector;
+use App\Service\SoftwareDetector;
 use App\Service\ShootingStateService;
 use App\Service\SubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -77,7 +77,7 @@ class DashboardShootController extends AbstractController
      * @Route("/shoot/{allowedIceType}", name="dashboard_shoot_shoot")
      * @param UserInterface|User $user
      * @param SubscriptionService $subscriptionService
-     * @param OperatingSystemDetector $operatingSystemDetector
+     * @param SoftwareDetector $operatingSystemDetector
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @param string $allowedIceType
@@ -86,7 +86,7 @@ class DashboardShootController extends AbstractController
     public function shoot(
         UserInterface $user,
         SubscriptionService $subscriptionService,
-        OperatingSystemDetector $operatingSystemDetector,
+        SoftwareDetector $operatingSystemDetector,
         Request $request,
         EntityManagerInterface $entityManager,
         string $allowedIceType = null

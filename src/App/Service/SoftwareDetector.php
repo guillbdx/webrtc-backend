@@ -10,19 +10,14 @@ namespace App\Service;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class OperatingSystemDetector
+class SoftwareDetector
 {
 
     public const WINDOWS    = 'WINDOWS';
-
     public const MAC        = 'MAC';
-
     public const LINUX      = 'LINUX';
-
     public const ANDROID    = 'ANDROID';
-
     public const IPHONE     = 'IPHONE';
-
     public const OTHER      = 'OTHER';
 
     /**

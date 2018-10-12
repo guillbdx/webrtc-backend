@@ -6,7 +6,7 @@
 
     <h2>Empêcher la mise en veille de l'ordinateur</h2>
 
-    {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::WINDOWS') %}
+    {% if operatingSystem == constant('App\\Service\\SoftwareDetector::WINDOWS') %}
 
         <p>
             Vous utilisez Windows. En principe, sur Windows, vous n'avez rien de particulier à effectuer pour utiliser Dilcam :
@@ -41,7 +41,7 @@
 
     {% endif %}
 
-    {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::MAC') %}
+    {% if operatingSystem == constant('App\\Service\\SoftwareDetector::MAC') %}
 
         <p>
             Vous utilisez un ordinateur Apple. Par défaut, votre ordinateur se mettra automatiquement en veille

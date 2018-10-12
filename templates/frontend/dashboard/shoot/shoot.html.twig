@@ -18,7 +18,7 @@
                 <video class="embed-responsive-item" id="localVideo" autoplay muted></video>
             </div>
 
-            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::WINDOWS') %}
+            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::WINDOWS') %}
                 <p>
                     Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
                     l'ordinateur de se mettre en veille automatiquement.
@@ -30,7 +30,7 @@
                 </p>
             {% endif %}
 
-            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::MAC') %}
+            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::MAC') %}
                 <p>
                     Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
                     l'ordinateur de se mettre en veille automatiquement.
@@ -44,7 +44,7 @@
                 </p>
             {% endif %}
 
-            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::LINUX') %}
+            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::LINUX') %}
                 <p>
                     Vous utilisez un système d'exploitation Linux. Merci de vous assurer dans vos
                     paramètres systèmes que l'ordinateur n'entrera pas automatiquement en veille
@@ -53,9 +53,9 @@
                 </p>
             {% endif %}
 
-            {% if operatingSystem == constant('App\\Service\\OperatingSystemDetector::ANDROID')
-                or operatingSystem == constant('App\\Service\\OperatingSystemDetector::IPHONE')
-                or operatingSystem == constant('App\\Service\\OperatingSystemDetector::OTHER') %}
+            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::ANDROID')
+                or operatingSystem == constant('App\\Service\\SoftwareDetector::IPHONE')
+                or operatingSystem == constant('App\\Service\\SoftwareDetector::OTHER') %}
                 <p>
                     Merci de laisser cette fenêtre ouverte en votre absence.
                 </p>
