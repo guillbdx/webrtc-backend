@@ -17,10 +17,19 @@
 
     <p>
         <a href="{{ path('dashboard_shoot_shoot') }}"
+           id="linkToShootPage"
            class="btn btn-info"
            target="_blank">
             Filmer
         </a>
     </p>
+
+    <script>
+        jQuery('#linkToShootPage').click(function() {
+            setTimeout(function() {
+                document.location.href = '{{ path('dashboard') }}';
+            }, 2000);
+        });
+    </script>
 
 {% endblock %}
