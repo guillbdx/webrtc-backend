@@ -11,21 +11,37 @@
     {% if (app.user.alarmEnabled) %}
         <p>
             L'alarme est actuellement <strong>activée</strong>.
-            <br>
+        </p>
+        <ul>
+            <li>
+                La fréquence des alarmes est de <strong>1 alarme maximum par tranche de 10 minutes</strong>.
+            </li>
+            <li>
+                Une alarme n'est envoyée que si la probablité de mouvement détecté est supérieure à <strong>7,5 %</strong>.
+            </li>
+        </ul>
+        <p>
+            <a href="{{ path('pages_alarm') }}">
+                Plus d'informations sur le fonctionnent de l'alarme.
+            </a>
+        </p>
+        <p>
             <a class="btn btn-warning" href="{{ path('dashboard_alarm_disable') }}">Désactiver</a>
         </p>
     {% else %}
         <p>
             L'alarme est actuellement <strong>désactivée</strong>.
-            <br>
+        </p>
+        <p>
             <a class="btn btn-info" href="{{ path('dashboard_alarm_enable') }}">Activer</a>
+        </p>
+        <p>
+            <a href="{{ path('pages_alarm') }}">
+                Plus d'informations sur le fonctionnent de l'alarme.
+            </a>
         </p>
     {% endif %}
 
-    <p>
-        <a href="{{ path('pages_alarm') }}">
-            Plus d'informations sur le fonctionnent de l'alarme.
-        </a>
-    </p>
+
 
 {% endblock %}

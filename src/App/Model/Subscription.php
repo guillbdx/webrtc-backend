@@ -145,7 +145,7 @@ class Subscription
      */
     public function getDescription(): string
     {
-        return 'Abonnement '.$this->quantity.' mois.';
+        return 'Abonnement '.$this->quantity.' mois';
     }
 
 }

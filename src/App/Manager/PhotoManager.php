@@ -12,12 +12,17 @@ use App\Repository\PhotoRepository;
 use App\Service\PhotoNormalizer;
 use App\Service\TokenGenerator;
 use Aws\S3\S3Client;
+use Components\Emailing\AppMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use DateTimeImmutable;
 
 class PhotoManager
 {
+
+    public const MIN_MISMATCH_FOR_ALARMING  = 750;
+
+    public const MIN_ALARM_INTERVAL         = 600;
 
     /**
      * @var EntityManagerInterface
@@ -50,6 +55,11 @@ class PhotoManager
     private $tokenGenerator;
 
     /**
+     * @var AppMailer
+     */
+    private $appMailer;
+
+    /**
      * @param EntityManagerInterface $entityManager
      * @param string $awsKeyId
      * @param string $awsKeySecret
@@ -57,6 +67,7 @@ class PhotoManager
      * @param PhotoRepository $photoRepository
      * @param PhotoNormalizer $photoNormalizer
      * @param TokenGenerator $tokenGenerator
+     * @param AppMailer $appMailer
      */
     public function __construct(
         EntityManagerInterface $entityManager,
@@ -65,7 +76,8 @@ class PhotoManager
         string $host,
         PhotoRepository $photoRepository,
         PhotoNormalizer $photoNormalizer,
-        TokenGenerator $tokenGenerator
+        TokenGenerator $tokenGenerator,
+        AppMailer $appMailer
     )
     {
         $this->entityManager = $entityManager;
@@ -81,6 +93,7 @@ class PhotoManager
         $this->photoRepository = $photoRepository;
         $this->photoNormalizer = $photoNormalizer;
         $this->tokenGenerator = $tokenGenerator;
+        $this->appMailer = $appMailer;
     }
 
     /**
@@ -104,20 +117,6 @@ class PhotoManager
             'Key'       => $photo->getId(),
             'Body'      => base64_decode($photo->getBase64()),
         ));
-    }
-
-    /**
-     * @param Photo $photoBefore
-     * @param Photo $photoAfter
-     * @param int $mismatch
-     */
-    public function saveMismatch(Photo $photoBefore, Photo $photoAfter, int $mismatch): void
-    {
-        $photoAfter->setMismatchedPhoto($photoBefore);
-        $photoAfter->setMismatch($mismatch);
-        $photoAfter->setSecret($this->tokenGenerator->generate(12));
-        $this->save($photoBefore, Photo::BEFORE);
-        $this->save($photoAfter, Photo::AFTER);
     }
 
     /**
@@ -172,6 +171,49 @@ class PhotoManager
         } catch (Exception $exception) {
             return null;
         }
+    }
+
+    /**
+     * @param Photo $photoBefore
+     * @param Photo $photoAfter
+     * @param int $mismatch
+     */
+    public function saveMismatch(Photo $photoBefore, Photo $photoAfter, int $mismatch): void
+    {
+        $photoAfter->setMismatchedPhoto($photoBefore);
+        $photoAfter->setMismatch($mismatch);
+        $photoAfter->setSecret($this->tokenGenerator->generate(12));
+        $this->save($photoBefore, Photo::BEFORE);
+        $this->save($photoAfter, Photo::AFTER);
+    }
+
+    /**
+     * @param Photo $photo
+     * @param int $mismatch
+     */
+    public function sendAlarmIfNeed(Photo $photo, int $mismatch): void
+    {
+        $user = $photo->getUser();
+
+        if (false === $user->isAlarmEnabled()) {
+            return;
+        }
+
+        if ($mismatch < self::MIN_MISMATCH_FOR_ALARMING) {
+            return;
+        }
+
+        $lastAlarmAt = $user->getLastAlarmAt();
+        if (
+            true === $lastAlarmAt instanceof DateTimeImmutable
+            && time() - $lastAlarmAt->getTimestamp() < self::MIN_ALARM_INTERVAL
+        ) {
+            return;
+        }
+
+        $this->appMailer->sendAlarm($user, $photo);
+        $user->setLastAlarmAt(new \DateTimeImmutable());
+        $this->entityManager->flush();
     }
 
 }

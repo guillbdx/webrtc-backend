@@ -168,30 +168,4 @@ class UserManager
         $this->entityManager->flush();
     }
 
-    /**
-     * @param Photo $photo
-     * @param int $mismatch
-     */
-    public function sendAlarmIfNeed(Photo $photo, int $mismatch): void
-    {
-        $user = $photo->getUser();
-
-        if (false === $user->isAlarmEnabled()) {
-            return;
-        }
-
-        if ($mismatch < 500) {
-            return;
-        }
-
-        $lastAlarmAt = $user->getLastAlarmAt();
-        if (true === $lastAlarmAt instanceof DateTimeImmutable && time() - $lastAlarmAt->getTimestamp() < 600) {
-            return;
-        }
-
-        $this->appMailer->sendAlarm($user, $photo);
-        $user->setLastAlarmAt(new \DateTimeImmutable());
-        $this->entityManager->flush();
-    }
-
 }

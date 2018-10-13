@@ -94,7 +94,7 @@ class PhotoController extends AbstractController
             }
 
             $photoManager->saveMismatch($photoBefore, $photoAfter, $mismatch);
-            $userManager->sendAlarmIfNeed($photoAfter, $mismatch);
+            $photoManager->sendAlarmIfNeed($photoAfter, $mismatch);
             return new Response('');
         }
 
