@@ -174,9 +174,4 @@ class PhotoManager
         }
     }
 
-    public function removePhoto(Photo $photo): void
-    {
-
-    }
-
 }
