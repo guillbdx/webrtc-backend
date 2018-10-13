@@ -42,6 +42,7 @@ class UserFactory
         $user->setCreatedAt(new DateTimeImmutable());
         $user->setAlarmEnabled(false);
         $user->setUseDuration(0);
+        $user->setAlarmUnsubscribeToken($this->tokenGenerator->generate());
 
         return $user;
     }

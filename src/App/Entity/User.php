@@ -122,6 +122,13 @@ class User implements UserInterface
     private $shootingToken;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="alarm_unsubscribe_token", length=255, nullable=false, unique=true)
+     */
+    private $alarmUnsubscribeToken;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -440,6 +447,25 @@ class User implements UserInterface
     public function setShootingToken(?string $shootingToken): self
     {
         $this->shootingToken = $shootingToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlarmUnsubscribeToken(): ?string
+    {
+        return $this->alarmUnsubscribeToken;
+    }
+
+    /**
+     * @param string $alarmUnsubscribeToken
+     * @return User
+     */
+    public function setAlarmUnsubscribeToken(string $alarmUnsubscribeToken): self
+    {
+        $this->alarmUnsubscribeToken = $alarmUnsubscribeToken;
 
         return $this;
     }
