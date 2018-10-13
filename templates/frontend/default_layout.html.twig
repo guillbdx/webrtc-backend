@@ -21,24 +21,40 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('pages_guide') }}">Comment ça marche ?</a>
+                            <a class="nav-link {% if app.request.get('_route') == 'pages_guide' %}active{% endif %}"
+                               href="{{ path('pages_guide') }}">
+                                Comment ça marche ?
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('pages_pricing') }}">Prix</a>
+                            <a class="nav-link {% if app.request.get('_route') == 'pages_pricing' %}active{% endif %}"
+                               href="{{ path('pages_pricing') }}">
+                                Prix
+                            </a>
                         </li>
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
+                                <a class="nav-link" href="{{ path('dashboard') }}">
+                                    Tableau de bord
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
+                                <a class="nav-link" href="{{ path('security_logout') }}">
+                                    Déconnexion
+                                </a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+                                <a class="nav-link {% if app.request.get('_route') == 'security_login' %}active{% endif %}"
+                                   href="{{ path('security_login') }}">
+                                    Connexion
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('security_signup') }}">Essai gratuit</a>
+                                <a class="nav-link {% if app.request.get('_route') == 'security_signup' %}active{% endif %}"
+                                   href="{{ path('security_signup') }}">
+                                    Essai gratuit
+                                </a>
                             </li>
                         {% endif %}
                     </ul>
