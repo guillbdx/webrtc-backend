@@ -1,7 +1,18 @@
-Bonjour,<br>
-<br>
-La commande <strong>{{ transaction.description }}</strong>,
-d'un montant de <strong>{{ transaction.amount|price }}</strong>,
-a bien été prise en compte.<br>
-<br>
-Vous êtes maintenant abonné(e) jusqu'au {{ transaction.user.subscribedTill | date('d/m/Y') }}.
+<p>
+    Bonjour,
+</p>
+
+<p>
+    La commande <strong>{{ transaction.description }}</strong>,
+    d'un montant de <strong>{{ transaction.amount|price }}</strong>,
+    a bien été prise en compte.<br>
+</p>
+
+<p>
+    Vous êtes maintenant abonné(e) jusqu'au {{ transaction.user.subscribedTill | date('d/m/Y') }}.
+</p>
+
+<p>
+    Cordialement,<br>
+    L'équipe Dilcam
+</p>

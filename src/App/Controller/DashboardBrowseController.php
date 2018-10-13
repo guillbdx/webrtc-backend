@@ -19,7 +19,7 @@ class DashboardBrowseController extends AbstractController
 {
 
     /**
-     * @Route("/", name="dasboard_browse")
+     * @Route("/", name="dashboard_browse")
      * @param UserInterface|User $user
      * @return Response
      */
@@ -74,7 +74,7 @@ class DashboardBrowseController extends AbstractController
     {
         $photoManager->removeUserPhotos($user);
         $this->addFlash('success', "Vos photos ont bien été supprimées.");
-        return $this->redirectToRoute('dasboard_browse');
+        return $this->redirectToRoute('dashboard_browse');
     }
 
 }

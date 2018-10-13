@@ -3,7 +3,36 @@
 </p>
 
 <p>
-    Mouvement détecté le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+    Une photo suspecte a été enregistrée par votre caméra le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+</p>
+
+<p>
+    Il peut s'agir d'un mouvement anormal devant la caméra, mais il est possible qu'il s'agisse d'un changement
+    brusque de luminosité. Nous vous invitons à vérifier ce qu'il en est sur la photographie ci-dessous :
 </p>
 
 <img src="https://{{ host }}{{ path('photo_show_secret', {photo: photo.id, secret: photo.secret}) }}">
+
+<p>
+    Si vous ne voyez pas de photographie, c'est que celle-ci est bloquée par votre logiciel de messagerie.
+    Dans ce cas, merci d'autoriser l'affichage des photographies pour les emails envoyés par Dilcam.
+</p>
+
+<p>
+    Cette photographie sera conservée 7 jours. Vous pouvez la consulter sur votre tableau de bord sur le site Dilcam :
+    <a href="https://{{ host }}{{ path('dashboard_browse') }}">
+        Visualiser les photos
+    </a>.
+</p>
+
+<p>
+    Vous ne souhaitez plus recevoir d'alarme en cas de photographie suspecte ?
+    <a href="https://{{ host }}{{ path('pages_alarm_unsubscribe', {'user': user.alarmUnsubscribeToken}) }}">
+        Désactivez l'envoi des alarmes
+    </a>.
+</p>
+
+<p>
+    Cordialement,<br>
+    L'équipe Dilcam
+</p>

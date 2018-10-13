@@ -200,7 +200,7 @@ class PagesController extends AbstractController
     }
 
     /**
-     * @Route("/alarm-unsubscribe/{user}", name="alarm_unsubscribe")
+     * @Route("/alarm-unsubscribe/{user}", name="pages_alarm_unsubscribe")
      * @ParamConverter("user", options={"mapping"={"user"="alarmUnsubscribeToken"}})
      * @param UserManager $userManager
      * @param User $user
