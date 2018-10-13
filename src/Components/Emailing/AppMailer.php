@@ -81,10 +81,16 @@ class AppMailer
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
-                $this->twig->render('email/email_check_token.html.twig', [
+                $this->twig->render('email/email_check_token/content.html.twig', [
                     'user' => $user
                 ]),
                 'text/html'
+            )
+            ->addPart(
+                $this->twig->render('email/email_check_token/content.txt.twig', [
+                    'user' => $user
+                ]),
+                'text/plain'
             )
         ;
 
@@ -106,10 +112,16 @@ class AppMailer
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
-                $this->twig->render('email/password_reset_token.html.twig', [
+                $this->twig->render('email/password_reset_token/content.html.twig', [
                     'user' => $user
                 ]),
                 'text/html'
+            )
+            ->addPart(
+                $this->twig->render('email/password_reset_token/content.txt.twig', [
+                    'user' => $user
+                ]),
+                'text/plain'
             )
         ;
 
@@ -129,11 +141,18 @@ class AppMailer
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
-                $this->twig->render('email/alarm.html.twig', [
+                $this->twig->render('email/alarm/content.html.twig', [
                     'user' => $user,
                     'photo' => $photo
                 ]),
                 'text/html'
+            )
+            ->addPart(
+                $this->twig->render('email/alarm/content.txt.twig', [
+                    'user' => $user,
+                    'photo' => $photo
+                ]),
+                'text/plain'
             )
         ;
 
@@ -157,11 +176,18 @@ class AppMailer
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo('contact@'.$this->host)
             ->setBody(
-                $this->twig->render('email/contact_message.html.twig', [
+                $this->twig->render('email/contact_message/content.html.twig', [
                     'from' => $from,
                     'message' => $message
                 ]),
                 'text/html'
+            )
+            ->addPart(
+                $this->twig->render('email/contact_message/content.txt.twig', [
+                    'from' => $from,
+                    'message' => $message
+                ]),
+                'text/plain'
             )
         ;
 
@@ -187,12 +213,20 @@ class AppMailer
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo('contact@'.$this->host)
             ->setBody(
-                $this->twig->render('email/withdrawal.html.twig', [
+                $this->twig->render('email/withdrawal/content.html.twig', [
                     'email' => $email,
                     'transactionReference' => $transactionReference,
                     'reason' => $reason
                 ]),
                 'text/html'
+            )
+            ->addPart(
+                $this->twig->render('email/withdrawal/content.txt.twig', [
+                    'email' => $email,
+                    'transactionReference' => $transactionReference,
+                    'reason' => $reason
+                ]),
+                'text/plain'
             )
         ;
 
@@ -218,10 +252,16 @@ class AppMailer
             ->setFrom(['no-reply@'.$this->host => 'Dilcam'])
             ->setTo($user->getEmail())
             ->setBody(
-                $this->twig->render('email/transaction_confirmation.html.twig', [
+                $this->twig->render('email/transaction_confirmation/content.html.twig', [
                     'transaction' => $transaction
                 ]),
                 'text/html'
+            )
+            ->addPart(
+                $this->twig->render('email/transaction_confirmation/content.txt.twig', [
+                    'transaction' => $transaction
+                ]),
+                'text/plain'
             )
         ;
 

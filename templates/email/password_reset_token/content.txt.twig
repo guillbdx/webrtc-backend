@@ -1,0 +1,11 @@
+Bonjour,
+
+Vous venez d'effectuer une demande de réinitialisation de mot de passe sur le site Dilcam.
+
+Si ce n'est pas vous qui avez effectué cette demande, veuillez simplement ignorer cet email.
+
+Si vous êtes bien à l'origine de cette demande, veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe :
+https://{{ host }}{{ path('security_reset_password', {passwordResetToken: user.passwordResetToken}) }}
+
+Cordialement,
+L'équipe Dilcam

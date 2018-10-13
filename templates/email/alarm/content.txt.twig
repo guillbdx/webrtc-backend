@@ -1,0 +1,15 @@
+Bonjour,
+
+Une photo suspecte a été enregistrée par votre caméra le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+
+Il peut s'agir d'un mouvement anormal devant la caméra, mais il est possible qu'il s'agisse d'un changement brusque de luminosité. Nous vous invitons à vérifier ce qu'il en suivant le lien ci-dessous :
+https://{{ host }}{{ path('photo_show_secret', {photo: photo.id, secret: photo.secret}) }}
+
+Cette photographie sera conservée 7 jours. Vous pouvez la consulter dans votre tableau de bord sur le site Dilcam :
+https://{{ host }}{{ path('dashboard_browse') }}
+
+Vous ne souhaitez plus recevoir d'alarme en cas de photographie suspecte ? Cliquez sur le lien ci-dessous pour désactiver les alarmes :
+https://{{ host }}{{ path('pages_alarm_unsubscribe', {'user': user.alarmUnsubscribeToken}) }}
+
+Cordialement,
+L'équipe Dilcam

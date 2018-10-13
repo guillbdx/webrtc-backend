@@ -16,10 +16,14 @@
 <p>
     Si vous ne voyez pas de photographie, c'est que celle-ci est bloquée par votre logiciel de messagerie.
     Dans ce cas, merci d'autoriser l'affichage des photographies pour les emails envoyés par Dilcam.
+    Vous pouvez également visualier la photographie en cliquant sur le lien suivant :
+    <a href="https://{{ host }}{{ path('photo_show_secret', {photo: photo.id, secret: photo.secret}) }}">
+        visualiser la photographie
+    </a>.
 </p>
 
 <p>
-    Cette photographie sera conservée 7 jours. Vous pouvez la consulter sur votre tableau de bord sur le site Dilcam :
+    Cette photographie sera conservée 7 jours. Vous pouvez la consulter dans votre tableau de bord sur le site Dilcam :
     <a href="https://{{ host }}{{ path('dashboard_browse') }}">
         Visualiser les photos
     </a>.
