@@ -1,0 +1,18 @@
+{% extends 'frontend/default_layout.html.twig' %}
+
+{% block title %}Désactivation des alarmes{% endblock %}
+
+{% block body %}
+
+    <h2>Désactivation des alarmes</h2>
+
+    <p>
+        La désactivation des alarmes a bien été prise en compte. Vous ne recevrez plus d'email en cas de photo suspecte.
+    </p>
+
+    <p>
+        Vous pouvez à tout moment réactiver les alarmes sur votre tableau de bord :
+        <a href="{{ path('dashboard_alarm') }}">Activer les alarmes</a>.
+    </p>
+
+{% endblock %}

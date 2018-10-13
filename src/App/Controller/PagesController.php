@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\Pages\ContactType;
 use App\Form\Type\Pages\WithdrawalType;
+use App\Manager\UserManager;
 use App\Service\SoftwareDetector;
 use Components\Captcha\Service\CaptchaService;
 use Components\Emailing\AppMailer;
@@ -12,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/pages")
@@ -195,6 +197,22 @@ class PagesController extends AbstractController
             'form' => $form->createView(),
             'displayForm' => $displayForm
         ]);
+    }
+
+    /**
+     * @Route("/alarm-unsubscribe/{user}", name="alarm_unsubscribe")
+     * @ParamConverter("user", options={"mapping"={"user"="alarmUnsubscribeToken"}})
+     * @param UserManager $userManager
+     * @param User $user
+     * @return Response
+     */
+    public function alarmUnsubscribe(
+        UserManager $userManager,
+        User $user
+    )
+    {
+        $userManager->disableAlarm($user);
+        return $this->render('frontend/default/pages/alarm_unsubscribe.html.twig');
     }
 
 }
