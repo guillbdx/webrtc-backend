@@ -40,7 +40,7 @@ class UserFactory
         $user->setRoles(['ROLE_USER']);
         $user->setRoomId($this->tokenGenerator->generate());
         $user->setCreatedAt(new DateTimeImmutable());
-        $user->setAlarmEnabled(false);
+        $user->setAlarmEnabled(true);
         $user->setUseDuration(0);
         $user->setAlarmUnsubscribeToken($this->tokenGenerator->generate());
 
