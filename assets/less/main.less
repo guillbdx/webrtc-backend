@@ -18,3 +18,30 @@ body {
   opacity: 0.9;
   box-shadow: 2px 2px #dddddd;
 }
+
+#headBar {
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  .navbar-brand {
+    width: 61px;
+    height: 70px;
+    background: url('../images/dilcam.png');
+    text-indent: -9999px;
+    background-size:cover;
+    position: relative;
+  }
+  .nav-item {
+    a {
+      text-transform: uppercase;
+      color: #555;
+      padding-right: 1em;
+      padding-left: 1em;
+      &:hover {
+        color: #b06ab3;
+      }
+    }
+  }
+  .navbar-toggler {
+    text-transform: uppercase;
+    color: #555;
+  }
+}

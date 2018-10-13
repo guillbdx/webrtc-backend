@@ -5,41 +5,55 @@
     <title>Dilcam - {% block title %}{% endblock %}</title>
 </head>
 <body>
+
+
+    <div id="headBar">
+        <div class="container">
+
+            <nav class="navbar navbar-expand-md">
+
+                <a class="navbar-brand" href="{{ path('home') }}">Dilcam</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    Menu
+                </button>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('pages_guide') }}">Comment ça marche ?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('pages_pricing') }}">Prix</a>
+                        </li>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_signup') }}">Essai gratuit</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+
+
+        </div>
+
+    </div>
+
+
 <div class="container">
 
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="{{ path('home') }}">Dilcam</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('pages_guide') }}">Comment ça marche ?</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('pages_pricing') }}">Prix</a>
-                </li>
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('security_signup') }}">Essai gratuit</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
     {% include 'frontend/includes/_flash.html.twig' %}
     {% block body %}{% endblock %}
     {% include 'frontend/includes/_footer.html.twig' %}
