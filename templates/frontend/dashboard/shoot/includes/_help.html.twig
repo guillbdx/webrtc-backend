@@ -1,0 +1,42 @@
+{% if operatingSystem == constant('App\\Service\\SoftwareDetector::WINDOWS') %}
+    <p>
+        Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
+        l'ordinateur de se mettre en veille automatiquement.
+    </p>
+    <p>
+        <a href="{{ path('pages_sleeping') }}">
+            Plus d'informations sur la mise en veille
+        </a>.
+    </p>
+{% endif %}
+
+{% if operatingSystem == constant('App\\Service\\SoftwareDetector::MAC') %}
+    <p>
+        Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
+        l'ordinateur de se mettre en veille automatiquement.
+    </p>
+    <p>
+        Veuillez également vous assurer que votre ordinateur n'entrera pas automatiquement
+        en veille au bout d'un certain temps d'inactivé.
+        <a href="{{ path('pages_sleeping') }}">
+            Plus d'informations ici
+        </a>.
+    </p>
+{% endif %}
+
+{% if operatingSystem == constant('App\\Service\\SoftwareDetector::LINUX') %}
+    <p>
+        Vous utilisez un système d'exploitation Linux. Merci de vous assurer dans vos
+        paramètres systèmes que l'ordinateur n'entrera pas automatiquement en veille
+        après un certain temps d'inactivité. Veuillez également laisser cette fenêtre
+        ouverte en votre absence.
+    </p>
+{% endif %}
+
+{% if operatingSystem == constant('App\\Service\\SoftwareDetector::ANDROID')
+    or operatingSystem == constant('App\\Service\\SoftwareDetector::IPHONE')
+    or operatingSystem == constant('App\\Service\\SoftwareDetector::OTHER') %}
+    <p>
+        Merci de laisser cette fenêtre ouverte en votre absence.
+    </p>
+{% endif %}

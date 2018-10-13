@@ -13,7 +13,19 @@ const cameraRefusedPath = document.getElementById('cameraRefusedPath').value;
 const allowedIceType = document.getElementById('allowedIceType').value;
 
 const localVideo = document.getElementById('localVideo');
+const alertNoRTC = document.getElementById('alertNoRTC');
+const help = document.getElementById('help');
 let iceServers = [];
+
+//----------------------------------------------------------------
+// CHECK SUPPORT
+//----------------------------------------------------------------
+
+if (typeof RTCPeerConnection !== 'function') {
+    alertNoRTC.style.display = 'block';
+    localVideo.style.display = 'none';
+    help.style.display = 'none';
+}
 
 //----------------------------------------------------------------
 // SIGNALING

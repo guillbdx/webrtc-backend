@@ -14,53 +14,19 @@
 
             <br>
 
+            <div class="alert alert-danger" id="alertNoRTC" style="display: none;">
+                Votre navigateur semble trop ancien pour supporter le transfert de vidéo. Merci de le mettre
+                à jour ou d'utiliser <a href="https://www.google.com/intl/fr_ALL/chrome/">Google Chrome</a>
+                ou <a href="https://www.mozilla.org/fr/firefox/new/">Mozilla Firefox</a>.
+            </div>
+
             <div class="embed-responsive embed-responsive-16by9">
                 <video class="embed-responsive-item" id="localVideo" autoplay muted></video>
             </div>
 
-            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::WINDOWS') %}
-                <p>
-                    Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
-                    l'ordinateur de se mettre en veille automatiquement.
-                </p>
-                <p>
-                    <a href="{{ path('pages_sleeping') }}">
-                        Plus d'informations sur la mise en veille
-                    </a>.
-                </p>
-            {% endif %}
-
-            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::MAC') %}
-                <p>
-                    Veuillez laisser cette fenêtre ouverte en votre absence. Ceci empêchera
-                    l'ordinateur de se mettre en veille automatiquement.
-                </p>
-                <p>
-                    Veuillez également vous assurer que votre ordinateur n'entrera pas automatiquement
-                    en veille au bout d'un certain temps d'inactivé.
-                    <a href="{{ path('pages_sleeping') }}">
-                        Plus d'informations ici
-                    </a>.
-                </p>
-            {% endif %}
-
-            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::LINUX') %}
-                <p>
-                    Vous utilisez un système d'exploitation Linux. Merci de vous assurer dans vos
-                    paramètres systèmes que l'ordinateur n'entrera pas automatiquement en veille
-                    après un certain temps d'inactivité. Veuillez également laisser cette fenêtre
-                    ouverte en votre absence.
-                </p>
-            {% endif %}
-
-            {% if operatingSystem == constant('App\\Service\\SoftwareDetector::ANDROID')
-                or operatingSystem == constant('App\\Service\\SoftwareDetector::IPHONE')
-                or operatingSystem == constant('App\\Service\\SoftwareDetector::OTHER') %}
-                <p>
-                    Merci de laisser cette fenêtre ouverte en votre absence.
-                </p>
-            {% endif %}
-
+            <div id="help">
+                {% include 'frontend/dashboard/shoot/includes/_help.html.twig' %}
+            </div>
 
             {% if 'dev' == app.environment %}
                 <div class="text-center mt-3">
