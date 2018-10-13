@@ -38,7 +38,7 @@ class DashboardAlarmController extends AbstractController
     )
     {
         $userManager->enableAlarm($user);
-        $this->addFlash('success', "L'alarme a été activée.");
+        $this->addFlash('success', "L'alarme est maintenant activée.");
 
         return $this->redirectToRoute('dashboard_alarm');
     }
@@ -55,7 +55,7 @@ class DashboardAlarmController extends AbstractController
     )
     {
         $userManager->disableAlarm($user);
-        $this->addFlash('success', "L'alarme a été désactivée.");
+        $this->addFlash('success', "L'alarme est maintenant désactivée.");
 
         return $this->redirectToRoute('dashboard_alarm');
     }

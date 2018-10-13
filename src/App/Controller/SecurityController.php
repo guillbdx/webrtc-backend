@@ -121,7 +121,7 @@ class SecurityController extends AbstractController
             $userManager->log($fetchedUser);
         }
 
-        $this->addFlash('success', 'Votre email a bien été confirmé.');
+        $this->addFlash('success', 'Merci, votre email a bien été confirmé. Vous pouvez maintenant utiliser le site Dilcam.');
 
         return $this->redirectToRoute('dashboard');
     }
@@ -143,7 +143,7 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData()['user'];
             $userManager->requestPasswordReset($user);
-            $this->addFlash('success', 'Un email avec un lien vous a été envoyé.');
+            $this->addFlash('success', 'Un email contenant un lien de réinitialisation de mot de passe vous a été envoyé.');
             $display = false;
         }
         return $this->render('frontend/default/security/reset_password_request.html.twig', [
