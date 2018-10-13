@@ -16,10 +16,19 @@ const alertShooterNotExists = document.getElementById('alertShooterNotExists');
 const alertPendingConnection = document.getElementById('alertPendingConnection');
 const alertShooterSeemsNotExists = document.getElementById('alertShooterSeemsNotExists');
 const alertIssue = document.getElementById('alertIssue');
+const alertNoRTC = document.getElementById('alertNoRTC');
 
 let somethingHappened = false;
 
 let iceServers = [];
+
+//----------------------------------------------------------------
+// CHECK SUPPORT
+//----------------------------------------------------------------
+
+if (typeof RTCPeerConnection !== 'function') {
+    showNoRTC();
+}
 
 //----------------------------------------------------------------
 // SIGNALING
@@ -105,6 +114,11 @@ function showVideo() {
     alertShooterSeemsNotExists.style.display = 'none';
     alertPendingConnection.style.display = 'none';
     alertIssue.style.display = 'none';
+}
+
+function showNoRTC() {
+    alertNoRTC.style.display = 'block';
+    alertPendingConnection.style.display = 'none';
 }
 
 //----------------------------------------------------------------
