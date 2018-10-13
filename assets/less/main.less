@@ -1,5 +1,6 @@
 body {
-
+  font-family: "Poppins", sans-serif !important;
+  color: #333;
 }
 
 #cookieBottomBox {
@@ -19,8 +20,9 @@ body {
   box-shadow: 2px 2px #dddddd;
 }
 
-#headBar {
+#header {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2em;
   .navbar-brand {
     width: 61px;
     height: 70px;
@@ -43,5 +45,21 @@ body {
   .navbar-toggler {
     text-transform: uppercase;
     color: #555;
+  }
+}
+
+#footer {
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  position: relative;
+  .navbar {
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 0.9em;
+    a {
+      color: #333333;
+      &:hover {
+        color: #b06ab3;
+      }
+    }
   }
 }
