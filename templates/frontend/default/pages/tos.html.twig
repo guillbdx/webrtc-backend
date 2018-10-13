@@ -134,11 +134,16 @@
                         la deuxième photo est enregistrée.
                     </li>
                     <li>
-                        Si la différencre entre deux photos successives est supérieure à 7,5 %,
+                        Si la différencre entre deux photos successives est supérieure à
+                        {{ (constant('App\\Manager\\PhotoManager::MIN_MISMATCH_FOR_ALARMING') / 100) | number_format(2, ',') }} %,
                         en plus d'être enregistrée, la deuxième photo générera une alarme.
                     </li>
                     <li>
                         Une alarme est un email envoyé à l'utilisateur, contenant la photo suspecte.
+                    </li>
+                    <li>
+                        Dilcam n'envoie jamais plus d'une alarme par tranche de
+                        {{ constant('App\\Manager\\PhotoManager::MIN_ALARM_INTERVAL') / 60 }} minutes.
                     </li>
                 </ul>
 

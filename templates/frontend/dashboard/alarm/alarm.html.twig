@@ -14,10 +14,12 @@
         </p>
         <ul>
             <li>
-                La fréquence des alarmes est de <strong>1 alarme maximum par tranche de 10 minutes</strong>.
+                La fréquence des alarmes est de
+                <strong>1 alarme maximum par tranche de {{ constant('App\\Manager\\PhotoManager::MIN_ALARM_INTERVAL') / 60 }} minutes</strong>.
             </li>
             <li>
-                Une alarme n'est envoyée que si la probablité de mouvement détecté est supérieure à <strong>7,5 %</strong>.
+                Une alarme n'est envoyée que si la probablité de mouvement détecté est supérieure à
+                <strong>{{ (constant('App\\Manager\\PhotoManager::MIN_MISMATCH_FOR_ALARMING') / 100) | number_format(2, ',') }} %</strong>.
             </li>
         </ul>
         <p>

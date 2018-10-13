@@ -22,7 +22,7 @@ class PhotoManager
 
     public const MIN_MISMATCH_FOR_ALARMING  = 750;
 
-    public const MIN_ALARM_INTERVAL         = 600;
+    public const MIN_ALARM_INTERVAL         = 300;
 
     /**
      * @var EntityManagerInterface
