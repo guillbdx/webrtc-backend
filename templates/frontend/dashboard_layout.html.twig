@@ -67,8 +67,7 @@
             </ul>
         </td>
         <td id="dashboard-content">
-            <div class="container-fluid">
-                <span></span>
+            <div class="container">
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
                 {% include 'frontend/includes/_flash.html.twig' %}
                 {% block body %}{% endblock %}
@@ -82,11 +81,20 @@
 </footer>
 
 <script>
-    if ($(document).width() < 650) {
-        $("#dashboard-sidebar").hide();
-    } else {
-        $("#dashboard-sidebar").show();
+    function showHideSidebar() {
+        if ($(document).width() < 650) {
+            $("#dashboard-sidebar").hide();
+            $('#menu-toggle').show();
+        } else {
+            $("#dashboard-sidebar").show();
+            $('#menu-toggle').hide();
+        }
     }
+    showHideSidebar();
+
+    window.onresize = function(event) {
+        showHideSidebar();
+    };
 
     $("#menu-toggle").click(function(e) {
         $("#dashboard-sidebar").toggle();
