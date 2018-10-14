@@ -81,5 +81,19 @@
     {% include 'frontend/includes/_footer.html.twig' %}
 </footer>
 
+<script>
+    if ($(document).width() < 650) {
+        $("#dashboard-sidebar").hide();
+    } else {
+        $("#dashboard-sidebar").show();
+    }
+
+    $("#menu-toggle").click(function(e) {
+        $("#dashboard-sidebar").toggle();
+
+        return false;
+    });
+</script>
+
 </body>
 </html>

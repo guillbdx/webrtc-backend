@@ -11,9 +11,6 @@ body {
   color: #333;
   min-height: 100%;
   position: relative;
-  &.sidebarDisplayed {
-    background: linear-gradient(90deg, #4B68DA, #4B68DA 220px, #fff 220px, #fff 100%);
-  }
 }
 
 h2 {
@@ -287,7 +284,7 @@ table#dashboard {
   #dashboard-sidebar {
     display: none;
     height: 100%;
-    width: 220px;
+    //width: 220px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -303,7 +300,7 @@ table#dashboard {
     }
     .sidebar-nav {
       margin: 0;
-      padding: 1em 0;
+      padding: 1em 1em 1em 0;
       list-style: none;
       li {
         text-indent: 20px;
