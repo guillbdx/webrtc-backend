@@ -276,27 +276,16 @@ section.services .row .item:hover {
 // DASHBOARD WRAPPER AND SIDEBAR
 //---------------------------------------------------------------
 
-table#dashboard {
-  td {
-    vertical-align: top;
-    border: 0;
-  }
+#dashboard {
+  display: flex;
+  height: 100%;
   #dashboard-sidebar {
-    display: none;
-    height: 100%;
-    //width: 220px;
-    overflow-y: auto;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    color: white;
     background: #4B68DA;
-    white-space: nowrap;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
     #dashboard-sidebar-top {
       background: white;
       padding: 0.5em 0;
-      border-right: solid 1px lightgray;
+      //border-right: solid 1px lightgray;
     }
     .sidebar-nav {
       margin: 0;
@@ -309,6 +298,7 @@ table#dashboard {
           display: block;
           text-decoration: none;
           color: white;
+          white-space: nowrap;
           .fa {
             display: inline;
             margin-right: 0.5em;
@@ -317,18 +307,19 @@ table#dashboard {
       }
     }
   }
+
   #dashboard-content {
-    padding-top: 1em;
-    padding-left: 1em;
+    flex: 1;
+    #dashboard-content-scrollable {
+      padding: 1em 1em 100px 2em;
+      overflow-y: scroll;
+      height: 100%;
+    }
   }
 }
 
-#dashboard-content {
-  padding-bottom: 100px;
-}
-
 @media only screen and (max-width: 570px) {
-  #dashboard-content {
-    padding-bottom: 220px;
+  #dashboard #dashboard-content #dashboard-content-scrollable {
+    padding: 1em 1em 220px 1em;
   }
 }

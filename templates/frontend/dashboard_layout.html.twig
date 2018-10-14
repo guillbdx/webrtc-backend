@@ -4,11 +4,10 @@
     {% include 'frontend/includes/_head.html.twig' %}
     <title>Dilcam - {% block title %}{% endblock %}</title>
 </head>
-<body>
+<body style="height: 100%;">
 
-<table id="dashboard" cellpadding="0">
-    <tr>
-        <td id="dashboard-sidebar">
+<div id="dashboard">
+        <div id="dashboard-sidebar">
             <div id="dashboard-sidebar-top" class="text-center">
                 <a href="{{ path('home') }}" class="navbar-brand">
                     Dilcam
@@ -65,16 +64,15 @@
                     </a>
                 </li>
             </ul>
-        </td>
-        <td id="dashboard-content">
-            <div class="container">
+        </div>
+        <div id="dashboard-content">
+            <div id="dashboard-content-scrollable">
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
                 {% include 'frontend/includes/_flash.html.twig' %}
                 {% block body %}{% endblock %}
             </div>
-        </td>
-    </tr>
-</table>
+        </div>
+</div>
 
 <footer id="footer" class="footer">
     {% include 'frontend/includes/_footer.html.twig' %}
