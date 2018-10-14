@@ -4,32 +4,70 @@
 
 {% block body %}
 
-    <p>
-        Votre ordinateur filme votre habitat avec la webcam de votre ordinateur.
-    </p>
+    <section id="services" class="services">
+        <div class="container">
 
-    <p>
-        Vous pouvez surveiller en direct ce qui se passe chez vous depuis un autre appareil.
-    </p>
+            <div class="row text-center">
 
-    <p>
-        Recevez une alarme chaque fois qu'un mouvement est détecté.
-    </p>
+                <div class="item col-lg-6 fadeInUp">
+                    <img src="{{ asset('build/images/home/webcam.png') }}" alt="..." class="img-fluid">
+                    <h3>Filmer</h3>
+                    <p>
+                        Votre ordinateur filme votre habitat avec la webcam de votre ordinateur.
+                    </p>
+                </div>
 
-    <p>
-        En plus de surveiller en direct, vous pouvez consulter les photos prises sur 7 jours.
-    </p>
+                <div class="item col-lg-6 fadeInUp" data-wow-delay="0.2s">
+                    <img src="{{ asset('build/images/home/phone.png') }}" alt="..." class="img-fluid">
+                    <h3>Surveiller</h3>
+                    <p>
+                        Vous pouvez surveiller en direct ce qui se passe chez vous depuis un autre appareil.
+                    </p>
+                </div>
 
-    <p>
-        <a href="{{ path('pages_guide') }}">
-            Guide d'utilisation
-        </a>
-    </p>
+                <div class="item col-lg-6 fadeInUp" data-wow-delay="0.4s">
+                    <img src="{{ asset('build/images/home/alarm.png') }}" alt="..." class="img-fluid">
+                    <h3>Alarmes</h3>
+                    <p>
+                        Recevez une alarme chaque fois qu'un mouvement est détecté.
+                    </p>
+                </div>
 
-    <p>
-        <a href="{{ path('security_signup') }}">
-            Essai gratuit
-        </a>
-    </p>
+                <div class="item col-lg-6 fadeInUp" data-wow-delay="0.6s">
+                    <img src="{{ asset('build/images/home/archive.png') }}" alt="..." class="img-fluid">
+                    <h3>Archivage</h3>
+                    <p>
+                        En plus de surveiller en direct, vous pouvez consulter les photos prises sur 7 jours.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="text-center pt-5">
+        <p>
+            <a href="{{ path('security_signup') }}" class="btn btn-success btn-lg">
+                Essai gratuit
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('pages_guide') }}" class="btn btn-warning btn-lg">
+                Guide d'utilisation
+            </a>
+        </p>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

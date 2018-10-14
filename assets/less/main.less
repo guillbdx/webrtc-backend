@@ -124,6 +124,21 @@ section.hero {
     p {
       font-size: 1.2em;
     }
+    a#knowMore {
+      background-image: linear-gradient(to left, #ff5f6d, #ffc371);
+      padding: 7px 40px;
+      color: #fff;
+      font-weight: 400;
+      border-radius: 50px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      border: none;
+      text-transform: uppercase;
+      text-decoration: none;
+      &:hover {
+        background: white;
+        color: #ffc371;
+      }
+    }
   }
   .computer {
     background: url('../images/hero-mac.png');
@@ -180,3 +195,35 @@ section.hero {
     }
   }
 }
+
+//---------------------------------------------------------------
+// SERVICES SECTION
+//---------------------------------------------------------------
+
+section.services header {
+  margin-bottom: 70px;
+}
+
+section.services .row .item {
+  padding: 40px 20px;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+section.services .row .item img {
+  margin-bottom: 20px;
+  max-width: 100px;
+}
+
+section.services .row .item p {
+  margin-bottom: 0;
+  color: #777;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+section.services .row .item:hover {
+  background: #fff;
+}
+
+

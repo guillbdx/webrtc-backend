@@ -78,12 +78,12 @@
                             <br>
                             par webcam
                         </h1>
-                        <p>
+                        <p class="pb-2">
                             Surveillez votre habitat avec
                             <br>
                             la webcam de votre ordinateur.
                         </p>
-                        <a href="#about" class="btn btn-warning">
+                        <a href="#" id="knowMore">
                             En savoir plus
                         </a>
                     </div>
@@ -91,12 +91,21 @@
             </div>
 
         </section>
+
+        <script>
+            jQuery("#knowMore").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#services").offset().top
+                }, 1000);
+                return false;
+            });
+        </script>
+
     {% endif %}
 
     <div id="content" class="container">
         {% include 'frontend/includes/_flash.html.twig' %}
         {% block body %}{% endblock %}
-
         {% include 'frontend/includes/_cookies_alert.html.twig' %}
     </div>
 
