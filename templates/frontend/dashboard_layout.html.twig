@@ -87,6 +87,13 @@
             e.preventDefault();
             $("#dashboard-sidebar").toggle();
         });
+
+        if ($(document).width() < 650) {
+            $("#dashboard-sidebar").hide();
+        } else {
+            $("#dashboard-sidebar").show();
+        }
+
     </script>
 
 </body>
