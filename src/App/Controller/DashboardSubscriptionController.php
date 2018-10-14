@@ -34,13 +34,18 @@ class DashboardSubscriptionController extends AbstractController
     /**
      * @Route("/", name="dashboard_subscription_manage")
      * @param UserInterface|User $user
+     * @param TransactionRepository $transactionRepository
      * @return Response
      */
     public function manage(
-        UserInterface $user
+        UserInterface $user,
+        TransactionRepository $transactionRepository
     )
     {
-        return $this->render('frontend/dashboard/subscription/manage.html.twig');
+        $transactions = $transactionRepository->findByUser($user);
+        return $this->render('frontend/dashboard/subscription/manage.html.twig', [
+            'displayLinkToTransactions' => count($transactions) > 0
+        ]);
     }
 
     /**

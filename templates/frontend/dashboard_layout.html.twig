@@ -6,51 +6,59 @@
 </head>
 <body>
 
-    <div class="container">
+    <div id="dashboard">
 
-        <div class="row">
-            <div class="col-md-3">
+        <!-- Sidebar -->
+        <div id="sidebar-dashboard">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{{ path('home') }}" class="yo">
+                        Dilcam
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-                <a href="{{ path('home') }}">Dilcam</a>
-                <br>
-                {{ app.user.email }}
-                <br>
-                <a href="{{ path('security_logout') }}">Déconnexion</a>
-                <br>
-
-                <div class="list-group mt-4">
-                    <a href="{{ path('dashboard') }}" class="list-group-item list-group-item-action">
-                        Tableau de bord
-                    </a>
-                    <a href="{{ path('dashboard_subscription_manage') }}" class="list-group-item list-group-item-action">
-                        Abonnement
-                    </a>
-                    <a href="{{ path('dashboard_shoot_junction') }}" class="list-group-item list-group-item-action">
-                        Filmer
-                    </a>
-                    <a href="{{ path('dashboard_watch_watch') }}" class="list-group-item list-group-item-action">
-                        Surveiller
-                    </a>
-                    <a href="{{ path('dashboard_browse') }}" class="list-group-item list-group-item-action">
-                        Visionner les photos
-                    </a>
-                    <a href="{{ path('dashboard_alarm') }}" class="list-group-item list-group-item-action">
-                        Alarme
-                    </a>
-                    <a href="{{ path('dashboard_change_password') }}" class="list-group-item list-group-item-action">
-                        Mot de passe
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-9">
+        <!-- Page Content -->
+        <div id="page-content-dashboard">
+            <div class="container-fluid">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
                 {% include 'frontend/includes/_flash.html.twig' %}
                 {% block body %}{% endblock %}
             </div>
         </div>
-
-        {% include 'frontend/includes/_footer.html.twig' %}
-        {% include 'frontend/includes/_cookies_alert.html.twig' %}
+        <!-- /#page-content-wrapper -->
 
     </div>
+
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#dashboard").toggleClass("toggled");
+        });
+    </script>
+
 </body>
 </html>

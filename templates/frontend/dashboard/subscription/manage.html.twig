@@ -1,14 +1,12 @@
 {% extends 'frontend/dashboard_layout.html.twig' %}
 
-{% block title %}Votre compte{% endblock %}
+{% block title %}Votre abonnement{% endblock %}
 
 {% block body %}
 
-    <h2>Votre compte</h2>
+    <h2>Votre abonnement</h2>
 
     {% set userStatus = userStatus(app.user) %}
-
-    <h3>Votre abonnement</h3>
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
         <p>
@@ -45,10 +43,14 @@
         </p>
     {% endif %}
 
-    <h3>Vos commandes</h3>
+    {% if displayLinkToTransactions %}
 
-    <a href="{{ path('dashboard_subscription_transactions') }}">
-        Liste de vos commandes
-    </a>
+        <h3>Vos commandes</h3>
+
+        <a href="{{ path('dashboard_subscription_transactions') }}">
+            Liste de vos commandes
+        </a>
+
+    {% endif %}
 
 {% endblock %}
