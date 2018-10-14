@@ -4,6 +4,7 @@
 
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 body {
   font-family: "Poppins", sans-serif !important;
@@ -168,5 +169,14 @@ section.hero {
 @media (max-width: 1200px) {
   section.hero .computer {
     background-size: 80% !important;
+  }
+}
+@media (max-width: 480px) {
+  section.hero {
+    .container {
+      h1 {
+        font-size: 2.5em;
+      }
+    }
   }
 }
