@@ -12,6 +12,7 @@ use App\Factory\TransactionFactory;
 use App\Form\Type\Dashboard\Subscription\QuantityType;
 use App\Manager\TransactionManager;
 use App\Model\Subscription;
+use App\Repository\TransactionRepository;
 use App\Service\StripeService;
 use App\Service\SubscriptionService;
 use Components\Emailing\AppMailer;
@@ -29,6 +30,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class DashboardSubscriptionController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="dashboard_subscription_manage")
+     * @param UserInterface|User $user
+     * @return Response
+     */
+    public function manage(
+        UserInterface $user
+    )
+    {
+        return $this->render('frontend/dashboard/subscription/manage.html.twig');
+    }
 
     /**
      * @Route("/quantity/{quantity}", name="dashboard_subscription_quantity")
@@ -169,6 +182,24 @@ class DashboardSubscriptionController extends AbstractController
     )
     {
         return $this->render('frontend/dashboard/subscription/failure.html.twig');
+    }
+
+    /**
+     * @Route("/transactions", name="dashboard_subscription_transactions")
+     * @param UserInterface|User $user
+     * @param TransactionRepository $transactionRepository
+     * @return Response
+     */
+    public function transactionsList(
+        UserInterface $user,
+        TransactionRepository $transactionRepository
+    )
+    {
+        $transactions = $transactionRepository->findByUser($user);
+
+        return $this->render('frontend/dashboard/subscription/transactions.html.twig', [
+            'transactions' => $transactions
+        ]);
     }
 
 }

@@ -17,12 +17,13 @@
                 <br>
                 <a href="{{ path('security_logout') }}">Déconnexion</a>
                 <br>
-                <a href="{{ path('dashboard') }}">Tableau de bord</a>
-                <br>
 
                 <div class="list-group mt-4">
-                    <a href="{{ path('dashboard_account') }}" class="list-group-item list-group-item-action">
-                        Votre compte
+                    <a href="{{ path('dashboard') }}" class="list-group-item list-group-item-action">
+                        Tableau de bord
+                    </a>
+                    <a href="{{ path('dashboard_subscription_manage') }}" class="list-group-item list-group-item-action">
+                        Abonnement
                     </a>
                     <a href="{{ path('dashboard_shoot_junction') }}" class="list-group-item list-group-item-action">
                         Filmer
@@ -34,7 +35,10 @@
                         Visionner les photos
                     </a>
                     <a href="{{ path('dashboard_alarm') }}" class="list-group-item list-group-item-action">
-                        Activer / Désactiver l'alarme
+                        Alarme
+                    </a>
+                    <a href="{{ path('dashboard_change_password') }}" class="list-group-item list-group-item-action">
+                        Mot de passe
                     </a>
                 </div>
             </div>

@@ -45,16 +45,10 @@
         </p>
     {% endif %}
 
-    <h3>Mot de passe</h3>
-
-    <a href="{{ path('dashboard_account_change_password') }}">
-        Changer votre mot de passe
-    </a>
-
     <h3>Vos commandes</h3>
 
-    <a href="{{ path('dashboard_account_transactions') }}">
-        Voir la liste de vos commandes
+    <a href="{{ path('dashboard_subscription_transactions') }}">
+        Liste de vos commandes
     </a>
 
 {% endblock %}
