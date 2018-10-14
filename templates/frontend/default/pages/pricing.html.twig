@@ -8,23 +8,60 @@
 
     <p>
         Dilcam vous propose une formule unique incluant toutes les fonctionnalités.
-        Son prix est de {{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC pour un mois.
+        Son prix est de <strong>{{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC</strong> par mois, sans engagement.
     </p>
 
     <p>
-        Cette formule est sans engagement : lorsque vous souvscrivez, vous
+        Cette formule est <strong>sans engagement</strong> : lorsque vous souscrivez, vous
         choisissez pour combien de temps vous souhaitez utiliser le service.
     </p>
 
-    <h3>{{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC / mois</h3>
+    <div class="text-center">
+        <div id="price">
+            <h3>{{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC / mois</h3>
 
-    <ul>
-        <li>Vidéo surveillance en direct 24/24</li>
-        <li>Détection de mouvement</li>
-        <li>Evoi d'une alarme en cas de mouvement détecté</li>
-        <li>Enregistrement d'une photo par minute</li>
-        <li>Archivage des photos sur 7 jours cumulés</li>
-        <li>Sans engagement</li>
-    </ul>
+            <ul>
+                <li>
+                    <i class="fa fa-check"></i>
+                    Vidéo surveillance en direct 24/24.
+                </li>
+                <li>
+                    <i class="fa fa-check"></i>
+                    Détection de mouvement.
+                </li>
+                <li>
+                    <i class="fa fa-check"></i>
+                    Envoi d'une alarme en cas de mouvement détecté.
+                </li>
+                <li>
+                    <i class="fa fa-check"></i>
+                    Enregistrement d'une photo par minute.
+                </li>
+                <li>
+                    <i class="fa fa-check"></i>
+                    Archivage des photos des 7 derniers jours.
+                </li>
+                <li>
+                    <i class="fa fa-check"></i>
+                    Sans engagement.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <section class="text-center pt-5">
+        <p>
+            <a href="{{ path('security_signup') }}" class="btn btn-success btn-lg">
+                Essai gratuit
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('pages_guide') }}" class="btn btn-warning btn-lg">
+                Guide d'utilisation
+            </a>
+        </p>
+    </section>
+
 
 {% endblock %}

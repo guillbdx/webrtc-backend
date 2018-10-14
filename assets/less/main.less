@@ -13,6 +13,22 @@ body {
   position: relative;
 }
 
+h2 {
+  margin-bottom: 1em;
+  &:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: #b06ab3;
+    margin: 5px 0;
+  }
+}
+
+h3 {
+  font-size: 1.65em;
+}
+
 //---------------------------------------------------------------
 // HEADER
 //---------------------------------------------------------------
@@ -141,7 +157,7 @@ section.hero {
     }
   }
   .computer {
-    background: url('../images/hero-mac.png');
+    background: url('../images/home/hero-mac.png');
     width: 100%;
     height: 100%;
     display: block;
@@ -163,7 +179,7 @@ section.hero {
     top: 50%;
     left: 50%;
     max-width: 1900px;
-    background: url('../images/world-map.png') no-repeat;
+    background: url('../images/home/world-map.png') no-repeat;
     background-size: 80%;
     background-position: center center;
     opacity: 0.1;
@@ -225,5 +241,37 @@ section.services .row .item p {
 section.services .row .item:hover {
   background: #fff;
 }
+
+//---------------------------------------------------------------
+// PRICE
+//---------------------------------------------------------------
+
+#price {
+  display: inline-block;;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  margin: 2em auto;
+  padding: 2em;
+  h3 {
+    color: #b06ab3;
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+  ul {
+    text-align: left;
+    color: #777;
+    list-style-type: none;
+    padding: 0;
+    li {
+      margin-bottom: 1em;
+      i {
+        color: #b06ab3;
+        margin-right: 1em;
+      }
+    }
+  }
+}
+
+
+
 
 
