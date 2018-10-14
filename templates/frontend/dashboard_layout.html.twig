@@ -6,22 +6,9 @@
 </head>
 <body>
 
-<table>
+<table id="dashboard" cellpadding="0">
     <tr>
-        <td>
-
-        </td>
-        <td>
-
-        </td>
-    </tr>
-</table>
-
-    <div id="dashboard">
-
-        <!-- Sidebar -->
-        <div id="dashboard-sidebar">
-
+        <td id="dashboard-sidebar">
             <div id="dashboard-sidebar-top" class="text-center">
                 <a href="{{ path('home') }}" class="navbar-brand">
                     Dilcam
@@ -81,29 +68,24 @@
                     {{ app.user.email }}
                 </li>
             </ul>
-            <p>
-
-            </p>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="dashboard-page-content">
+        </td>
+        <td id="dashboard-content">
             <div class="container-fluid">
                 <span></span>
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
                 {% include 'frontend/includes/_flash.html.twig' %}
                 {% block body %}{% endblock %}
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+        </td>
+    </tr>
+</table>
 
-    </div>
+
 
     <script>
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
-            $("#dashboard").toggleClass("toggled");
+            $("#dashboard-sidebar").toggle();
         });
     </script>
 

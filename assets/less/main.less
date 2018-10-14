@@ -276,27 +276,27 @@ section.services .row .item:hover {
 // DASHBOARD WRAPPER AND SIDEBAR
 //---------------------------------------------------------------
 
-#dashboard {
-  padding-left: 0;
-  //-webkit-transition: all 0.5s ease;
-  //-moz-transition: all 0.5s ease;
-  //-o-transition: all 0.5s ease;
-  //transition: all 0.5s ease;
-  &.toggled {
-    padding-left: 250px;
+table#dashboard {
+  td {
+    vertical-align: top;
+    border: 0;
   }
   #dashboard-sidebar {
-    z-index: 1000;
-    position: fixed;
+    display: none;
     height: 100%;
+    width: 200px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    background: #4B68DA;
     color: white;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+    background: #4B68DA;
+    #dashboard-sidebar-top {
+      background: white;
+      padding: 0.5em 0;
+    }
     .sidebar-nav {
       margin: 0;
       padding: 1em 0;
@@ -315,13 +315,8 @@ section.services .row .item:hover {
         }
       }
     }
-    #dashboard-sidebar-top {
-      background: white;
-      padding: 0.5em 0;
-    }
   }
-
+  #dashboard-content {
+    padding-top: 1em;
+  }
 }
-
-
-
