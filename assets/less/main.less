@@ -76,8 +76,8 @@ h3 {
 //---------------------------------------------------------------
 
 #footer {
-  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
-  position: absolute;
+  //box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.1);
   bottom: 0;
   width: 100%;
   background: white;
@@ -272,7 +272,7 @@ section.services .row .item:hover {
 
 #dashboard {
   display: flex;
-  height: 100%;
+  min-height:90%;
   #dashboard-sidebar {
     background: #4B68DA;
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
@@ -303,10 +303,6 @@ section.services .row .item:hover {
 
   #dashboard-content {
     flex: 1;
-    #dashboard-content-scrollable {
-      padding: 1em 1em 100px 2em;
-      overflow-y: scroll;
-      height: 100%;
-    }
+    padding: 1em 1em 100px 2em;
   }
 }

@@ -66,11 +66,9 @@
             </ul>
         </div>
         <div id="dashboard-content">
-            <div id="dashboard-content-scrollable">
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
-                {% include 'frontend/includes/_flash.html.twig' %}
-                {% block body %}{% endblock %}
-            </div>
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+            {% include 'frontend/includes/_flash.html.twig' %}
+            {% block body %}{% endblock %}
         </div>
 </div>
 
