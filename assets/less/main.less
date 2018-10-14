@@ -278,20 +278,17 @@ section.services .row .item:hover {
 
 #dashboard {
   padding-left: 0;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  //-webkit-transition: all 0.5s ease;
+  //-moz-transition: all 0.5s ease;
+  //-o-transition: all 0.5s ease;
+  //transition: all 0.5s ease;
   &.toggled {
     padding-left: 250px;
   }
   #dashboard-sidebar {
     z-index: 1000;
     position: fixed;
-    left: 250px;
-    width: 0;
     height: 100%;
-    margin-left: -250px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -301,7 +298,6 @@ section.services .row .item:hover {
     color: white;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
     .sidebar-nav {
-      position: absolute;
       margin: 0;
       padding: 1em 0;
       list-style: none;
@@ -324,37 +320,8 @@ section.services .row .item:hover {
       padding: 0.5em 0;
     }
   }
-  #dashboard-page-content {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
-  }
+
 }
 
-#dashboard.toggled #dashboard-page-content {
-  position: absolute;
-  margin-right: -250px;
-}
 
-@media(min-width:768px) {
-  #dashboard {
-    padding-left: 0;
-  }
-  #dashboard.toggled {
-    padding-left: 250px;
-  }
-  #dashboard-sidebar {
-    width: 0;
-  }
-  #dashboard.toggled #dashboard-sidebar {
-    width: 250px;
-  }
-  #dashboard-page-content {
-    padding: 20px;
-    position: relative;
-  }
-  #dashboard.toggled #dashboard-page-content {
-    position: relative;
-    margin-right: 0;
-  }
-}
+
