@@ -9,41 +9,77 @@
     <div id="dashboard">
 
         <!-- Sidebar -->
-        <div id="sidebar-dashboard">
+        <div id="dashboard-sidebar">
+
+            <div id="dashboard-sidebar-top" class="text-center">
+                <a href="{{ path('home') }}" class="navbar-brand">
+                    Dilcam
+                </a>
+            </div>
+
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="{{ path('home') }}" class="yo">
-                        Dilcam
+                <li>
+                    <a href="{{ path('dashboard') }}">
+                        <i class="fa fa-columns"></i>
+                        Tableau de bord
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="{{ path('dashboard_subscription_manage') }}">
+                        <i class="fa fa-file-video"></i>
+                        Abonnement
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="{{ path('dashboard_shoot_junction') }}">
+                        <i class="fa fa-video"></i>
+                        Filmer
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="{{ path('dashboard_watch_watch') }}">
+                        <i class="fa fa-eye"></i>
+                        Surveiller
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="{{ path('dashboard_browse') }}">
+                        <i class="fa fa-image"></i>
+                        Photos
+                    </a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="{{ path('dashboard_alarm') }}">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Alarme
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="{{ path('dashboard_change_password') }}">
+                        <i class="fa fa-lock"></i>
+                        Mot de passe
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="{{ path('security_logout') }}">
+                        <i class="fa fa-sign-out-alt"></i>
+                        Déconnexion
+                    </a>
+                </li>
+                <li>
+                    {{ app.user.email }}
                 </li>
             </ul>
+            <p>
+
+            </p>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-dashboard">
+        <div id="dashboard-page-content">
             <div class="container-fluid">
+                <span></span>
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
                 {% include 'frontend/includes/_flash.html.twig' %}
                 {% block body %}{% endblock %}
