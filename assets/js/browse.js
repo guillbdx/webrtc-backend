@@ -116,7 +116,7 @@ function displayHourLink(month, day, hour) {
 }
 
 function displaySecondLink(month, day, hour, photo) {
-    let link = '<a href="#" ' +
+    let link = '<a href="#browserImg" ' +
         'id="browserLink-'+month+'-'+day+'-'+hour+'-'+photo.id+'" ' +
         'style="display: block;" ' +
         'data-photo="'+photo.id+'" ' +
@@ -327,7 +327,7 @@ function listenEvents() {
         jQuery('#loading').show();
         jQuery('#photoDate').hide();
         loadPhoto(photo);
-        return false;
+        //return false;
     });
 }
 

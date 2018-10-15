@@ -51,17 +51,16 @@
             <table>
                 <tr>
                     <td class="pr-2">Mois</td>
-                    <td class="pr-2">Jour</td>
+                    <td class="p">Jour</td>
                     <td class="pr-2">Heure</td>
-                    <td class="pr-2"></td>
-                    <td class="">Diff</td>
+                    {% set infoDiff = "Le pourcentage indique la certitude avec laquelle un mouvement a été détecté sur une photo." %}
+                    <td class="pr-2">         Diff. <span class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ infoDiff }}"></span></td>
                 </tr>
                 <tr>
                     <td id="months" class="align-top pr-4"></td>
                     <td id="days" class="align-top pr-4"></td>
                     <td id="hours" class="align-top pr-4"></td>
                     <td id="seconds" class="align-top"></td>
-                    <td>x</td>
                 </tr>
             </table>
         </div>
@@ -71,15 +70,16 @@
     <div class="row m-3">
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center">
-            {% if 'dev' == app.environment %}
-            {#<a class="btn btn-info" href="#" id="reset">#}
-                {#<i class="fa fa-refresh"></i>#}
-                {#Rafraîchir#}
-            {#</a>#}
-            {% endif %}
             <a href="{{ path('dashboard_browse_delete_all_preparation') }}" class="btn btn-danger">
                 Supprimer toutes les photos
             </a>
+            {% if 'dev' == app.environment %}
+                <br><br>
+                <a class="btn btn-info" href="#" id="reset">
+                    <i class="fa fa-refresh"></i>
+                    Rafraîchir
+                </a>
+            {% endif %}
         </div>
         <div class="col-md-2"></div>
     </div>
