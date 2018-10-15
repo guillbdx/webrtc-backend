@@ -1,0 +1,4 @@
+sentry:
+    options:
+        curl_method: async
+    dsn: '%env(SENTRY_DSN)%'

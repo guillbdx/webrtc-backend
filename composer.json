@@ -11,6 +11,7 @@
     "aws/aws-sdk-php": "^3.64",
     "cboden/ratchet": "^0.4.1",
     "sensio/framework-extra-bundle": "^5.2",
+    "sentry/sentry-symfony": "^2.0",
     "stripe/stripe-php": "^6.17",
     "symfony/console": "^4.1",
     "symfony/flex": "^1.0",
