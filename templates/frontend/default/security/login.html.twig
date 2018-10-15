@@ -6,6 +6,8 @@
 
     <h2>Connexion</h2>
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     {% if error %}
         <div class="alert alert-danger">
             {{ error.messageKey|trans(error.messageData, 'security') }}

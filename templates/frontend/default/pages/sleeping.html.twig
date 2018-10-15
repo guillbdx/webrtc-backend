@@ -6,6 +6,8 @@
 
     <h2>Empêcher la mise en veille de l'ordinateur</h2>
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     {% if operatingSystem == constant('App\\Service\\SoftwareDetector::WINDOWS') %}
 
         <p>

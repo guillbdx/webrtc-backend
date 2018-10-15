@@ -6,6 +6,8 @@
 
     <h2>Prix</h2>
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     <p>
         Dilcam vous propose une formule unique incluant toutes les fonctionnalités.
         Son prix est de <strong>{{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC</strong> par mois, sans engagement.

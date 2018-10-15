@@ -6,6 +6,8 @@
 
     <h2>Créer une différence de photos</h2>
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
     {{ form_widget(form) }}
     <button type="submit" class="btn btn-primary">
