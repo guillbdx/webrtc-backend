@@ -31,7 +31,7 @@ class DashboardController extends AbstractController
         $shootingState = $shootingStateService->getUserShootingState($user);
 
         return $this->render('frontend/dashboard/dashboard.html.twig', [
-            'currentlyShooting' => ShootingStateService::ACTIVE === $shootingState
+            'shootingState' => $shootingState
         ]);
     }
 

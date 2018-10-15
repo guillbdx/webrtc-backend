@@ -10,7 +10,7 @@
 
     {% include 'frontend/includes/_flash.html.twig' %}
 
-    {% if currentlyShooting %}
+    {% if shootingState == constant('App\\Service\\ShootingStateService::ACTIVE') %}
 
         <h3>Film en cours</h3>
 
@@ -47,7 +47,31 @@
 
         {% endif %}
 
-    {% else %}
+    {% endif %}
+
+    {% if shootingState == constant('App\\Service\\ShootingStateService::INACTIVE') %}
+
+        <p>
+            La première chose à faire est d'enclencher la webcam de votre ordinateur pour
+            démarrer la vidéo surveillance.
+        </p>
+
+        <p>
+            Votre navigateur vous demandera l'autorisation d'utiliser votre webcam.
+            Veuillez répondre oui à la demande d'autorisation.
+        </p>
+
+        <p>
+            <a href="{{ path('dashboard_shoot_shoot') }}"
+               target="_blank"
+               class="btn btn-info">
+                Démarrer la webcam
+            </a>
+        </p>
+
+    {% endif %}
+
+    {% if shootingState == constant('App\\Service\\ShootingStateService::UNKNOWN') %}
 
         <p>
             La première chose à faire est d'enclencher la webcam de votre ordinateur pour
