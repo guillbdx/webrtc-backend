@@ -59,6 +59,9 @@ form.addEventListener('submit', function(event) {
     stripe.createToken(cardNumber).then(function(result) {
         if (result.error == null) {
             stripeTokenHandler(result.token);
+            // Loader...
+            document.getElementById('payButton').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
         }
     });
 });

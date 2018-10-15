@@ -77,7 +77,8 @@
                     <td colspan="2" class="align-top">
                         <input type="hidden" id="tokenId" name="tokenId">
                         <input type="hidden" id="quantity" name="quantity" value="{{ subscription.quantity }}">
-                        <button class="btn btn-info">Payer</button>
+                        <button class="btn btn-info" id="payButton">Payer</button>
+                        <span id="loading" style="display: none;"><img src="{{ asset('build/images/loading.gif') }}"></span>
                     </td>
                 </tr>
             </table>
