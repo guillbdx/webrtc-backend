@@ -6,6 +6,8 @@
 
     <h2>Votre abonnement</h2>
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     {% set userStatus = userStatus(app.user) %}
 
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}

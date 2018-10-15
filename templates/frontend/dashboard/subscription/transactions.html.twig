@@ -3,9 +3,12 @@
 {% block title %}Vos commandes{% endblock %}
 
 {% block body %}
+
     <h2>Vos commandes</h2>
 
     {% include 'frontend/includes/_user_status.html.twig' %}
+
+    {% include 'frontend/includes/_flash.html.twig' %}
 
     {% if transactions|length > 0 %}
 

@@ -6,6 +6,8 @@
 
     <h2>Le paiement a réussi</h2>
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     <p>
         Merci.
         La commande <strong>{{ transaction.description }}</strong>,

@@ -8,6 +8,8 @@
 
     {% include 'frontend/includes/_user_status.html.twig' %}
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     {% if (app.user.alarmEnabled) %}
         <p>
             L'alarme est actuellement <strong>activée</strong>.

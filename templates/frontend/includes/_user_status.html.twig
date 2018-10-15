@@ -1,7 +1,7 @@
 {% set userStatus = userStatus(app.user) %}
 
 {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
-    <div class="alert alert-warning">
+    <div class="alert alert-warning alert-sm">
         Vous bénéficiez actuellement de la période d'essai.
         Il vous reste {{ app.user|trialDuration }}.
         <a href="{{ path('dashboard_subscription_manage') }}">
