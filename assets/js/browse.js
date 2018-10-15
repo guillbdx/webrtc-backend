@@ -14,10 +14,10 @@ function pad(n) {
 
 function getDisplayableDate(photo) {
     let date = new Date(photo.timestamp*1000);
-    let dateString = pad(String(date.getDate())) + '/'
+    let dateString = 'Le ' + pad(String(date.getDate())) + '/'
         + pad(String(date.getMonth() + 1)) + '/'
         + String(date.getFullYear()) + ' '
-        + pad(String(date.getHours())) + ':'
+        + ' à ' + pad(String(date.getHours())) + ':'
         + pad(String(date.getMinutes())) + ':'
         + pad(String(date.getSeconds()))
     ;
@@ -30,18 +30,17 @@ function getDisplayableMonth(month) {
     month = month.split('-');
     let year = month[1];
     month = parseInt(month[0]);
-    let monthStrings = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    let monthStrings = ['Janv.', 'Fév.', 'Mars', 'Avr.', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'];
     let monthString = monthStrings[month];
     return monthString + ' ' + year;
 }
 
 function getDisplayableSecond(photo) {
     let date = new Date(photo.timestamp*1000);
-    let dateString = pad(String(date.getMinutes())) + ':'
+    return '<span style="color: gray;">'+pad(String(date.getHours())) + '</span>:'
+        + pad(String(date.getMinutes())) + ':'
         + pad(String(date.getSeconds()))
     ;
-
-    return dateString;
 }
 
 //----------------------------------------------------

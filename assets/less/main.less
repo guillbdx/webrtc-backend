@@ -29,6 +29,15 @@ h3 {
   font-size: 1.65em;
 }
 
+.alert-sm {
+  font-size: 0.9em;
+  padding: 0.4em 1em;
+}
+
+form {
+  max-width: 600px;
+}
+
 //---------------------------------------------------------------
 // HEADER
 //---------------------------------------------------------------
@@ -304,14 +313,17 @@ section.services .row .item:hover {
 }
 
 //---------------------------------------------------------------
-// HELPERS
+// BROWSE
 //---------------------------------------------------------------
 
-.alert-sm {
-  font-size: 0.9em;
-  padding: 0.4em 1em;
-}
-
-form {
-  max-width: 600px;
+#browserImgContainer {
+  position: relative;
+  #browserImg {
+    border: solid 1px black;
+  }
+  #download {
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.5em;
+  }
 }

@@ -14,7 +14,11 @@
 
             {% include 'frontend/includes/_flash.html.twig' %}
 
-            <br>
+            <div class="p-2 text-center">
+                <a href="{{ path('home') }}" class="navbar-brand">
+                    Dilcam
+                </a>
+            </div>
 
             <div class="alert alert-danger" id="alertNoRTC" style="display: none;">
                 Votre navigateur ne supporte pas le transfert de vidéo. Merci de le mettre
@@ -26,7 +30,7 @@
                 <video class="embed-responsive-item" id="localVideo" autoplay muted></video>
             </div>
 
-            <div id="help">
+            <div id="help" class="pt-2">
                 {% include 'frontend/dashboard/shoot/includes/_help.html.twig' %}
             </div>
 
