@@ -67,6 +67,10 @@ class SecurityController extends AbstractController
         CaptchaService $captchaService
     )
     {
+        if ($this->getUser() instanceof User) {
+            return $this->redirectToRoute('dashboard');
+        }
+
         $user = $userFactory->init();
         $form = $this->createForm(SignupType::class, $user);
         $form->handleRequest($request);

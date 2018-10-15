@@ -92,10 +92,12 @@
         </a>
     </p>
 
-    <p>
-        <a href="{{ path('security_signup') }}">
-            Essai gratuit
-        </a>
-    </p>
+    {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <p>
+            <a href="{{ path('security_signup') }}">
+                Essai gratuit
+            </a>
+        </p>
+    {% endif %}
 
 {% endblock %}

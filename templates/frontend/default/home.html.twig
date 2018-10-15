@@ -50,11 +50,13 @@
     </section>
 
     <section class="text-center pt-5">
-        <p>
-            <a href="{{ path('security_signup') }}" class="btn btn-success btn-lg">
-                Essai gratuit
-            </a>
-        </p>
+        {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <p>
+                <a href="{{ path('security_signup') }}" class="btn btn-success btn-lg">
+                    Essai gratuit
+                </a>
+            </p>
+        {% endif %}
         <p>
             <a href="{{ path('pages_guide') }}" class="btn btn-warning btn-lg">
                 Guide d'utilisation
