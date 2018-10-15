@@ -77,4 +77,13 @@ class DashboardBrowseController extends AbstractController
         return $this->redirectToRoute('dashboard_browse');
     }
 
+    /**
+     * @Route("/info", name="dashboard_browse_info")
+     * @return Response
+     */
+    public function info()
+    {
+        return $this->render('frontend/dashboard/browse/info.html.twig');
+    }
+
 }

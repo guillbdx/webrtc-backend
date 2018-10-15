@@ -327,7 +327,6 @@ function listenEvents() {
         jQuery('#loading').show();
         jQuery('#photoDate').hide();
         loadPhoto(photo);
-        //return false;
     });
 }
 

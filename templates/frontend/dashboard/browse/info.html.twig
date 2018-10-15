@@ -1,0 +1,34 @@
+{% extends 'frontend/dashboard_layout.html.twig' %}
+
+{% block title %}Photos enregistrées{% endblock %}
+
+{% block body %}
+
+    <h2>Photos enregistrées</h2>
+
+    {% include 'frontend/includes/_user_status.html.twig' %}
+
+    {% include 'frontend/includes/_flash.html.twig' %}
+
+    <ul>
+        <li>
+            Dilcam enregistre au minimum 1 photographie par minute.
+        </li>
+        <li>
+            Chaque photo suspecte est également enregistrée. Une photo suspecte est une photo pour laquelle
+            un mouvement semble avoir été détecte avec une certitude d'au moins 3 %.
+        </li>
+        <li>
+            Les photographies sont automatiquement supprimées après un délai de 7 jours. Vous pouvez
+            les supprimer avant la fin de ce délai.
+        </li>
+    </ul>
+
+    <p>
+        <a href="{{ path('dashboard_browse') }}">
+            <span class="fa fa-caret-right"></span>
+            Retour aux photos.
+        </a>
+    </p>
+
+{% endblock %}
