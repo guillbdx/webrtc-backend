@@ -13,7 +13,7 @@
     {% if userStatus == constant('App\\Service\\SubscriptionService::STATUS_TRIAL') %}
         <p>
             Vous bénéficiez actuellement de la période d'essai.
-            Il vous reste {{ app.user|trialDuration }}.
+            Il vous reste {{ app.user|trialDuration }} d'utilisation gratuite du service Dilcam.
         </p>
         <p>
             <a href="{{ path('dashboard_subscription_quantity') }}" class="btn btn-info">

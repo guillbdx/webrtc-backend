@@ -1,10 +1,10 @@
 {% extends 'frontend/dashboard_layout.html.twig' %}
 
-{% block title %}Transaction{% endblock %}
+{% block title %}Paiement sécurisé de votre commande{% endblock %}
 
 {% block body %}
 
-    <h2>Transaction</h2>
+    <h2>Paiement sécurisé de votre commande</h2>
 
     {% include 'frontend/includes/_flash.html.twig' %}
 
@@ -27,66 +27,80 @@
         </a>
     </p>
 
+    <br>
+
     <p>
-        Cartes acceptées : Visa et Mastercard.
+        Cartes acceptées :
+        <img src="{{ asset('build/images/payment-cards.png') }}" style="height: 50px;">
     </p>
 
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+    <br>
 
-            <form action="{{ path('dashboard_subscription_checkout') }}" method="post" id="payment-form">
+    <div style="max-width: 400px">
 
-                <table class="w-100">
-                    <tr>
-                        <td colspan="4" class="pb-2 align-top">
-                            <label for="cardNumber-element">Numéro de carte</label>
-                            <div id="cardNumber-element" class="form-control"></div>
-                            <div id="cardNumber-errors" class="text-danger"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="pb-4 pr-2 align-top">
-                            <label for="cardExpiry-element">Epiration</label>
-                            <div id="cardExpiry-element" class="form-control"></div>
-                            <div id="cardExpiry-errors" class="text-danger"></div>
-                        </td>
+        <form action="{{ path('dashboard_subscription_checkout') }}" method="post" id="payment-form">
 
-                        <td class="pb-4 align-top w-50">
-                            <label for="cardCvc-element">Cryptogramme</label>
-                            <div id="cardCvc-element" class="form-control"></div>
-                            <div id="cardCvc-errors" class="text-danger"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <div>
+            <table class="w-100">
+                <tr>
+                    <td colspan="4" class="pb-2 align-top">
+                        <label for="cardNumber-element">Numéro de carte</label>
+                        <div id="cardNumber-element" class="form-control"></div>
+                        <div id="cardNumber-errors" class="text-danger"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pb-4 pr-2 align-top">
+                        <label for="cardExpiry-element">Epiration</label>
+                        <div id="cardExpiry-element" class="form-control"></div>
+                        <div id="cardExpiry-errors" class="text-danger"></div>
+                    </td>
+
+                    <td class="pb-4 align-top w-50">
+                        <label for="cardCvc-element">Cryptogramme</label>
+                        <div id="cardCvc-element" class="form-control"></div>
+                        <div id="cardCvc-errors" class="text-danger"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div>
+
+                            <label for="cgu">
                                 <input type="checkbox" id="cgu" value="1" required>
-                                <label for="cgu">
-                                    J'ai lu et j'accepte les
-                                    <a href="{{ path('pages_tos') }}" target="_blank">conditions générales d'utilisation</a>.
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="align-top">
-                            <input type="hidden" id="tokenId" name="tokenId">
-                            <input type="hidden" id="quantity" name="quantity" value="{{ subscription.quantity }}">
-                            <button class="btn btn-info">Payer</button>
-                        </td>
-                    </tr>
-                </table>
+                                J'ai lu et j'accepte les
+                                <a href="{{ path('pages_tos') }}" target="_blank">conditions générales d'utilisation</a>.
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="align-top">
+                        <input type="hidden" id="tokenId" name="tokenId">
+                        <input type="hidden" id="quantity" name="quantity" value="{{ subscription.quantity }}">
+                        <button class="btn btn-info">Payer</button>
+                    </td>
+                </tr>
+            </table>
 
-            </form>
+        </form>
 
-            <input type="hidden" id="stripeApiKey" value="{{ stripeApiKey|raw }}">
+        <input type="hidden" id="stripeApiKey" value="{{ stripeApiKey|raw }}">
 
-        </div>
-        <div class="col-md-3"></div>
     </div>
 
+    <br>
+    <br>
 
+    <h3>Sécurité de votre paiement</h3>
+
+    <p>
+        Dilcam utilise le service de la société <a href="https://stripe.com/fr" target="_blank">Stripe</a>
+        pour le paiement par carte bancaire.
+        Stripe est une société internationale dont le service est certifié conforme au
+        Standard PCI/DSS par Visa et Mastercard. Cette certification garantit les règles les
+        plus strictes en matière de transmission et de protection des données de carte bancaire.
+        Vos coordonnées de carte bancaire ne sont pas enregistrées ni stockées par Dilcam.
+    </p>
 
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('build/js-css/subscription-form.js') }}"></script>

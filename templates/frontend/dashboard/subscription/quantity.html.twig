@@ -12,11 +12,14 @@
         Choisissez ci-dessous la durée pour laquelle vous souhaitez utiliser le service Dilcam.
     </p>
 
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-primary">
-        Enregistrer
-    </button>
-    {{ form_end(form) }}
+    <div style="max-width: 250px;">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">
+            Étape suivante
+        </button>
+        {{ form_end(form) }}
+    </div>
+
 
 {% endblock %}
