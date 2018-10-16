@@ -17,7 +17,7 @@ class TurnGetter
         $credentials = $this->generateCredentials();
         return [
             [
-                'urls'           => 'turn:turn.dilcam.com',
+                'urls'           => 'turn:turn.dilcam.com:443',
                 'username'      => $credentials['username'],
                 'credential'    => $credentials['credential']
             ]
