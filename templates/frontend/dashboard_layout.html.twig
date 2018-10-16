@@ -66,8 +66,17 @@
             </ul>
         </div>
         <div id="dashboard-content">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+
+            <span class="float-right">
+                {{ app.user.email }}
+            </span>
+
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
+                Menu
+            </a>
+
             {% block body %}{% endblock %}
+
         </div>
 </div>
 
