@@ -63,6 +63,7 @@
 
         <p>
             <a href="{{ path('dashboard_shoot_shoot') }}"
+               id="linkToShootPage"
                target="_blank"
                class="btn btn-info">
                 Démarrer la webcam
@@ -85,5 +86,13 @@
         </p>
 
     {% endif %}
+
+    <script>
+        jQuery('#linkToShootPage').click(function() {
+            setTimeout(function() {
+                document.location.href = '{{ path('dashboard') }}';
+            }, 1000);
+        });
+    </script>
 
 {% endblock %}
