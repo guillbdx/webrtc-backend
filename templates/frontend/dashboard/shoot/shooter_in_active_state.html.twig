@@ -10,8 +10,7 @@
 
     <p>
         <strong>Attention !</strong>
-        Une caméra est déjà en train de filmer à votre domicile. Vous ne pouvez pas filmer à deux
-        endroits en même temps.
+        Une caméra est déjà en train de filmer.
     </p>
 
     <p>
@@ -20,7 +19,12 @@
     </p>
 
     <p>
-        <a class="btn btn-info" href="{{ path('dashboard_shoot_preparation') }}">Oui, filmer</a>
+        <a href="{{ path('dashboard_shoot_shoot') }}"
+           id="linkToShootPage"
+           class="btn btn-info"
+           target="_blank">
+            Oui, filmer
+        </a>
     </p>
 
 {% endblock %}

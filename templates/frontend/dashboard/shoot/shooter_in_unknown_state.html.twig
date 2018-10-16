@@ -9,7 +9,7 @@
     {% include 'frontend/includes/_flash.html.twig' %}
 
     <p>
-        Il semblerait qu'une canéra est déjà en train de filmer à votre domicile,
+        Il semblerait qu'une canéra est déjà en train de filmer,
         mais que l'ordinateur auquel est reliée cette caméra a subi une déconnexion subite.
     </p>
 
@@ -25,7 +25,12 @@
     </p>
 
     <p>
-        <a class="btn btn-info" href="{{ path('dashboard_shoot_shoot') }}">Oui, filmer</a>
+        <a href="{{ path('dashboard_shoot_shoot') }}"
+           id="linkToShootPage"
+           class="btn btn-info"
+           target="_blank">
+            Oui, filmer
+        </a>
     </p>
 
 {% endblock %}
