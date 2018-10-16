@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\Type\Dashboard\ChangePasswordType;
 use App\Manager\UserManager;
 use App\Service\ShootingStateService;
+use App\Service\SubscriptionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,15 +20,21 @@ class DashboardController extends AbstractController
 {
     /**
      * @Route("/", name="dashboard")
+     * @param SubscriptionService $subscriptionService
      * @param ShootingStateService $shootingStateService
      * @param UserInterface|User $user
      * @return Response
      */
     public function dashboard(
+        SubscriptionService $subscriptionService,
         ShootingStateService $shootingStateService,
         UserInterface $user
     )
     {
+        if (false === $subscriptionService->canUseTheApplication($user)) {
+            return $this->redirectToRoute('dashboard_subscription_manage');
+        }
+
         $shootingState = $shootingStateService->getUserShootingState($user);
 
         return $this->render('frontend/dashboard/dashboard.html.twig', [

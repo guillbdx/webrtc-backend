@@ -28,27 +28,13 @@ class DashboardWatchController extends AbstractController
         string $allowedIceType = null
     )
     {
-        /** @var User $user */
-        $user = $this->getUser();
         if (false === $subscriptionService->canUseTheApplication($user)) {
-            return $this->redirectToRoute('dashboard_watch_not_allowed');
+            return $this->redirectToRoute('dashboard_subscription_manage');
         }
 
         return $this->render('frontend/dashboard/watch/watch.html.twig', [
             'allowedIceType' => $allowedIceType
         ]);
-    }
-
-    /**
-     * @Route("/not-allowed", name="dashboard_watch_not_allowed")
-     * @param UserInterface|User $user
-     * @return Response
-     */
-    public function watchNotAllowed(
-        UserInterface $user
-    )
-    {
-        return $this->render('frontend/dashboard/watch/watch_not_allowed.html.twig');
     }
 
     /**

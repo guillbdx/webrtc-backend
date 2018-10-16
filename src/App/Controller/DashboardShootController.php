@@ -21,14 +21,20 @@ class DashboardShootController extends AbstractController
     /**
      * @Route("/junction", name="dashboard_shoot_junction")
      * @param UserInterface|User $user
+     * @param SubscriptionService $subscriptionService
      * @param ShootingStateService $shootingStateService
      * @return Response
      */
     public function shootJunction(
         UserInterface $user,
+        SubscriptionService $subscriptionService,
         ShootingStateService $shootingStateService
     )
     {
+        if (false === $subscriptionService->canUseTheApplication($user)) {
+            return $this->redirectToRoute('dashboard_subscription_manage');
+        }
+
         $shootingState = $shootingStateService->getUserShootingState($user);
         if (ShootingStateService::ACTIVE === $shootingState) {
             return $this->redirectToRoute('dashboard_shooter_active_state');
@@ -93,7 +99,7 @@ class DashboardShootController extends AbstractController
     )
     {
         if (false === $subscriptionService->canUseTheApplication($user)) {
-            return $this->redirectToRoute('dashboard_shoot_not_allowed');
+            return $this->redirectToRoute('dashboard_subscription_manage');
         }
 
         $user->setShootingToken($request->cookies->get('shootingToken'));
@@ -115,18 +121,6 @@ class DashboardShootController extends AbstractController
     )
     {
         return $this->render('frontend/dashboard/shoot/camera_refused.html.twig');
-    }
-
-    /**
-     * @Route("/shoot-not-allowed", name="dashboard_shoot_not_allowed")
-     * @param UserInterface|User $user
-     * @return Response
-     */
-    public function shootNotAllowed(
-        UserInterface $user
-    )
-    {
-        return $this->render('frontend/dashboard/shoot/shoot_not_allowed.html.twig');
     }
 
 }
