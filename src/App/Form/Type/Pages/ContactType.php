@@ -29,6 +29,9 @@ class ContactType extends AbstractType
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Votre message',
+                'attr' => [
+                    'rows' => 10
+                ],
                 'constraints' => [
                     new Assert\NotBlank()
                 ]

@@ -32,7 +32,10 @@ class ChangePasswordType extends AbstractType
                 ],
                 'type' => PasswordType::class,
                 'invalid_message' => "Vous n'avez pas saisi deux fois le même mot de passe",
-                'first_options'  => array('label' => 'Nouveau mot de passe'),
+                'first_options'  => [
+                    'label' => 'Nouveau mot de passe',
+                    'help' => 'Au moins 6 caractères'
+                ],
                 'second_options' => array('label' => 'Veuillez répéter le nouveau mot de passe'),
             ])
         ;

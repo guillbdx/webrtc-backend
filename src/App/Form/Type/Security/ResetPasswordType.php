@@ -24,7 +24,10 @@ class ResetPasswordType extends AbstractType
                 ],
                 'type' => PasswordType::class,
                 'invalid_message' => "Vous n'avez pas saisi deux fois le même mot de passe",
-                'first_options'  => array('label' => 'Mot de passe'),
+                'first_options'  => [
+                    'label' => 'Mot de passe',
+                    'help' => 'Au moins 6 caractères'
+                ],
                 'second_options' => array('label' => 'Veuillez répéter le mot de passe'),
             ])
         ;
