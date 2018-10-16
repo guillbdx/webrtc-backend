@@ -74,41 +74,13 @@ class RemoveOldPhotosCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+
+        $milestone = new DateTimeImmutable('7 days ago');
         $users = $this->userRepository->findAll();
         foreach ($users as $user) {
-            $this->removeUserOldPhotos($user);
+            $photosToRemove = $this->photoRepository->findAllPhotosByUserBefore($user, $milestone);
+            $this->photoManager->removePhotos($photosToRemove);
         }
-    }
-
-    /**
-     * @param User $user
-     */
-    private function removeUserOldPhotos(User $user): void
-    {
-        $count = $this->photoRepository->countRegularPhotosByUser($user);
-        if ($count <= SubscriptionService::MAX_ARCHIVED_PHOTOS) {
-            return;
-        }
-
-        $dateLimit = $this->getDateLimit($user, $count);
-        $photosToRemove = $this->photoRepository->findAllPhotosByUserBefore($user, $dateLimit);
-
-        $this->photoManager->removePhotos($photosToRemove);
-    }
-
-    /**
-     * @param User $user
-     * @param int $count
-     * @return DateTimeImmutable
-     */
-    public function getDateLimit(User $user, int $count): DateTimeImmutable
-    {
-        $regularPhotos = $this->photoRepository->findRegularPhotosByUser($user);
-        $photosToKeep = array_slice($regularPhotos, $count - SubscriptionService::MAX_ARCHIVED_PHOTOS);
-        /** @var Photo $oldestPhotoToKeep */
-        $oldestPhotoToKeep = $photosToKeep[0];
-
-        return $oldestPhotoToKeep->getCreatedAt();
     }
 
 }

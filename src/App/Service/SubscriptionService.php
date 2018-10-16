@@ -18,8 +18,6 @@ class SubscriptionService
 
     const MONTHLY_PRICE         = 790;
 
-    const MAX_ARCHIVED_PHOTOS   = 10080;        // 7 days = 10080 minutes
-
     const STATUS_TRIAL          = 'STATUS_TRIAL';
     const STATUS_SUBSCRIBED     = 'STATUS_SUBSCRIBED';
     const STATUS_NOTHING        = 'STATUS_NOTHING';

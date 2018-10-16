@@ -42,41 +42,9 @@ class PhotoRepository extends ServiceEntityRepository
 
     /**
      * @param User $user
-     * @return int
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
-    public function countRegularPhotosByUser(User $user):int
-    {
-        $queryBuilder = $this->createQueryBuilder('photo');
-        $queryBuilder
-            ->select('count(photo.id)')
-            ->where('photo.user = :user')
-            ->andWhere('photo.type = :regularStatus')
-            ->setParameter('user', $user)
-            ->setParameter('regularStatus', Photo::REGULAR)
-        ;
-        return $queryBuilder->getQuery()->getSingleScalarResult();
-    }
-
-    /**
-     * @param User $user
+     * @param DateTimeImmutable $date
      * @return mixed
      */
-    public function findRegularPhotosByUser(User $user)
-    {
-        $queryBuilder = $this->createQueryBuilder('photo');
-        $queryBuilder
-            ->where('photo.user = :user')
-            ->andWhere('photo.type = :regularStatus')
-            ->orderBy('photo.createdAt', 'ASC')
-            ->setParameter('user', $user)
-            ->setParameter('regularStatus', Photo::REGULAR)
-        ;
-        $query = $queryBuilder->getQuery();
-
-        return $query->getResult();
-    }
-
     public function findAllPhotosByUserBefore(User $user, DateTimeImmutable $date)
     {
         $queryBuilder = $this->createQueryBuilder('photo');
