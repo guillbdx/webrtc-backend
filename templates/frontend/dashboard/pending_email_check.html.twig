@@ -4,11 +4,11 @@
 
 {% block body %}
 
+    {% include 'frontend/includes/_flash.html.twig' %}
+
     {% if not send %}
 
         <h2>Email non confirmé</h2>
-
-        {% include 'frontend/includes/_flash.html.twig' %}
 
         <p>
             Vous devez confirmer votre email pour pouvoir utiliser notre service.
