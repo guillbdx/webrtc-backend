@@ -79,17 +79,6 @@ function createCalendar() {
 // FIRST DISPLAY CALENDAR FUNCTIONS
 //----------------------------------------------------
 
-function displayMonthLink(month) {
-    let link = '<a href="#" ' +
-        'id="browserLink-'+month+'" ' +
-        'style="display: block;" ' +
-        'class="monthLink" ' +
-        'data-month="'+month+'">';
-    link += getDisplayableMonth(month);
-    link += '</a>';
-    jQuery('#months').append(link);
-}
-
 function displayDayLink(month, day) {
     let link = '<a href="#" ' +
         'id="browserLink-'+month+'-'+day+'" ' +
@@ -97,7 +86,7 @@ function displayDayLink(month, day) {
         'class="dayLink month-' + month + '" ' +
         'data-month="'+month+'" ' +
         'data-day="'+day+'">';
-    link += pad(String(day));
+    link += pad(String(day)) + ' ' + getDisplayableMonth(month) ;
     link += '</a>';
     jQuery('#days').append(link);
 }
@@ -133,7 +122,6 @@ function displaySecondLink(month, day, hour, photo) {
 
 function displayCalendar() {
     for (let month in calendar) {
-        displayMonthLink(month);
         for (let day in calendar[month]) {
             displayDayLink(month, day);
             for (let hour in calendar[month][day]) {
