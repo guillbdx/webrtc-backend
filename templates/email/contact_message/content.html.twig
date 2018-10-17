@@ -1,6 +1,12 @@
-Expéditeur : <br>
-{{ from }} <br>
-<br>
-Message :<br>
-<br>
-{{ message|nl2br }}
+{% extends 'email/layout.html.twig' %}
+
+{% block title %}Message{% endblock %}
+
+{% block body %}
+    Expéditeur : <br>
+    {{ from }} <br>
+    <br>
+    Message :<br>
+    <br>
+    {{ message|nl2br }}
+{% endblock %}

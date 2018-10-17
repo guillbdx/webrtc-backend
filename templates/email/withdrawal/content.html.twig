@@ -1,5 +1,11 @@
-Email : {{ email }} <br>
-Commande : {{ transactionReference }} <br>
-Motif :
-<br>
-{{ reason|nl2br }}
+{% extends 'email/layout.html.twig' %}
+
+{% block title %}Rétractation{% endblock %}
+
+{% block body %}
+    Email : {{ email }} <br>
+    Commande : {{ transactionReference }} <br>
+    Motif :
+    <br>
+    {{ reason|nl2br }}
+{% endblock %}

@@ -1,17 +1,23 @@
-<p>
-    Bonjour,
-</p>
+{% extends 'email/layout.html.twig' %}
 
-<p>
-    Merci de vous être inscrit(e) sur le site Dilcam.
-    Afin de finaliser votre inscription et profiter de la période d'essai, veuillez cliquer sur le lien suivant :
-    <br>
-    <a href="https://{{ host }}{{ path('security_check_email', {emailCheckToken: user.emailCheckToken}) }}">
-        Activation de votre inscription
-    </a>
-</p>
+{% block title %}Merci de confirmer votre email{% endblock %}
 
-<p>
-    Cordialement,<br>
-    L'équipe Dilcam
-</p>
+{% block body %}
+    <p>
+        Bonjour,
+    </p>
+
+    <p>
+        Merci de vous être inscrit(e) sur le site Dilcam.
+        Afin de finaliser votre inscription et profiter de la période d'essai, veuillez cliquer sur le lien suivant :
+        <br>
+        <a href="https://{{ host }}{{ path('security_check_email', {emailCheckToken: user.emailCheckToken}) }}">
+            Activation de votre inscription
+        </a>
+    </p>
+
+    <p>
+        Cordialement,<br>
+        L'équipe Dilcam
+    </p>
+{% endblock %}
