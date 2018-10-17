@@ -62,6 +62,8 @@ form.addEventListener('submit', function(event) {
             // Loader...
             document.getElementById('payButton').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
+        } else {
+            document.location.href = '/dashboard/subscription/failure';
         }
     });
 });
