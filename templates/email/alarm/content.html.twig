@@ -3,7 +3,7 @@
 </p>
 
 <p>
-    Une photo suspecte a été enregistrée par votre caméra le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+    Une photo suspecte a été enregistrée par votre caméra le {{ photo.createdAt | date('d/m/Y à H:i', "Europe/Paris") }}.
 </p>
 
 <p>
@@ -42,5 +42,5 @@
 </p>
 
 <p>
-    Photographie prise le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+    Photographie prise le {{ photo.createdAt | date('d/m/Y à H:i', "Europe/Paris") }}.
 </p>

@@ -1,6 +1,6 @@
 Bonjour,
 
-Une photo suspecte a été enregistrée par votre caméra le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+Une photo suspecte a été enregistrée par votre caméra le {{ photo.createdAt | date('d/m/Y à H:i', "Europe/Paris") }}.
 
 Il peut s'agir d'un mouvement anormal devant la caméra, mais il est possible qu'il s'agisse d'un changement brusque de luminosité. Nous vous invitons à vérifier ce qu'il en suivant le lien ci-dessous :
 https://{{ host }}{{ path('photo_show_secret', {photo: photo.id, secret: photo.secret}) }}
@@ -14,4 +14,4 @@ https://{{ host }}{{ path('pages_alarm_unsubscribe', {'user': user.alarmUnsubscr
 Cordialement,
 L'équipe Dilcam
 
-Photographie prise le {{ photo.createdAt | date('d/m/Y à H:i') }}.
+Photographie prise le {{ photo.createdAt | date('d/m/Y à H:i', "Europe/Paris") }}.
