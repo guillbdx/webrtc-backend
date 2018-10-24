@@ -12,6 +12,11 @@
         Choisissez ci-dessous la durée pour laquelle vous souhaitez utiliser le service Dilcam.
     </p>
 
+    <p>
+        <strong>Prix : </strong>
+        {{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC / mois
+    </p>
+
     <div style="max-width: 250px;">
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_widget(form) }}
