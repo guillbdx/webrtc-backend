@@ -20,6 +20,11 @@ class TurnGetter
                 'urls'           => 'turn:turn.dilcam.com:443',
                 'username'      => $credentials['username'],
                 'credential'    => $credentials['credential']
+            ],
+            [
+                'urls'           => 'turn:turn1.dilcam.com:443',
+                'username'      => $credentials['username'],
+                'credential'    => $credentials['credential']
             ]
         ];
     }
