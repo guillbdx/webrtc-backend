@@ -17,14 +17,47 @@
         {{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE')|price }} TTC / mois
     </p>
 
+    <br>
+
     <div style="max-width: 250px;">
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_widget(form) }}
+        <div id="subscriptionQuantityPrice">
+            Total :
+            <strong>
+                <span id="total">7,90</span> € TTC
+            </strong>
+        </div>
         <button type="submit" class="btn btn-primary">
             Étape suivante
         </button>
         {{ form_end(form) }}
     </div>
+
+    <input type="hidden" id="monthlyPrice" value="{{ constant('App\\Service\\SubscriptionService::MONTHLY_PRICE') }}">
+
+    <script>
+
+        const monthlyPrice = $('#monthlyPrice').val();
+
+        function getFormatedTotalByQuantity(quantity) {
+            let total = quantity * monthlyPrice / 100;
+            total = String(total.toFixed(2));
+            total = total.replace(".", ",");
+
+            return total;
+        }
+
+        $(document).ready(function() {
+            $('#quantity_quantity').change(function() {
+                let quantity = $(this).val();
+                let total = getFormatedTotalByQuantity(quantity);
+                $('#total').html(total);
+
+            });
+
+        });
+    </script>
 
 
 {% endblock %}
