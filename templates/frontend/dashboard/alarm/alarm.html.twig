@@ -25,25 +25,22 @@
             </li>
         </ul>
         <p>
-            <a href="{{ path('pages_alarm') }}">
-                Plus d'informations sur le fonctionnent de l'alarme.
-            </a>
-        </p>
-        <p>
-            <a class="btn btn-warning" href="{{ path('dashboard_alarm_disable') }}">Désactiver</a>
+            <a class="btn btn-warning" href="{{ path('dashboard_alarm_disable') }}">Désactiver l'alarme</a>
         </p>
     {% else %}
         <p>
             L'alarme est actuellement <strong>désactivée</strong>.
         </p>
         <p>
-            <a class="btn btn-info" href="{{ path('dashboard_alarm_enable') }}">Activer</a>
-        </p>
-        <p>
-            <a href="{{ path('pages_alarm') }}">
-                Plus d'informations sur le fonctionnent de l'alarme.
-            </a>
+            <a class="btn btn-info" href="{{ path('dashboard_alarm_enable') }}">Activer l'alarme</a>
         </p>
     {% endif %}
+
+    <p>
+        <a href="{{ path('pages_alarm') }}">
+            <span class="fa fa-caret-right"></span>
+            Plus d'informations sur le fonctionnent de l'alarme.
+        </a>
+    </p>
 
 {% endblock %}
