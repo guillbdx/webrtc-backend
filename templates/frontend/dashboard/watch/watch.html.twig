@@ -16,8 +16,10 @@
         ou <a href="https://www.mozilla.org/fr/firefox/new/">Mozilla Firefox</a>.
     </div>
 
-    <div class="alert alert-warning" id="alertPendingConnection">
-        Connexion en cours...
+    <div style="max-width: 450px;" class="text-center m-auto pt-2" id="alertPendingConnection">
+        <em>Connexion en cours...</em>
+        <br>
+        <img src="{{ asset('build/images/connecting.gif') }}" class="w-100">
     </div>
 
     <div class="alert alert-danger" id="alertShooterNotExists" style="display: none;">
