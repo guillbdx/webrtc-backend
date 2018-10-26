@@ -2,6 +2,7 @@ let cursor = 0;
 let photos = [];
 let calendar = [];
 const pathBrowseAllPhotos = document.getElementById('pathBrowseAllPhotos').value;
+const total = document.getElementById('total').value;
 
 //----------------------------------------------------
 // DISPLAYABLE DATES FUNCTIONS
@@ -388,9 +389,14 @@ jQuery('#reset').click(function() {
     return false;
 });
 
+let interval = 30000;
+if (total < 200) {
+    interval = 10000;
+}
+
 setInterval(function() {
     reset(getIdPhotoToDisplayAfterReset());
-}, 30000);
+}, interval);
 
 reset(null);
 

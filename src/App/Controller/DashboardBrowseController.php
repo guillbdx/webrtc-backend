@@ -21,13 +21,18 @@ class DashboardBrowseController extends AbstractController
     /**
      * @Route("/", name="dashboard_browse")
      * @param UserInterface|User $user
+     * @param PhotoRepository $photoRepository
      * @return Response
      */
     public function browse(
-        UserInterface $user
+        UserInterface $user,
+        PhotoRepository $photoRepository
     )
     {
-        return $this->render('frontend/dashboard/browse/browse.html.twig');
+        $photos = $photoRepository->findRegularAndAfterPhotosByUser($user);
+        return $this->render('frontend/dashboard/browse/browse.html.twig', [
+            'total' => count($photos)
+        ]);
     }
 
     /**
