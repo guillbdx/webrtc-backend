@@ -57,7 +57,7 @@ function gotMessageFromServer(message) {
     message = JSON.parse(message.data);
 
     if (messageTypes.START_SIGNALING === message.type) {
-        iceServers = message.body;
+        iceServers = utils.filterServersIfEdge(message.body);
         startShooter();
         return;
     }

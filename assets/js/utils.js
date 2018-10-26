@@ -51,6 +51,13 @@ const utils = {
         socketConnection.send(JSON.stringify({type: type, roomId: roomId, body: body}));
     },
 
+    filterServersIfEdge: function(iceServers) {
+        if (window.navigator.userAgent.indexOf("Edge") > -1) {
+            return [iceServers[0]];
+        }
+        return iceServers;
+    },
+
     resizeCanvas: function(canvas, localVideo, newHeight) {
         canvas.setAttribute('height', newHeight);
         let newWidth = newHeight * localVideo.videoWidth / localVideo.videoHeight;

@@ -67,7 +67,7 @@ function gotMessageFromServer(message) {
 
     if (messageTypes.OFFER === message.type) {
 
-        iceServers = message.body.iceServers;
+        iceServers = utils.filterServersIfEdge(message.body.iceServers);
         startWatcher();
 
         peerConnection.setRemoteDescription(new RTCSessionDescription(message.body.sdp)).then(function() {
