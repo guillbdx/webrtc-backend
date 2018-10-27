@@ -15,6 +15,7 @@ class TurnGetter
     public function getTurnServers()
     {
         $credentials = $this->generateCredentials();
+
         return [
             [
                 'urls'          => ['turn:turn.dilcam.com'],
@@ -35,10 +36,9 @@ class TurnGetter
      */
     private function generateCredentials(): array
     {
-        $secret = 'eRoN9plAw6v1B';
-        $username = gmdate('Y-m-d-H-i', time()-60);
-        $plainPassword = $username.$secret;
-        $credential = md5($plainPassword);
+        $unixTimeStamp = time() + 180;
+        $username = $unixTimeStamp.':dilcam';
+        $credential = base64_encode(hash_hmac('sha1', $username, 'j4qhGfd8qO2kn5GsH', true));
 
         return [
             'username' => $username,
