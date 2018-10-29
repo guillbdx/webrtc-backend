@@ -9,62 +9,34 @@
     {% include 'frontend/includes/_flash.html.twig' %}
 
     <p>
-        En plus d'enregistrer une photographie par minute, le service Dilcam enregistre toute photo qui paraît "suspecte".
-        Une photo dite "suspecte" est une photo pour laquelle un mouvement semble avoir été détecté.
+        Dilcam analyse en continu ce que filme votre webcam, de façon à détecter tout mouvement éventuel.
+        Chaque fois qu'un mouvement semble détecté, la photo est marquée comme suspecte et conservée dans
+        l'historique. La page "Photos" du tableau de bord vous permet de les visualiser pendant 7 jours.
     </p>
 
     <p>
-        La détermination de photos suspectes fonctionne de la façon suivante :
+        L'analyse de mouvement détermine la certitude avec laquelle le mouvement est détecté.
+        Le pourcentage de certitude apparaît en rouge à côté de chaque prise de vue dans la page
+        <a href="{{ path('dashboard_browse') }}">Photos</a>.
+        Quand la certitude est supérieure à 3 %, la photo est considérée comme suspecte, et enregistrée
+        dans l'historique. Et quand la certitude est supérieure à
+        {{ (constant('App\\Manager\\PhotoManager::MIN_MISMATCH_FOR_ALARMING') / 100) | number_format(2, ',') }} %,
+        une alarme vous est envoyée par email.
     </p>
-
-    <ul>
-        <li>Dilcam prend une photo toutes les 2 secondes.</li>
-        <li>Chaque photo est comparée avec la précédente.</li>
-        <li>
-            Si la différence entre deux photos successives est supérieure à 3 %,
-            la deuxième photo est enregistrée.
-        </li>
-        <li>
-            Si la différencre entre deux photos successives est supérieure à
-            {{ (constant('App\\Manager\\PhotoManager::MIN_MISMATCH_FOR_ALARMING') / 100) | number_format(2, ',') }} %,
-            en plus d'être enregistrée, la deuxième photo générera une alarme.
-        </li>
-        <li>
-            Une alarme est un email envoyé à l'utilisateur, contenant la photo suspecte.
-        </li>
-        <li>
-            Dilcam n'envoie jamais plus d'une alarme par tranche de
-            {{ constant('App\\Manager\\PhotoManager::MIN_ALARM_INTERVAL') / 60 }} minutes.
-        </li>
-    </ul>
 
     <p>
-        L'utilisateur peut désactiver l'alarme dans son tableau de bord.
+        Vous pouvez désactiver l'alarme dans votre tableau de bord. Par ailleurs,
+        Dilcam n'envoie jamais plus d'une alarme par tranche de
+        {{ constant('App\\Manager\\PhotoManager::MIN_ALARM_INTERVAL') / 60 }} minutes.
     </p>
 
-    <h3>Limitations</h3>
+
 
     <p>
-        Malgré tout l'effort apporté à l'algorithme de détection d'images suspectes telles que décrit
-        dans le paragraphe 2.3 du présent document :
+        Malgré tout l'effort apporté à l'algorithme de détection de mouvement, il peut arriver
+        qu'un mouvement soit détecté par erreur, notamment en cas de changement brusque de luminosité,
+        ou inversement, qu'un mouvement trop faible ou trop éloigné de la caméra ne soit pas détecté.
     </p>
 
-    <ul>
-        <li>
-            Dilcam ne peut pas garantir avec 100 % de certitude que tout mouvement sera détecté,
-            ni qu'une alarme sera générée de façon certaine en cas de mouvement devant la caméra.
-        </li>
-        <li>
-            Inversement, il peut arriver que le service Dilcam détecte une image suspecte par erreur,
-            et déclencher une alarme par email alors que rien d'anormal ne s'est produit devant la caméra.
-            Cela peut notamment se produire en cas de changement brusque de luminosité : phares d'une voiture
-            passant dans la rue, nuage soudain qui assombrit la pièce filmée, etc.
-        </li>
-    </ul>
-
-    <p>
-        La période d'essai de 24 heures cumulées permettra à l'utilisateur de s'assurer que le fonctionnement
-        de l'alarme correspond bien à ses attentes.
-    </p>
 
 {% endblock %}
